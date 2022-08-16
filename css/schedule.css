@@ -1,0 +1,24 @@
+.container {
+    border: black solid 1px;
+    margin: 10px 100px;
+    padding: 10px;
+    margin: 30px 5px;
+}
+
+.weather-container {
+    background-color: lightgreen;
+    display: flex;
+}
+
+.col-6 {
+    flex: 0 0 auto;
+    width: 50%;
+    padding: 15px;
+}
+
+.table-week {
+    text-align: center;
+    flex: 0 0 auto;
+    width:100%;
+}
+

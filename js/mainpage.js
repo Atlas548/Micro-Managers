@@ -6,7 +6,9 @@ clock.textContent = currentTime
 
 
 setInterval(() => {
-    clock.textContent = digital;
+    var now = moment();
+    var currentTime = now.format('hh:mm:ssA');
+    clock.textContent = currentTime;
 }, 1000);
 
 

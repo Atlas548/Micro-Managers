@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Micro Managers</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="./css/schedule.css">
   </head>
   <body>
 
@@ -26,28 +27,62 @@
     </div>
     <!-- End Top Bar -->
 
-    <div class="#">
-        <div class="Container">
-          <h3>Weather</h3>
-            <img class="thumbnail" src="https://placehold.it/850x350">
+    <main>
+      <div class="container">
+        <h2 class="text-center">Weather</h3>
+        <div class="weather-container">
+          <div class="today-weather col-6">
+            <h3>Today's weather</h3>
+            <h4 class="user-location">location</h4>
+            <h4 id="today-temp">90°</h4>
+            <h4 id="today-status">Cloudy</h4>
+            <h4 id="today-lowest">Lowest degree: </h4>
+            <h4 id="today-highest">Highest degree: </h4>
+          </div>
+          <div class="tomorrow-weather col-6">
+            <h3>Tomorrow's weather</h3>
+            <h4 class="user-location">location</h4>
+            <h4 id="tomorrow-temp">90°</h4>
+            <h4 id="tomorrow-status">Cloudy</h4>
+            <h4 id="tomorrow-lowest">Lowest degree: </h4>
+            <h4 id="tomorrow-highest">Highest degree: </h4>
+          </div>
         </div>
       </div>
-
-      <div class="#">
-        <div class="Container">
-          <h3>Todays Schedule</h3>
-            <img class="thumbnail" src="https://placehold.it/850x350">
+      
+      <div class="container">
+        <h3 class="text-center">Todays Schedule</h3>
+        <div class="week-calendar">
+          <table class="table-week">
+            <tr>
+              <td>S</td>
+              <td>M</td>
+              <td>T</td>
+              <td>W</td>
+              <td>W</td>
+              <td>F</td>
+              <td>S</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>15</td>
+              <td>16</td>
+              <td>17</td>
+              <td>18</td>
+              <td>19</td>
+              <td>20</td>
+            </tr>
+          </table>
         </div>
+        <h4 id="today-date" class="text-center">Monday August 15, 2022</h4>
       </div>
-     
-      <div class="#">
-        <div class="Container">
-          <h3>Urgent Tasks for Clients</h3>
-            <img class="thumbnail" src="https://placehold.it/850x350">
-        </div>
-      </div>
-
     
+      <div class="container">
+        <h3 class="text-center">Urgent Tasks for Clients</h3>
+
+      </div>
+    </main>
+  
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script>
