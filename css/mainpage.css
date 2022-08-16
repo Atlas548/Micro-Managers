@@ -1,0 +1,25 @@
+/* For main page */
+#clock {
+    width: 300px;
+    height: 100px;
+    margin:200px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3em;
+}
+
+#date {
+    width: 300px;
+    height: 80px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+}
