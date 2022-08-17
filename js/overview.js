@@ -73,6 +73,19 @@ function renderLocalStorage() {
         for (var i = 0; i < scheduleListForAppend.length; i++) {
             // console.log(scheduleListForAppend.startingTime);
     console.log(scheduleListForAppend.length);
+    console.log(scheduleListForAppend[i].startingTime);
+    // console.log(scheduleListForAppend[i+1].startingTime);
+    var firstTime = scheduleListForAppend[i].startingTime    ;    
+    var secondTime = scheduleListForAppend[i+1].startingTime;
+    var dateOne = moment(firstTime, "hA").format("HH");
+    var dateTwo = moment(secondTime, "hA").format("HH");
+            console.log(dateOne);
+            console.log(dateTwo);
+            if (dateOne > dateTwo) {
+                console.log("check!")
+            }
+            
+
             var dateParsed = scheduleListForAppend[i].dates
             var startTimeParsed = scheduleListForAppend[i].startingTime;
             var endTimeParsed = scheduleListForAppend[i].endingTime;
