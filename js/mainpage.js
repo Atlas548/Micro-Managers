@@ -1,12 +1,19 @@
-// For main page.
-const clock = document.getElementById('clock');
+// // For main page.
+
+const timeDisplayEL = document.getElementById('time-display');
 var now = moment();
 var currentTime = now.format('hh:mm:ssA');
-clock.textContent = currentTime
+timeDisplayEL.textContent = currentTime
 
+const dateDisplayEl = document.getElementById('date-display');
+var currentDate = now.format('dddd, MMMM Do YYYY');
+dateDisplayEl.textContent = currentDate
 
 setInterval(() => {
-    clock.textContent = digital;
+    var now = moment();
+    var currentTime = now.format('hh:mm:ssA');
+    timeDisplayEL.textContent = currentTime;
+
+    var currentDate = now.format('dddd, MMMM Do YYYY');
+    dateDisplayEl.textContent = currentDate;
 }, 1000);
-
-

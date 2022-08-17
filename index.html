@@ -4,37 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Micro Managers</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" href="./css/mainpage.css" />
   </head>
-  <body>
+  <body class="main-body">
+    <!-- digital clock and date -->
+    <div class="main-time" id="time-display"></div>
+    <div class="main-date" id="date-display"></div>
   
     <!-- Start Top Bar -->
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <li class="menu-text"><a href="./index.html">MicroManagers</a></li>
-        </ul>
+      <div class="row">
+        <div class="columns">
+          <ul class="menu align-center">
+            <li class="menu-text"><a href="./index.html">MicroManagers</a></li>
+            <li><a href="./overview.html">Overview</a></li>
+            <li><a href="./schedule.html">Schedule</a></li>
+            <li><a href="./whatareyoutdoing.html">What Are You Doing?</a></li>
+            <li><a href="./about.html">About</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="nav">
-        <ul class="menu">
-          <li><a href="./overview.html">Overview</a></li>
-          <li><a href="./schedule.html">Schedule</a></li>
-          <li><a href="./whatareyoutdoing.html">What Are You Doing?</a></li>
-          <li><a href="./about.html">About</a></li>
-        </ul>
-      </div>
-    </div>
     <!-- End Top Bar -->
 
-    <!-- digital clock -->
-    <div id="clock"></div>
-    <div id="date"></div>
-
-
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>
     <script src="./js/mainpage.js"></script>
   </body>
 </html>
