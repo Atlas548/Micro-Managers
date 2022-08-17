@@ -71,19 +71,7 @@ function renderLocalStorage() {
         }
     } else {
         for (var i = 0; i < scheduleListForAppend.length; i++) {
-            // console.log(scheduleListForAppend.startingTime);
-    console.log(scheduleListForAppend.length);
-    console.log(scheduleListForAppend[i].startingTime);
-    // console.log(scheduleListForAppend[i+1].startingTime);
-    var firstTime = scheduleListForAppend[i].startingTime    ;    
-    var secondTime = scheduleListForAppend[i+1].startingTime;
-    var dateOne = moment(firstTime, "hA").format("HH");
-    var dateTwo = moment(secondTime, "hA").format("HH");
-            console.log(dateOne);
-            console.log(dateTwo);
-            if (dateOne > dateTwo) {
-                console.log("check!")
-            }
+            scheduleListForAppend.sort((a, b) => a.timeStamp - b.timeStamp);
             
 
             var dateParsed = scheduleListForAppend[i].dates
@@ -162,7 +150,8 @@ function handleScheduleFormSubmit(event) {
     var scheduleStartTime = startingTimeInputEl.val();
     var scheduleEndTime = endingTimeInputEl.val();
     var scheduleDescription = descriptionScheduleInputEl.val();
-
+    var timeStamp24 = moment(scheduleDate + scheduleStartTime, "YYYY-MM-DD h:mmA").format("X");
+    console.log(scheduleDate + " " + scheduleStartTime)
     // return when description is empty
     if (scheduleDescription === "") {
         return;
@@ -172,7 +161,8 @@ function handleScheduleFormSubmit(event) {
         dates: scheduleDate,
         startingTime: scheduleStartTime,
         endingTime: scheduleEndTime,
-        schedules: scheduleDescription
+        schedules: scheduleDescription,
+        timeStamp: timeStamp24
     };
 
     if (scheduleListForAppend.length === 0) {
@@ -214,3 +204,18 @@ scheduleFormEl.on('submit', handleScheduleFormSubmit);
 scheduleContainerEl.on('click', '.button-cancel', handleDeleteSchedule);
 
 init();
+
+
+
+
+// const items = [
+//     { name: 'Edward', value: 21 },
+//     { name: 'Sharpe', value: 37 },
+//     { name: 'And', value: 45 },
+//     { name: 'The', value: -12 },
+//     { name: 'Magnetic', value: 13 },
+//     { name: 'Zeros', value: 37 }
+// ]
+// console.log(items)
+// items.sort((a,b) => a.value - b.value);
+// console.log(items)
