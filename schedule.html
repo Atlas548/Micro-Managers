@@ -26,8 +26,9 @@
     </div>
     <!-- End Top Bar -->
 
+    <!-- main section -->
     <main>
-
+      <!-- Container with Timer -->
       <div class="container">
         <div class="timer">
         <h1>Timer</h1>
@@ -35,6 +36,7 @@
         </div>
       </div>
 
+      <!-- Container for Weather report -->
       <div class="container">
         <h2 class="text-center">Weather</h3>
         <div class="weather-container">
@@ -57,7 +59,8 @@
         </div>
       </div>
       
-      <div class="container" id="schedule-container">
+      <!-- Container for Schedules -->
+      <div class="container" >
         <h3 class="text-center">Todays Schedule   <button class="button" data-open="exampleModall">&#43;</button></h3>
         
         <div class="week-calendar">
@@ -83,6 +86,10 @@
           </table>
         </div>
         <h4 id="today-date" class="text-center">Monday August 15, 2022</h4>
+        <div id="schedule-container">
+          
+        </div>
+        <!-- testing the list without using javascript -->
         <!-- <div class="row-test">
           <div class="time-container">
             <h6 class="starting-time">8:00AM</h6>
@@ -99,58 +106,23 @@
             Cancel
           </button>
         </div> -->
-        
-        
-
       </div>
     
+      <!-- Container for Tasks -->
       <div class="container">
-        <h3 class="text-center">Urgent Tasks for Clients</h3>
-        <div class="row-test task-container">
+        <h3 class="text-center">Tasks List</h3>
+        <!-- <div class="row-test task-container">
           <div class="task-status">Status</div>
           <div class="task-description">description of the tasks</div>
           <button class="button-check">
             Check
           </button>
-        </div>
-        <div class="row-test task-container">
-          <div class="task-status">Status</div>
-          <div class="task-description">description of the tasks</div>
-          <button class="button-check">
-            Check
-          </button>
-        </div>
-        <div class="row-test task-container">
-          <div class="task-status">Status</div>
-          <div class="task-description">description of the tasks</div>
-          <button class="button-check">
-            Check
-          </button>
-        </div>
-        <div class="row-test task-container">
-          <div class="task-status">Status</div>
-          <div class="task-description">description of the tasks</div>
-          <button class="button-check">
-            Check
-          </button>
-        </div>
-        <div class="row-test task-container">
-          <div class="task-status">Status</div>
-          <div class="task-description">description of the tasks</div>
-          <button class="button-check">
-            Check
-          </button>
-        </div>
-        <div class="row-test task-container">
-          <div class="task-status">Status</div>
-          <div class="task-description">description of the tasks</div>
-          <button class="button-check">
-            Check
-          </button>
-        </div>
+        </div> -->
       </div>
     </main>
 
+    <!-- modal container using Foundation -->
+    <!-- This is for Schedule Input Modal -->
     <div class="modal reveal" id="exampleModall" data-reveal>
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -218,6 +190,11 @@
       </div>
     </div>
 
+    <!-- This is for Task Input Modal -->
+
+
+
+    <!-- This is footer of our website -->
     <footer class="text-center">
       2022 © Fantastic Four Company
     </footer>
@@ -229,5 +206,6 @@
       $(document).foundation();
     </script>
     <script src="./js/overview.js"></script>
+    <!-- <script src="./js/scratchFile.js"></script> -->
   </body>
 </html>
