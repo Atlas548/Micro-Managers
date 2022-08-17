@@ -1,0 +1,92 @@
+.container {
+    border: black solid 1px;
+    padding: 10px;
+    margin: 30px 5px;
+}
+
+.weather-container {
+    background-color: lightgreen;
+    display: flex;
+}
+
+.col-6 {
+    flex: 0 0 auto;
+    width: 50%;
+    padding: 15px;
+}
+
+.table-week {
+    text-align: center;
+    flex: 0 0 auto;
+    width:100%;
+}
+
+.row-test {
+    display: flex;
+    border: 1px solid black;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.time-container {
+    background-color: pink;
+    flex: 0 0 auto;
+    width: 10%;
+}
+
+
+.description-container {
+    background-color: aqua;
+    flex: 0 0 auto;
+    width: 80%;
+    padding: 0px 10px;
+}
+
+.button-edit {
+    flex: 0 0 auto;
+    width: 5%;
+    background-color: lightcoral;
+}
+
+.button-cancel {
+    flex: 0 0 auto;
+    width: 5%;
+    background-color: lightgray;
+}
+
+.starting-time {
+    line-height: 1;
+    margin-left: 15%;
+}
+
+.ending-time {
+    line-height: 1;
+    text-align: right;
+    margin-right: 15%;
+}
+
+hr {
+    margin: 0;
+}
+h6 {
+    margin: 0;
+}
+
+footer {
+    background-color: lightgrey;
+}
+
+.task-status {
+    width: 10%;
+}
+.task-description {
+    width: 80%;
+    background-color: lightcyan;
+}
+.button-check {
+    width: 10%;
+    background-color: lightgreen;
+}
+.task-container {
+    text-align: center;
+}
