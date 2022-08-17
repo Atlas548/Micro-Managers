@@ -27,34 +27,88 @@
     </div>
     <!-- End Top Bar -->
     <div class="container">
+      <div class="timer">
       <h1>Timer</h1>
       <div class="Remaining-Time">Remaining Time</div>
+      </div>
     </div>
 
-      <!-- <div class="#">
-        <div class="Container">
-          <h3>Todays Schedule</h3>
-            <img class="thumbnail" src="https://placehold.it/850x350">
+    <main>
+      <div class="container">
+        <h2 class="text-center">Weather</h3>
+        <div class="weather-container">
+          <div class="today-weather col-6">
+            <h3>Today's weather</h3>
+            <h4 class="user-location">location</h4>
+            <h4 id="today-temp">90°</h4>
+            <h4 id="today-status">Cloudy</h4>
+            <h4 id="today-lowest">Lowest degree: </h4>
+            <h4 id="today-highest">Highest degree: </h4>
+          </div>
+          <div class="tomorrow-weather col-6">
+            <h3>Tomorrow's weather</h3>
+            <h4 class="user-location">location</h4>
+            <h4 id="tomorrow-temp">90°</h4>
+            <h4 id="tomorrow-status">Cloudy</h4>
+            <h4 id="tomorrow-lowest">Lowest degree: </h4>
+            <h4 id="tomorrow-highest">Highest degree: </h4>
+          </div>
         </div>
       </div>
-
-      <div data-closable="fade-out" class="todo-list-card card">
-        <div class="card-divider">
-          <h3>To Do List</h3>
-          <button class="close-button" data-close>x</button>
-        </div>
-        <div class="card-section">
-          <ul>
-            <li><input id="item1" type="checkbox"></input><label for="item1"></label>Item 1</li>
-            <li><input id="item2" type="checkbox"></input><label for="item2"></label>Item 2</li>
-            <li><input id="item3" type="checkbox"></input><label for="item3"></label>Item 3</li>
-            <li><input id="item4" type="checkbox"></input><label for="item4"></label>Item 4</li>
-            <li><input id="item5" type="checkbox"></input><label for="item5"></label>Item 5</li>
-            <li><input id="item6" type="checkbox"></input><label for="item6"></label>Item 6</li>
-          </ul>
-        </div>
-      </div> -->
       
+      <div class="container">
+        <h3 class="text-center">Todays Schedule</h3>
+        <div class="week-calendar">
+          <table class="table-week">
+            <tr>
+              <td>S</td>
+              <td>M</td>
+              <td>T</td>
+              <td>W</td>
+              <td>W</td>
+              <td>F</td>
+              <td>S</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>15</td>
+              <td>16</td>
+              <td>17</td>
+              <td>18</td>
+              <td>19</td>
+              <td>20</td>
+            </tr>
+          </table>
+        </div>
+        <h4 id="today-date" class="text-center">Monday August 15, 2022</h4>
+      </div>
+    
+      <div class="container">
+        <h3 class="text-center">Urgent Tasks for Clients</h3>
+      </div>
+
+      <form>
+        <div class="grid-container">
+            <div class="row button-group">
+              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
+            </div>
+            <div class="row">
+              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
+            </div>
+            <div class="row">
+              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
+            </div>
+            <div class="row">
+              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
+            </div>
+            <div class="row">
+              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </main>
+
     
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
