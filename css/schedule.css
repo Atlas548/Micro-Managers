@@ -174,3 +174,11 @@ footer {
     background-color: #6c757d;
     
 }
+
+#sunday, #saturday {
+    background-color: lightcoral;
+}
+
+.darkgrey {
+    background-color: darkgrey;
+}
