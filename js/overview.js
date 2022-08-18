@@ -1,4 +1,5 @@
-///////////////////////////////////////// Schedule ////////////////////////////////////////////////
+//////////////////// Schedule ////////////////////
+//////////////////// Using Moment JS ////////////////////
 var today = moment();
 var currentDate = today.format("YYYY-MM-DD");
 $('#today-date').text(today.format("dddd, MMMM D, YYYY"));
@@ -89,6 +90,7 @@ function findDayOfWeek() {
 }
 
 
+//////////////////// Rendering Schedules ////////////////////
 
 // $('#week-sunday').text(moment().format("D"));
 
@@ -203,6 +205,7 @@ function renderLocalStorage() {
         
             scheduleRowEl.attr('data-dates', dateParsed);
             scheduleRowEl.attr('data-index', i);
+                editBtn.attr('data-open', 'exampleModall-edit')
                 // console.log("printing?");
                 
                 timeBoxEl.append(startTimeEl);
@@ -283,20 +286,25 @@ function handleScheduleFormSubmit(event) {
     
 
 }
+
 function handleDeleteSchedule(event) {
     var btnClicked = $(event.target);
     btnClicked.parent('div').remove();
+    var index = btnClicked.parent('div').attr('data-index');
+    scheduleListForAppend.splice(index, 1);
 
-    if (btnClicked.matches(".button-cancel") === true) {
-        var index = btnClicked.parentElement.getAttribute("data-index");
-        scheduleListForAppend.splice(index, 1);
-
-        saveToLocalStorage();
-        renderLocalStorage();
-    }
+    saveToLocalStorage();
+    renderLocalStorage();
 }
+
+function handleEditSchedule(event) {
+    var btnClicked = $(event.target);
+    console.log(btnClicked);
+    
+}
+
 scheduleFormEl.on('submit', handleScheduleFormSubmit);
 scheduleContainerEl.on('click', '.button-cancel', handleDeleteSchedule);
-
+scheduleContainerEl.on('click', '.button-edit', handleEditSchedule);
 init();
 
