@@ -1,4 +1,4 @@
-
+var currentDate = moment().format("YYYY-MM-DD")
 // whole container of the schedule box
 var scheduleContainerEl = $('#schedule-container');
 // variable declared for input details
@@ -71,8 +71,14 @@ function renderLocalStorage() {
         }
     } else {
         for (var i = 0; i < scheduleListForAppend.length; i++) {
+
+            
+            
             scheduleListForAppend.sort((a, b) => a.timeStamp - b.timeStamp);
             
+            // if (scheduleListForAppend[i].dates !== currentDate) {
+            //     return;
+            // }
 
             var dateParsed = scheduleListForAppend[i].dates
             var startTimeParsed = scheduleListForAppend[i].startingTime;
@@ -219,3 +225,6 @@ init();
 // console.log(items)
 // items.sort((a,b) => a.value - b.value);
 // console.log(items)
+// console.log(scheduleListForAppend)
+// console.log(scheduleListForAppend[0].dates)
+// console.log(currentDate)
