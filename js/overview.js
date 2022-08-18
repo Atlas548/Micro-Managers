@@ -300,7 +300,11 @@ function handleDeleteSchedule(event) {
 function handleEditSchedule(event) {
     var btnClicked = $(event.target);
     console.log(btnClicked);
-    
+
+    // note this
+    var editDate = $('#dates-schedule-edit');
+    console.log(editDate);
+    editDate.attr('value', '2022-08-21')
 }
 
 scheduleFormEl.on('submit', handleScheduleFormSubmit);
