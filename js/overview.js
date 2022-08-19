@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
     var status = document.querySelector('#today-status');
     var tempLow = document.querySelector('#today-lowest');
     var tempHigh = document.querySelector('#today-highest');
+    var sunriseTod = document.querySelector('#sunrise')
+
         function renderItem(data) {
             var tempValue = data['main']['temp'];
             var locationValue = data['name'];
