@@ -1,3 +1,38 @@
+//////////////////// Weather ////////////////////
+document.addEventListener("DOMContentLoaded", function() {
+    var userLoco = document.querySelector('#location');
+    var temp = document.querySelector('#today-temp');
+    var status = document.querySelector('#today-status');
+    var tempLow = document.querySelector('#today-lowest');
+    var tempHigh = document.querySelector('#today-highest');
+        function renderItem(data) {
+            var tempValue = data['main']['temp'];
+            var locationValue = data['name'];
+            var lowTemp = data['main']['temp_min'];
+            var highTemp = data['main']['temp_max'];
+            var weatherStatus = data['weather']['0']['main'];
+            userLoco.textContent = `Location: ${locationValue}`;
+            temp.textContent = `Current Temp: ${tempValue} °F`;
+            tempLow.textContent = `Today's Low: ${lowTemp} °F`;
+            tempHigh.textContent = `Today's High: ${highTemp} °F`;
+            status.textContent = `Current Weather: ${weatherStatus} `;
+        }
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                lat = position.coords.latitude;
+                lon = position.coords.longitude;
+                console.log(lat, lon);
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
+                .then(Response => Response.json())
+                .then(data => {
+                    console.log(data);
+                    renderItem(data, position);
+                })
+            })
+        }
+})
+
+
 //////////////////// Schedule ////////////////////
 //////////////////// Using Moment JS ////////////////////
 var today = moment();
@@ -98,13 +133,18 @@ function findDayOfWeek() {
 var scheduleContainerEl = $('#schedule-container');
 // variable declared for input details
 var scheduleDateInputEl = $('#dates-schedule');
+var editDateInputEl = $('#dates-schedule-edit');
 var startingTimeInputEl = $('#starting-time');
+var editStartingTimeInputEl = $('#starting-time-edit');
 var endingTimeInputEl = $('#ending-time');
+var editEndingTimeInputEl = $('#ending-time-edit');
 var descriptionScheduleInputEl = $('#description-schedule');
+var editDescriptionInputEl = $('#description-schedule-edit');
 
 var submitBtnEl = $('#button-submit');
 
 var scheduleFormEl = $('#project-form');
+var editFormEl = $('#project-form-edit');
 
 var scheduleListForAppend = [];
 
@@ -298,13 +338,76 @@ function handleDeleteSchedule(event) {
 }
 
 function handleEditSchedule(event) {
-    var btnClicked = $(event.target);
-    console.log(btnClicked);
-
-    // note this
     var editDate = $('#dates-schedule-edit');
-    console.log(editDate);
-    editDate.attr('value', '2022-08-21')
+    var editStartTime = $('#starting-time-edit');
+    var editEndingTime = $('#ending-time-edit');
+    var editDescription = $('#description-schedule-edit')
+
+    var btnClicked = $(event.target);
+    var clickedIndex = btnClicked.parent('div').attr('data-index');
+
+    var clickedDate = scheduleListForAppend[clickedIndex].dates;
+    var clickedStartTime = scheduleListForAppend[clickedIndex].startingTime;
+    var clickedEndTime = scheduleListForAppend[clickedIndex].endingTime;
+    var clickedDescription = scheduleListForAppend[clickedIndex].schedules;
+    
+    var selectedStartTime = editStartTime.find(`:contains(${clickedStartTime})`);
+    var selectedEndTime = editEndingTime.find(`:contains(${clickedEndTime})`);
+
+
+    editDate.attr('value', clickedDate);
+    selectedStartTime.attr('selected', '');
+    selectedEndTime.attr('selected', '');
+    editDescription.attr('placeholder', clickedDescription);
+    
+    editFormEl.on('submit', handleScheduleFormEdit);
+
+    function handleScheduleFormEdit(event) {
+        event.preventDefault();
+    
+        var scheduleDate = editDateInputEl.val();
+        var scheduleStartTime = editStartingTimeInputEl.val();
+        var scheduleEndTime = editEndingTimeInputEl.val();
+        var scheduleDescription = editDescriptionInputEl.val();
+        var timeStamp24 = moment(scheduleDate + scheduleStartTime, "YYYY-MM-DD h:mmA").format("X");
+        console.log(scheduleDate + " " + scheduleStartTime)
+        // return when description is empty
+        if (scheduleDescription === "") {
+            return;
+        }
+    
+        var scheduleItem = {
+            dates: scheduleDate,
+            startingTime: scheduleStartTime,
+            endingTime: scheduleEndTime,
+            schedules: scheduleDescription,
+            timeStamp: timeStamp24
+        };
+    
+        if (scheduleListForAppend.length === 0) {
+            scheduleListForAppend = scheduleItem;
+            console.log("empty")
+        } else if (typeof scheduleListForAppend.length == "undefined") {
+            scheduleListForAppend = [scheduleListForAppend]
+            scheduleListForAppend.push(scheduleItem);
+            console.log(scheduleListForAppend);
+        } else {
+            console.log("third time?")
+            scheduleListForAppend.push(scheduleItem);
+            console.log(scheduleListForAppend);
+        }
+    console.log(clickedIndex);
+    scheduleListForAppend.splice(clickedIndex, 1);
+        
+        // endingTime: scheduleEndTime, schedules: scheduleDescription});
+        scheduleFormEl[0].reset();
+        // printSchedule(scheduleDate, scheduleStartTime, scheduleEndTime, scheduleDescription);
+        saveToLocalStorage();
+        renderLocalStorage();
+        
+        
+    
+    }
 }
 
 scheduleFormEl.on('submit', handleScheduleFormSubmit);
