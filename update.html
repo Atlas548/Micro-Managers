@@ -1,0 +1,254 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Micro Managers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="./css/schedule.css">
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text"><a href="./index.html">MicroManagers</a></li>
+        </ul>
+      </div>
+      <div class="nav">
+        <ul class="menu">
+          <li><a href="./overview.html">Overview</a></li>
+          <li><a href="./update.html">Update</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <h1>Manadatory Update</h1>
+    <!-- Dialog will display as user loads onto the screen.-->
+      <div id="dialog" title="Dialog">
+        <p>Team this is a manadatory update requested by your manager. Update your tasks NOW!</p>
+      </div>
+      
+      <!------------Start of daily task update------------>
+      <div class="container">
+        <h2>Employee's Daily Tasks</h2>
+        <div class="update-form">
+          <h3>Tasks Update</h3>
+
+          <!-- Update submissiton form. -->
+          <form id="project-form">
+            <div class="grid-x grid-padding-x align-center">
+              <div class="cell small-4">
+                <label for="date" class="form-sections">Date: </label>
+                <div class="date-picker">
+                  <input type="text" class="form-control datepicker" id="datepicker" autocomplete="off" />
+                </div>
+                
+              </div>
+              <!-- User will need to enter due time of the original task's time given by the Manager. -->
+              <div class="cell small-4">
+                <label for="time" class="form-sections">Due time: </label>
+                  <div class="time-input">
+                    <input type="text" class="form-control" id="duetime" autocomplete="off" />
+                  </div>
+              </div>
+              <!-- Drop down option will display morning or evening. -->
+              <fieldset>
+                <label for="status">AM/PM:</label>
+                <select name="priority-status" id="am-or-pm" class="cell small-4">
+                  <option>AM</option>
+                  <option>PM</option>
+                </select>
+              </fieldset>
+              <!-- Drop down option will display status -->
+              <fieldset>
+                <label for="status">Status:</label>
+                <select name="priority-status" id="status" class="cell small-4">
+                  <option style="color:rgb(37, 113, 37)">Routine</option>
+                  <option style="color:rgb(106, 106, 10)">Priority</option>
+                  <option style="color:rgb(121, 19, 19)">Urgent</option>
+                </select>
+              </fieldset>
+            </div>
+              <!-- User will need to input what they have done.   -->
+              <div class="grid-x grid-padding-x align-center">
+                <div class="cell small-3 align-self-middle">
+                  <label for="description" class="form-sections">What have you done?</label>
+                  <div class="desc-input">
+                    <input type="text" class="form-control" id="descriptionschedule"/>
+                  </div>
+                </div>
+              </div>
+              <!-- Submit button for daily task. -->
+              <input class="ui-button ui-widget ui-corner-all" id="daily-button" type="submit" value="Submit">
+          </form>
+        </div>
+      </div>
+      <!------------End of daily task update----------> 
+
+      <!------------Start of Schedule input------------>
+      <div class="container">
+        <h2>Employee's Schedule</h2>
+
+        <div class="update-form">
+          <h3>Schedule Update</h3>
+
+          <form id="project-formG">
+            <div class="grid-x grid-padding-x align-center">
+
+              <div class="cell small-4">
+                <label for="date" class="form-sections">Date: </label>
+                <div class="date-picker">
+                  <input type="text" class="form-control datepicker" id="dates-scheduleG" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="cell small-4">
+                <label for="time" class="form-sections"> Start time: </label>
+                  <div class="time-input">
+                    <select id="starting-timeG" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                      <option value="8:15AM">8:15AM</option>
+                      <option value="8:30AM">8:30AM</option>
+                      <option value="8:45AM">8:45AM</option>
+                      <option value="9:00AM">9:00AM</option>
+                      <option value="9:15AM">9:15AM</option>
+                      <option value="9:30AM">9:30AM</option>
+                      <option value="9:45AM">9:45AM</option>
+                      <option value="10:00AM">10:00AM</option>
+                      <option value="10:15AM">10:15AM</option>
+                      <option value="10:30AM">10:30AM</option>
+                      <option value="10:45AM">10:45AM</option>
+                      <option value="11:00AM">11:00AM</option>
+                      <option value="11:15AM">11:15AM</option>
+                      <option value="11:30AM">11:30AM</option>
+                      <option value="11:45AM">11:45AM</option>
+                      <option value="12:00PM">12:00PM</option>
+                      <option value="12:15PM">12:15PM</option>
+                      <option value="12:30PM">12:30PM</option>
+                      <option value="12:45PM">12:45PM</option>
+                      <option value="1:00PM">1:00PM</option>
+                      <option value="1:15PM">1:15PM</option>
+                      <option value="1:30PM">1:30PM</option>
+                      <option value="1:45PM">1:45PM</option>
+                      <option value="2:00PM">2:00PM</option>
+                      <option value="2:15PM">2:15PM</option>
+                      <option value="2:30PM">2:30PM</option>
+                      <option value="2:45PM">2:45PM</option>
+                      <option value="3:00PM">3:00PM</option>
+                      <option value="3:15PM">3:15PM</option>
+                      <option value="3:30PM">3:30PM</option>
+                      <option value="3:45PM">3:45PM</option>
+                      <option value="4:00PM">4:00PM</option>
+                      <option value="4:15PM">4:15PM</option>
+                      <option value="4:30PM">4:30PM</option>
+                      <option value="4:45PM">4:45PM</option>
+                      <option value="5:00PM">5:00PM</option>
+                      <option value="5:15PM">5:15PM</option>
+                      <option value="5:30PM">5:30PM</option>
+                      <option value="5:45PM">5:45PM</option>
+                      <option value="6:00PM">6:00PM</option>
+                      <option value="6:15PM">6:15PM</option>
+                      <option value="6:30PM">6:30PM</option>
+                      <option value="6:45PM">6:45PM</option>
+                      <option value="7:00PM">7:00PM</option>
+                      <option value="7:15PM">7:15PM</option>
+                      <option value="7:30PM">7:30PM</option>
+                      <option value="7:45PM">7:45PM</option>
+                      <option value="8:00PM">8:00PM</option>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="cell small-4">
+                <label for="time" class="form-sections"> End time: </label>
+                  <div class="time-input">
+                    <select id="ending-timeG" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                        <option value="8:15AM">8:15AM</option>
+                        <option value="8:30AM">8:30AM</option>
+                        <option value="8:45AM">8:45AM</option>
+                        <option value="9:00AM">9:00AM</option>
+                        <option value="9:15AM">9:15AM</option>
+                        <option value="9:30AM">9:30AM</option>
+                        <option value="9:45AM">9:45AM</option>
+                        <option value="10:00AM">10:00AM</option>
+                        <option value="10:15AM">10:15AM</option>
+                        <option value="10:30AM">10:30AM</option>
+                        <option value="10:45AM">10:45AM</option>
+                        <option value="11:00AM">11:00AM</option>
+                        <option value="11:15AM">11:15AM</option>
+                        <option value="11:30AM">11:30AM</option>
+                        <option value="11:45AM">11:45AM</option>
+                        <option value="12:00PM">12:00PM</option>
+                        <option value="12:15PM">12:15PM</option>
+                        <option value="12:30PM">12:30PM</option>
+                        <option value="12:45PM">12:45PM</option>
+                        <option value="1:00PM">1:00PM</option>
+                        <option value="1:15PM">1:15PM</option>
+                        <option value="1:30PM">1:30PM</option>
+                        <option value="1:45PM">1:45PM</option>
+                        <option value="2:00PM">2:00PM</option>
+                        <option value="2:15PM">2:15PM</option>
+                        <option value="2:30PM">2:30PM</option>
+                        <option value="2:45PM">2:45PM</option>
+                        <option value="3:00PM">3:00PM</option>
+                        <option value="3:15PM">3:15PM</option>
+                        <option value="3:30PM">3:30PM</option>
+                        <option value="3:45PM">3:45PM</option>
+                        <option value="4:00PM">4:00PM</option>
+                        <option value="4:15PM">4:15PM</option>
+                        <option value="4:30PM">4:30PM</option>
+                        <option value="4:45PM">4:45PM</option>
+                        <option value="5:00PM">5:00PM</option>
+                        <option value="5:15PM">5:15PM</option>
+                        <option value="5:30PM">5:30PM</option>
+                        <option value="5:45PM">5:45PM</option>
+                        <option value="6:00PM">6:00PM</option>
+                        <option value="6:15PM">6:15PM</option>
+                        <option value="6:30PM">6:30PM</option>
+                        <option value="6:45PM">6:45PM</option>
+                        <option value="7:00PM">7:00PM</option>
+                        <option value="7:15PM">7:15PM</option>
+                        <option value="7:30PM">7:30PM</option>
+                        <option value="7:45PM">7:45PM</option>
+                        <option value="8:00PM">8:00PM</option>
+                        <option value="8:15PM">8:15PM</option>
+                        <option value="8:30PM">8:30PM</option>
+                        <option value="8:45PM">8:45PM</option>
+                        <option value="9:00PM">9:00PM</option>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="cell small-4">
+                <label for="time" class="form-sections"> Task: </label>
+                  <div class="task-input">
+                    <input type="text" class="form-control" id="description-scheduleG" autocomplete="off" />
+                  </div>
+                </div>
+             
+            </div>
+              <!-- Submit button for daily task. -->
+              <input class="ui-button ui-widget ui-corner-all" id="button-submitG" type="submit" value="Submit">
+              <!-- <div class="modal-footer">
+                <button type="submit" value="Submit" id="button-submit" class="btn btn-info">Submit</button>
+              </div> -->
+          </form>
+        </div>
+    </div>
+    <!------------End of Schedule input------------>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script src="./js/overview.js"></script>
+    <!-- <script src="./js/whatareyoudoing.js"></script> -->
+  </body>
+</html>

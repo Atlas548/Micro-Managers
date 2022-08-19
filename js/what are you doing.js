@@ -4,7 +4,7 @@ $(function () {
 });
 
 $(function () {
-  $('#datepicker').datepicker({
+  $('#dates-schedule').datepicker({
     changeMonth: true,
     changeYear: true,
     });
