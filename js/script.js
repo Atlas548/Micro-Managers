@@ -1,36 +1,69 @@
+//////////////////// Main Page ////////////////////
+
+const timeDisplayEL = document.getElementById('time-display');
+var noww = moment();
+var currentTimeMain = noww.format('hh:mm:ssA');
+timeDisplayEL.textContent = currentTimeMain
+
+const dateDisplayEl = document.getElementById('date-display');
+var currentDateMain = noww.format('dddd, MMMM Do YYYY');
+dateDisplayEl.textContent = currentDateMain
+
+setInterval(() => {
+    var noww = moment();
+    var currentTimeMain = noww.format('hh:mm:ssA');
+    timeDisplayEL.textContent = currentTimeMain;
+    var currentDateMain = noww.format('dddd, MMMM Do YYYY');
+    dateDisplayEl.textContent = currentDateMain;
+    
+}, 1000);
+//////////////////// Date Picker ////////////////////
+// $(function () {
+//     $('#dialog').dialog();
+//   });
+  
+  $(function () {
+    $('.datepicker').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      });
+    });
+
+
+
 //////////////////// Weather ////////////////////
-document.addEventListener("DOMContentLoaded", function() {
-    var userLoco = document.querySelector('#location');
-    var temp = document.querySelector('#today-temp');
-    var status = document.querySelector('#today-status');
-    var tempLow = document.querySelector('#today-lowest');
-    var tempHigh = document.querySelector('#today-highest');
-        function renderItem(data) {
-            var tempValue = data['main']['temp'];
-            var locationValue = data['name'];
-            var lowTemp = data['main']['temp_min'];
-            var highTemp = data['main']['temp_max'];
-            var weatherStatus = data['weather']['0']['main'];
-            userLoco.textContent = `Location: ${locationValue}`;
-            temp.textContent = `Current Temp: ${tempValue} °F`;
-            tempLow.textContent = `Today's Low: ${lowTemp} °F`;
-            tempHigh.textContent = `Today's High: ${highTemp} °F`;
-            status.textContent = `Current Weather: ${weatherStatus} `;
-        }
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                lat = position.coords.latitude;
-                lon = position.coords.longitude;
-                console.log(lat, lon);
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
-                .then(Response => Response.json())
-                .then(data => {
-                    console.log(data);
-                    renderItem(data, position);
-                })
-            })
-        }
-})
+// document.addEventListener("DOMContentLoaded", function() {
+//     var userLoco = document.querySelector('#location');
+//     var temp = document.querySelector('#today-temp');
+//     var status = document.querySelector('#today-status');
+//     var tempLow = document.querySelector('#today-lowest');
+//     var tempHigh = document.querySelector('#today-highest');
+//         function renderItem(data) {
+//             var tempValue = data['main']['temp'];
+//             var locationValue = data['name'];
+//             var lowTemp = data['main']['temp_min'];
+//             var highTemp = data['main']['temp_max'];
+//             var weatherStatus = data['weather']['0']['main'];
+//             userLoco.textContent = `Location: ${locationValue}`;
+//             temp.textContent = `Current Temp: ${tempValue} °F`;
+//             tempLow.textContent = `Today's Low: ${lowTemp} °F`;
+//             tempHigh.textContent = `Today's High: ${highTemp} °F`;
+//             status.textContent = `Current Weather: ${weatherStatus} `;
+//         }
+//         if(navigator.geolocation) {
+//             navigator.geolocation.getCurrentPosition(position => {
+//                 lat = position.coords.latitude;
+//                 lon = position.coords.longitude;
+//                 console.log(lat, lon);
+//                 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
+//                 .then(Response => Response.json())
+//                 .then(data => {
+//                     console.log(data);
+//                     renderItem(data, position);
+//                 })
+//             })
+//         }
+// })
 
 
 //////////////////// Schedule ////////////////////
@@ -125,7 +158,7 @@ function findDayOfWeek() {
 }
 
 
-//////////////////// Rendering Schedules ////////////////////
+//////////////////// Schedules ////////////////////
 
 // $('#week-sunday').text(moment().format("D"));
 
@@ -134,19 +167,29 @@ var scheduleContainerEl = $('#schedule-container');
 // variable declared for input details
 var scheduleDateInputEl = $('#dates-schedule');
 var editDateInputEl = $('#dates-schedule-edit');
+var graceDateInputEl = $('#dates-scheduleG')
+
 var startingTimeInputEl = $('#starting-time');
+var graceStartingTimeInputEl = $('#starting-timeG');
 var editStartingTimeInputEl = $('#starting-time-edit');
+
 var endingTimeInputEl = $('#ending-time');
+var graceEndingTimeInputEl = $('#ending-timeG');
 var editEndingTimeInputEl = $('#ending-time-edit');
+
 var descriptionScheduleInputEl = $('#description-schedule');
+var graceDescriptionScheduleInputEl = $('#description-scheduleG');
 var editDescriptionInputEl = $('#description-schedule-edit');
 
 var submitBtnEl = $('#button-submit');
+var graceSubmitBtnEl = $('#button-submitG');
 
 var scheduleFormEl = $('#project-form');
+var graceScheduleFormEl = $('#project-formG');
 var editFormEl = $('#project-form-edit');
 
 var scheduleListForAppend = [];
+
 
 function renderLocalStorage() {
     scheduleContainerEl.empty();
@@ -283,7 +326,7 @@ function saveToLocalStorage() {
 }
 function handleScheduleFormSubmit(event) {
     event.preventDefault();
-
+console.log("testing submit button")
     var scheduleDate = scheduleDateInputEl.val();
     var scheduleStartTime = startingTimeInputEl.val();
     var scheduleEndTime = endingTimeInputEl.val();
@@ -411,8 +454,258 @@ function handleEditSchedule(event) {
 }
 
 scheduleFormEl.on('submit', handleScheduleFormSubmit);
+graceScheduleFormEl.on('submit', graceHandleScheduleFormSubmit);
+
+
 scheduleContainerEl.on('click', '.button-cancel', handleDeleteSchedule);
 scheduleContainerEl.on('click', '.button-edit', handleEditSchedule);
 init();
 
 //////////////////// To-Do-List ////////////////////
+function graceHandleScheduleFormSubmit(event) {
+    event.preventDefault();
+console.log("testing submit button")
+
+////////////////////////////// GRACE SCHEDULE //////////////////////////////
+    var scheduleDate = graceDateInputEl.val();
+        scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
+    var scheduleStartTime = graceStartingTimeInputEl.val();
+    var scheduleEndTime = graceEndingTimeInputEl.val();
+    var scheduleDescription = graceDescriptionScheduleInputEl.val();
+    var timeStamp24 = moment(scheduleDate + scheduleStartTime, "MM-DD-YYYY h:mmA").format("X");
+    console.log(scheduleDate + " " + scheduleStartTime)
+    // return when description is empty
+    if (scheduleDescription === "") {
+        return;
+    }
+
+    var scheduleItem = {
+        dates: scheduleDate,
+        startingTime: scheduleStartTime,
+        endingTime: scheduleEndTime,
+        schedules: scheduleDescription,
+        timeStamp: timeStamp24
+    };
+
+    if (scheduleListForAppend.length === 0) {
+        scheduleListForAppend = scheduleItem;
+        console.log("empty")
+    } else if (typeof scheduleListForAppend.length == "undefined") {
+        scheduleListForAppend = [scheduleListForAppend]
+        scheduleListForAppend.push(scheduleItem);
+        console.log(scheduleListForAppend);
+    } else {
+        console.log("third time?")
+        scheduleListForAppend.push(scheduleItem);
+        console.log(scheduleListForAppend);
+    }
+
+    
+    // endingTime: scheduleEndTime, schedules: scheduleDescription});
+    graceScheduleFormEl[0].reset();
+    // printSchedule(scheduleDate, scheduleStartTime, scheduleEndTime, scheduleDescription);
+    saveToLocalStorage();
+    renderLocalStorage();
+    
+    
+
+}
+
+///////////////////////   TASK ////////////////////////////////////////
+var taskContainerEl = $('#task-container');
+
+var taskDateInputEl = $('#dates-task');
+var taskStatusInputEl = $('#task-status');
+var taskDueDateInputEl = $('#due-time');
+var taskDescrInputEl = $('#description-task');
+
+
+var taskSubmitBtnEl = $('#button-submit-task');
+
+var taskFormEl = $('#task-form');
+
+var taskListMain = [];
+
+function renderTask() {
+    taskContainerEl.empty();
+    console.log(taskListMain);
+    if (typeof taskListMain.length == "undefined") {
+        for (var i = 0; i < 1; i++) {
+            var taskDateParsed = taskListMain.dates;
+            console.log(taskDateParsed);
+            var taskDueDateParsed = taskListMain.dueDate;
+            var taskDescriptionParsed = taskListMain.description;
+            var taskStatusParsed = taskListMain.status
+
+            var taskRowEl = $('<div>');
+            
+                var taskStatusEl = $('<div>');
+
+                var taskDescription = $('<div>');
+
+                var taskTimeLeft = $('<div>');
+
+                var checkBtn = $('<button>');
+
+            taskRowEl.addClass('row-test task-container');
+            taskStatusEl.addClass('task-status');
+            taskDescription.addClass('task-description');
+            taskTimeLeft.addClass('time-left');
+            checkBtn.addClass('button-check');
+
+            taskStatusEl.text(taskStatusParsed);
+            taskDescription.text(taskDescriptionParsed);
+            taskTimeLeft.text(taskDueDateParsed);
+            checkBtn.text("Check");
+
+            taskRowEl.attr('data-dates', taskDateParsed);
+            taskRowEl.attr('data-index', i); 
+
+            taskRowEl.append(taskStatusEl);
+            taskRowEl.append(taskDescription);
+            taskRowEl.append(taskTimeLeft);
+            taskRowEl.append(checkBtn);
+
+            taskContainerEl.append(taskRowEl);
+        }
+    } else {
+        for (var i=0; i < taskListMain.length; i++) {
+            taskListMain.sort((a, b) => a.timeStamp - b.timeStamp);
+            console.log(taskListMain.length);
+            if (taskListMain[i].dates !== currentDate) {
+                console.log("skip!");
+            } else {
+                var taskDateParsed = taskListMain[i].dates;
+            console.log(taskDateParsed);
+            console.log(taskDateParsed);
+            var taskDueDateParsed = taskListMain[i].dueDate;
+            var taskDescriptionParsed = taskListMain[i].description;
+            var taskStatusParsed = taskListMain[i].status
+
+            var taskRowEl = $('<div>');
+            
+                var taskStatusEl = $('<div>');
+
+                var taskDescription = $('<div>');
+
+                var taskTimeLeft = $('<div>');
+
+                var checkBtn = $('<button>');
+
+            taskRowEl.addClass('row-test task-container');
+            taskStatusEl.addClass('task-status');
+            taskDescription.addClass('task-description');
+            taskTimeLeft.addClass('time-left');
+            checkBtn.addClass('button-check');
+
+            taskStatusEl.text(taskStatusParsed);
+            taskDescription.text(taskDescriptionParsed);
+            taskTimeLeft.text(taskDueDateParsed);
+            checkBtn.text("Check");
+
+            taskRowEl.attr('data-dates', taskDateParsed);
+            taskRowEl.attr('data-index', i); 
+
+            taskRowEl.append(taskStatusEl);
+            taskRowEl.append(taskDescription);
+            taskRowEl.append(taskTimeLeft);
+            taskRowEl.append(checkBtn);
+
+            taskContainerEl.append(taskRowEl);
+            }
+        }
+    }
+}
+
+function initTask() {
+    var storedTaskInit = JSON.parse(localStorage.getItem("taskList"));
+
+    if (storedTaskInit !== null) {
+        var storedTask = storedTaskInit;
+        taskListMain = storedTask; 
+    }
+    renderTask();
+}
+
+function saveTaskToStorage() {
+    localStorage.setItem("taskList", JSON.stringify(taskListMain));
+}
+
+function handleTaskFormSubmit(event) {
+    event.preventDefault();
+
+    var taskDate = taskDateInputEl.val();
+    var taskDueDate = taskDueDateInputEl.val();
+    var taskDescription = taskDescrInputEl.val();
+    var taskStatus = taskStatusInputEl.val();
+    var timeStamp24 = moment(taskDate + taskDueDate, "YYYY-MM-DD h:mmA").format("X");
+    console.log(taskDate + " " + taskDueDate)
+
+    if (taskDescription === "") {
+        return;
+    } 
+
+    var taskItem = {
+        dates: taskDate,
+        status: taskStatus,
+        description: taskDescription,
+        dueDate: taskDueDate,
+        timeStamp: timeStamp24
+    }; 
+
+    if (taskListMain.length === 0) {
+        taskListMain = taskItem;
+        console.log("empty")
+    } else if (typeof taskListMain.length == "undefined") {
+        taskListMain = [taskListMain]
+        taskListMain.push(taskItem);
+        console.log(taskListMain)
+    } else {
+        console.log("third task?")
+        taskListMain.push(taskItem);
+        console.log(taskListMain);
+    }
+
+    taskFormEl[0].reset();
+
+    saveTaskToStorage();
+    renderTask();
+
+}
+
+function handleDeleteTask(event) {
+    var btnClicked = $(event.target);
+    btnClicked.parent('div').remove();
+    var index = btnClicked.parent('div').attr('data-index');
+    taskListMain.splice(index, 1);
+
+    saveTaskToStorage();
+    renderTask();
+}
+
+taskFormEl.on('submit', handleTaskFormSubmit);
+taskContainerEl.on('click', '.button-check', handleDeleteTask);
+initTask();
+
+
+///////////////////////   GRACE TASK ////////////////////////////////////////
+
+// Enter Variables
+
+//Render function
+
+//Init function
+
+//save function
+
+//submit button function
+
+//delete button function
+
+
+// taskFormEl.on('submit', handleTaskFormSubmit);
+// taskContainerEl.on('click', '.button-check', handleDeleteTask);
+// initTask();
+
+
+
