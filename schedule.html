@@ -108,14 +108,18 @@
     
       <!-- Container for Tasks -->
       <div class="container">
-        <h3 class="text-center">Tasks List</h3>
-        <!-- <div class="row-test task-container">
+        <h3 class="text-center">Tasks List <button class="button" data-open="taskModal">&#43;</button></h3>
+        <div id="task-container">
+
+        </div>
+        <div class="row-test task-container">
           <div class="task-status">Status</div>
           <div class="task-description">description of the tasks</div>
+          <div class="time-left">10:00</div>
           <button class="button-check">
             Check
           </button>
-        </div> -->
+        </div>
       </div>
     </main>
 
@@ -488,8 +492,111 @@
         </div>
       </div>
     </div>
-    <!-- This is for Task Input Modal -->
 
+    <!-- This is for Task Input Modal -->
+<div class="modal reveal" id="taskModal" data-reveal>
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="task-modal-form">Add a new Task.</h5>
+            <button type="button" data-close class="close-button" aria-label="Close modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="task-form">
+            <div class="modal-body">
+              <ul>
+                <div class="form-group row">
+                  <label for="date" class="form-sections">Date: </label>
+                  <div class="date-picker">
+                    <input type="date" min="1" class="form-control" id="dates-task" autocomplete="off">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="status" class="form-sections">Status:</label>
+                  <div class="status-input">
+                    <select id="task-status" class="form-control" autocomplete="off">
+                      <option value="Routine">Routine</option>
+                      <option value="Priority">Priority</option>
+                      <option value="Urgent">Urgent</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="time" class="form-sections">Due Time:</label>
+                  <div class="time-input">
+                    <select id="due-time" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                      <option value="8:15AM">8:15AM</option>
+                      <option value="8:30AM">8:30AM</option>
+                      <option value="8:45AM">8:45AM</option>
+                      <option value="9:00AM">9:00AM</option>
+                      <option value="9:15AM">9:15AM</option>
+                      <option value="9:30AM">9:30AM</option>
+                      <option value="9:45AM">9:45AM</option>
+                      <option value="10:00AM">10:00AM</option>
+                      <option value="10:15AM">10:15AM</option>
+                      <option value="10:30AM">10:30AM</option>
+                      <option value="10:45AM">10:45AM</option>
+                      <option value="11:00AM">11:00AM</option>
+                      <option value="11:15AM">11:15AM</option>
+                      <option value="11:30AM">11:30AM</option>
+                      <option value="11:45AM">11:45AM</option>
+                      <option value="12:00PM">12:00PM</option>
+                      <option value="12:15PM">12:15PM</option>
+                      <option value="12:30PM">12:30PM</option>
+                      <option value="12:45PM">12:45PM</option>
+                      <option value="1:00PM">1:00PM</option>
+                      <option value="1:15PM">1:15PM</option>
+                      <option value="1:30PM">1:30PM</option>
+                      <option value="1:45PM">1:45PM</option>
+                      <option value="2:00PM">2:00PM</option>
+                      <option value="2:15PM">2:15PM</option>
+                      <option value="2:30PM">2:30PM</option>
+                      <option value="2:45PM">2:45PM</option>
+                      <option value="3:00PM">3:00PM</option>
+                      <option value="3:15PM">3:15PM</option>
+                      <option value="3:30PM">3:30PM</option>
+                      <option value="3:45PM">3:45PM</option>
+                      <option value="4:00PM">4:00PM</option>
+                      <option value="4:15PM">4:15PM</option>
+                      <option value="4:30PM">4:30PM</option>
+                      <option value="4:45PM">4:45PM</option>
+                      <option value="5:00PM">5:00PM</option>
+                      <option value="5:15PM">5:15PM</option>
+                      <option value="5:30PM">5:30PM</option>
+                      <option value="5:45PM">5:45PM</option>
+                      <option value="6:00PM">6:00PM</option>
+                      <option value="6:15PM">6:15PM</option>
+                      <option value="6:30PM">6:30PM</option>
+                      <option value="6:45PM">6:45PM</option>
+                      <option value="7:00PM">7:00PM</option>
+                      <option value="7:15PM">7:15PM</option>
+                      <option value="7:30PM">7:30PM</option>
+                      <option value="7:45PM">7:45PM</option>
+                      <option value="8:00PM">8:00PM</option>
+                      <option value="8:15PM">8:15PM</option>
+                      <option value="8:30PM">8:30PM</option>
+                      <option value="8:45PM">8:45PM</option>
+                      <option value="9:00PM">9:00PM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="Description" class="form-sections">Description:</label>
+                  <div class="desc-input">
+                    <input id="description-task" type="text" class="form-control">
+                  </div>
+                </div>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" value="Submit" id="button-submit-task" class="btn btn-info">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 
     <!-- This is footer of our website -->

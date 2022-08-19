@@ -80,12 +80,16 @@ footer {
     width: 10%;
 }
 .task-description {
-    width: 80%;
+    width: 70%;
     background-color: lightcyan;
 }
 .button-check {
-    width: 10%;
+    width: 5%;
     background-color: lightgreen;
+}
+.time-left {
+    width: 15%;
+    background-color: grey;
 }
 .task-container {
     text-align: center;
