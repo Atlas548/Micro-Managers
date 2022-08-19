@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Micro Managers</title>
-    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="./css/overview.css">
   </head>
   <body>
-
     <!-- Start Top Bar -->
     <div class="top-bar">
       <div class="top-bar-left">
@@ -25,16 +26,97 @@
     </div>
     <!-- End Top Bar -->
 
-    <h1>Dashboard</h1>
+    <h1>Manadatory Update</h1>
+    <!-- Dialog will display as user loads onto the screen.-->
+      <div id="dialog" title="Basic dialog">
+        <p>Team this is a manadatory update requested by your manager. Update your tasks NOW!</p>
+      </div>
+      
+      <div class="container">
+        <h2>Employee's Daily Tasks</h2>
 
-    <div class="#">
-        <div class="Container">
-          <h3>Mandatory Update</h3>
-            <img class="thumbnail" src="https://placehold.it/850x350">
+        <div class="update-form">
+          <h3>Tasks Update</h3>
+
+          <!-- Update submissiton form. -->
+          <form id="form">
+            <div class="form-group row">
+              <label for="date" class="form-sections">Date: </label>
+              <div class="date-picker">
+                <input type="text" class="form-control" id="datepicker" autocomplete="off" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="time" class="form-sections">Time: </label>
+              <div class="time-input">
+                <input type="text" class="form-control" id="time-input" autocomplete="off" />
+              </div>
+            </div>
+            
+            <fieldset>
+              <label for="status">Status:</label>
+              <select name="priority-status" id="status">
+              <option style="color:rgb(37, 113, 37)">Routine</option>
+              <option style="color:rgb(106, 106, 10)">Priority</option>
+              <option style="color:rgb(121, 19, 19)">Urgent</option>
+              </select>
+            </fieldset>
+
+            <div class="form-group row">
+              <label for="Description" class="form-sections">Description:</label>
+              <div class="desc-input">
+                <input type="text" class="form-control" id="description" />
+              </div>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-info">
+              Submit
+            </button>
+          </form>
         </div>
       </div>
+      <!-- End of submission form. -->
+      <div class="container">
+        <h2>Employee's Schedule</h2>
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+        <div class="update-form">
+          <h3>Schedule Update</h3>
+
+          <!-- Update submissiton form. -->
+          <form id="project-form">
+            <div class="form-group row">
+              <label for="date" class="form-sections">Date: </label>
+              <div class="date-picker">
+                <input type="text" class="form-control" id="dates-schedule" autocomplete="off" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="time" class="form-sections">Start Time: </label>
+              <div class="time-input">
+                <input type="text" class="form-control" id="starting-time" autocomplete="off" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="time" class="form-sections">End Time: </label>
+              <div class="time-input">
+                <input type="text" class="form-control" id="ending-time" autocomplete="off" />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="Description" class="form-sections">Description:</label>
+              <div class="desc-input">
+                <input type="text" class="form-control" id="description-schedule" />
+              </div>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-info">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script src="./js/whatareyoudoing.js"></script>
   </body>
 </html>
