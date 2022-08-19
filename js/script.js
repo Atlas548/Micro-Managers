@@ -1,3 +1,22 @@
+//////////////////// Main Page ////////////////////
+
+const timeDisplayEL = document.getElementById('time-display');
+var noww = moment();
+var currentTimeMain = noww.format('hh:mm:ssA');
+timeDisplayEL.textContent = currentTimeMain
+
+const dateDisplayEl = document.getElementById('date-display');
+var currentDateMain = noww.format('dddd, MMMM Do YYYY');
+dateDisplayEl.textContent = currentDateMain
+
+setInterval(() => {
+    var noww = moment();
+    var currentTimeMain = noww.format('hh:mm:ssA');
+    timeDisplayEL.textContent = currentTimeMain;
+    var currentDateMain = noww.format('dddd, MMMM Do YYYY');
+    dateDisplayEl.textContent = currentDateMain;
+    
+}, 1000);
 //////////////////// Date Picker ////////////////////
 // $(function () {
 //     $('#dialog').dialog();
@@ -139,7 +158,7 @@ function findDayOfWeek() {
 }
 
 
-//////////////////// Rendering Schedules ////////////////////
+//////////////////// Schedules ////////////////////
 
 // $('#week-sunday').text(moment().format("D"));
 
@@ -446,15 +465,8 @@ init();
 function graceHandleScheduleFormSubmit(event) {
     event.preventDefault();
 console.log("testing submit button")
-///////////////
-// var graceDateInputEl = $('#dates-scheduleG')
-// var graceStartingTimeInputEl = $('#starting-timeG');
-// var graceEndingTimeInputEl = $('#ending-timeG');
-// var graceDescriptionScheduleInputEl = $('#description-scheduleG');
-// var graceSubmitBtnEl = $('#button-submitG');
-// var graceScheduleFormEl = $('#project-formG');
-///////////////
 
+////////////////////////////// GRACE SCHEDULE //////////////////////////////
     var scheduleDate = graceDateInputEl.val();
         scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
     var scheduleStartTime = graceStartingTimeInputEl.val();
@@ -674,3 +686,26 @@ function handleDeleteTask(event) {
 taskFormEl.on('submit', handleTaskFormSubmit);
 taskContainerEl.on('click', '.button-check', handleDeleteTask);
 initTask();
+
+
+///////////////////////   GRACE TASK ////////////////////////////////////////
+
+// Enter Variables
+
+//Render function
+
+//Init function
+
+//save function
+
+//submit button function
+
+//delete button function
+
+
+// taskFormEl.on('submit', handleTaskFormSubmit);
+// taskContainerEl.on('click', '.button-check', handleDeleteTask);
+// initTask();
+
+
+
