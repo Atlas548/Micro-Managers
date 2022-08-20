@@ -1,3 +1,29 @@
+/* For main page */
+.main-body {
+    display: block;
+    min-width: 400px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.main-time {
+    margin: auto;
+    margin-top: 15rem;
+    width: 60%;
+    text-align: center;
+    font-size: 100px;
+    font-family: 'Amatic SC';
+}
+
+.main-date {
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Amatic SC';
+}
+
+
 .container {
     border: black solid 1px;
     padding: 10px;
@@ -189,4 +215,86 @@ footer {
 
 .button-edit {
     
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index:1 ;
+    width:120px;
+    height:120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes animatebottom {
+    from { bottom: -100px; opacity: 0 }
+    to { bottom: 0px; opacity: 1}
+}
+
+@keyframes animatebottom {
+    from { bottom: -100px; opacity: 0 }
+    to {bottom: 0; opacity: 1}
+}
+
+#myDiv {
+    display: none;
+    text-align: center;
+}
+.animate-top {
+    position: relative;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 1s;
+    animation-name: animatetop;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes animatetop {
+    from { top: -25px; opacity: 0 }
+    to { top: 0px; opacity: 1}
+}
+
+@keyframes animatetop {
+    from { top: -25px; opacity: 0 }
+    to {top: 0; opacity: 1}
+}
+#gif {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index:1 ;
+    width:400px;
+    height:400px;
+    margin: -200px 0 0 -200px;
+    /* background-color: #277bc0;  */
+    /* border: 16px solid #f3f3f3; */
+    /* border-radius: 50%;
+    border-top: 16px solid #3498db; */
+}
+
+.background-blue {
+    background-color: #277bc0; 
 }

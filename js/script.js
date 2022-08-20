@@ -1,6 +1,6 @@
-//////////////////// Main Page ////////////////////
+////////////////// Main Page ////////////////////
 
-const timeDisplayEL = document.getElementById('time-display');
+var timeDisplayEL = document.getElementById('time-display');
 var noww = moment();
 var currentTimeMain = noww.format('hh:mm:ssA');
 timeDisplayEL.textContent = currentTimeMain
@@ -15,8 +15,21 @@ setInterval(() => {
     timeDisplayEL.textContent = currentTimeMain;
     var currentDateMain = noww.format('dddd, MMMM Do YYYY');
     dateDisplayEl.textContent = currentDateMain;
-    
 }, 1000);
+
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 4000);
+}
+
+function showPage() {
+    $('#gif').attr("style", "display:none;")
+    $('#myDiv').attr("style", "display:block;")
+    $('.main-body').removeClass('background-blue');
+}
+
+
 //////////////////// Date Picker ////////////////////
 // $(function () {
 //     $('#dialog').dialog();
@@ -31,39 +44,39 @@ setInterval(() => {
 
 
 
-//////////////////// Weather ////////////////////
-// document.addEventListener("DOMContentLoaded", function() {
-//     var userLoco = document.querySelector('#location');
-//     var temp = document.querySelector('#today-temp');
-//     var status = document.querySelector('#today-status');
-//     var tempLow = document.querySelector('#today-lowest');
-//     var tempHigh = document.querySelector('#today-highest');
-//         function renderItem(data) {
-//             var tempValue = data['main']['temp'];
-//             var locationValue = data['name'];
-//             var lowTemp = data['main']['temp_min'];
-//             var highTemp = data['main']['temp_max'];
-//             var weatherStatus = data['weather']['0']['main'];
-//             userLoco.textContent = `Location: ${locationValue}`;
-//             temp.textContent = `Current Temp: ${tempValue} °F`;
-//             tempLow.textContent = `Today's Low: ${lowTemp} °F`;
-//             tempHigh.textContent = `Today's High: ${highTemp} °F`;
-//             status.textContent = `Current Weather: ${weatherStatus} `;
-//         }
-//         if(navigator.geolocation) {
-//             navigator.geolocation.getCurrentPosition(position => {
-//                 lat = position.coords.latitude;
-//                 lon = position.coords.longitude;
-//                 console.log(lat, lon);
-//                 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
-//                 .then(Response => Response.json())
-//                 .then(data => {
-//                     console.log(data);
-//                     renderItem(data, position);
-//                 })
-//             })
-//         }
-// })
+////////////////// Weather ////////////////////
+document.addEventListener("DOMContentLoaded", function() {
+    var userLoco = document.querySelector('#location');
+    var temp = document.querySelector('#today-temp');
+    var status = document.querySelector('#today-status');
+    var tempLow = document.querySelector('#today-lowest');
+    var tempHigh = document.querySelector('#today-highest');
+        function renderItem(data) {
+            var tempValue = data['main']['temp'];
+            var locationValue = data['name'];
+            var lowTemp = data['main']['temp_min'];
+            var highTemp = data['main']['temp_max'];
+            var weatherStatus = data['weather']['0']['main'];
+            userLoco.textContent = `Location: ${locationValue}`;
+            temp.textContent = `Current Temp: ${tempValue} °F`;
+            tempLow.textContent = `Today's Low: ${lowTemp} °F`;
+            tempHigh.textContent = `Today's High: ${highTemp} °F`;
+            status.textContent = `Current Weather: ${weatherStatus} `;
+        }
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                lat = position.coords.latitude;
+                lon = position.coords.longitude;
+                console.log(lat, lon);
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
+                .then(Response => Response.json())
+                .then(data => {
+                    console.log(data);
+                    renderItem(data, position);
+                })
+            })
+        }
+})
 
 
 //////////////////// Schedule ////////////////////
