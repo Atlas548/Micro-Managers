@@ -860,29 +860,44 @@ function graceHandleTaskFormSubmit(event) {
 console.log("testing task submit button")
 
 var taskDate = graceTaskDateInputEl.val();
-    taskDate = moment(taskDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
 var taskDueDate = graceDueDateInputEl.val();
 var taskDescription = graceDecriptionTaskInputEl.val();
 var taskStatus = graceTaskStatusInputEl.val();
 var timeStamp24 = moment(taskDate + taskDueDate, "YYYY-MM-DD h:mmA").format("X");
 console.log(taskDate + " " + taskDueDate)
 
-// Enter Variables
+if (taskDescription === "") {
+    return;
+} else if (taskDate === "") {
+    return;
+}
 
-//Render function
+var taskItem = {
+    dates: taskDate,
+    status: taskStatus,
+    description: taskDescription,
+    dueDate: taskDueDate,
+    timeStamp: timeStamp24
+};
 
-//Init function
+if (taskListMain.length === 0) {
+    taskListMain = taskItem;
+    console.log("empty")
+} else if (typeof taskListMain.length == "undefined") {
+    taskListMain = [taskListMain]
+    taskListMain.push(taskItem);
+    console.log(taskListMain)
+} else {
+    console.log("third task?")
+    taskListMain.push(taskItem);
+    console.log(taskListMain);
+}
 
-//save function
+graceTaskFormEl[0].reset();
 
-//submit button function
-
-//delete button function
-
-
-// taskFormEl.on('submit', handleTaskFormSubmit);
-// taskContainerEl.on('click', '.button-check', handleDeleteTask);
-// initTask();
+saveTaskToStorage();
+renderTask();
+}
 
 ////////////////////////////// Timer ///////////////////////////////////////
 

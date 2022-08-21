@@ -374,3 +374,19 @@ footer {
 #today-date {
     display: inline-block;
 }
+
+/* -------------------------------Start Update Page----------------------------------------*/
+label {
+font-size: 20px;
+}
+h1 {
+    font-family: 'Bebas Neue','Courier New', Courier, monospace;
+    font-size: 70px;
+    color: white
+}
+p {
+    font-size: 25px;
+    text-align: center;
+    color: #1b252f;
+}
+/* -------------------------------End Update Page----------------------------------------*/
