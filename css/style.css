@@ -1,18 +1,29 @@
-/* For main page */
+/* --------- Start Main Page ----------*/
 .main-body {
+    margin: 90px;
+    margin-top: 300px;
     display: block;
     min-width: 400px;
+    background-color: #277bc0;
+    color: #000000;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
+.main-center-body {
+    background-color: #f3f3f3;
+    justify-content: center;
+    margin: 90px;
+    padding: 20px;
+}
+
 .main-time {
     margin: auto;
-    margin-top: 15rem;
+    display: block;
     width: 60%;
     text-align: center;
-    font-size: 100px;
-    font-family: 'Amatic SC';
+    font-size: 120px;
+    font-family: 'Bebas Neue','Courier New', Courier, monospace;
 }
 
 .main-date {
@@ -20,10 +31,26 @@
     width: 60%;
     text-align: center;
     font-size: 80px;
-    font-family: 'Amatic SC';
+    font-family: 'Unica One','Courier New', Courier, monospace;
 }
 
+.main-links a {
+    width: 100%;
+    text-align: center;
+    color: rgb(44, 156, 187);
+    padding: 20px;
+    font-size: 40px;
+    font-family: 'Bebas Neue','Courier New', Courier, monospace;
+    text-decoration: none;
+}
 
+.main-links a:hover {
+    color: rgb(96, 215, 255);
+    padding: 50px;
+    font-size: 50px;
+}
+
+/* ------------End Main Page-----------*/
 .container {
     border: black solid 1px;
     border-radius: 2px;
@@ -300,114 +327,7 @@ footer {
 .background-blue {
     background-color: #277bc0; 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Color status */
 .green-routine {
     background-color: lightgreen;
 }
