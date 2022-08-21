@@ -65,39 +65,39 @@ var tempHigh = document.querySelector('#today-highest');
 var weatherDescriptionInputEl = document.querySelector('#weather-description');
 var weatherIconInputEl = document.querySelector('#weather-icon');
 
-document.addEventListener("DOMContentLoaded", function() {
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                lat = position.coords.latitude;
-                lon = position.coords.longitude;
-                console.log(lat, lon);
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
-                .then(Response => Response.json())
-                .then(data => {
-                    console.log(data);
-                    renderItem(data, position);
-                })})
-    }
-})
-// http://openweathermap.org/img/wn/04d@4x.png
-function renderItem(data) {
-    var tempValue = data['main']['temp'];
-    var locationValue = data['name'];
-    var lowTemp = data['main']['temp_min'];
-    var highTemp = data['main']['temp_max'];
-    var weatherStatus = data['weather']['0']['main'];
-    var weatherDescription = data['weather']['0']['description'];
-    var weatherIcon = data['weather']['0']['icon'];
-    var tempFeels = data['main']['feels_like'];
-    userLoco.textContent = `Location: ${locationValue}`;
-    temp.textContent = `Current Temp: ${tempValue} °F`;
-    feelsLike.textContent = `Feels like: ${tempFeels} °F`;
-    tempLow.textContent = `Today's Low: ${lowTemp} °F`;
-    tempHigh.textContent = `Today's High: ${highTemp} °F`;
-    weatherStats.textContent = `Current Weather: ${weatherStatus} `;
-    weatherDescriptionInputEl.textContent = `Detail: ${weatherDescription} `;
-    weatherIconInputEl.src = `http://openweathermap.org/img/wn/${weatherIcon}@4x.png`;
-}
+// document.addEventListener("DOMContentLoaded", function() {
+//         if(navigator.geolocation) {
+//             navigator.geolocation.getCurrentPosition(position => {
+//                 lat = position.coords.latitude;
+//                 lon = position.coords.longitude;
+//                 console.log(lat, lon);
+//                 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
+//                 .then(Response => Response.json())
+//                 .then(data => {
+//                     console.log(data);
+//                     renderItem(data, position);
+//                 })})
+//     }
+// })
+// // http://openweathermap.org/img/wn/04d@4x.png
+// function renderItem(data) {
+//     var tempValue = data['main']['temp'];
+//     var locationValue = data['name'];
+//     var lowTemp = data['main']['temp_min'];
+//     var highTemp = data['main']['temp_max'];
+//     var weatherStatus = data['weather']['0']['main'];
+//     var weatherDescription = data['weather']['0']['description'];
+//     var weatherIcon = data['weather']['0']['icon'];
+//     var tempFeels = data['main']['feels_like'];
+//     userLoco.textContent = `Location: ${locationValue}`;
+//     temp.textContent = `Current Temp: ${tempValue} °F`;
+//     feelsLike.textContent = `Feels like: ${tempFeels} °F`;
+//     tempLow.textContent = `Today's Low: ${lowTemp} °F`;
+//     tempHigh.textContent = `Today's High: ${highTemp} °F`;
+//     weatherStats.textContent = `Current Weather: ${weatherStatus} `;
+//     weatherDescriptionInputEl.textContent = `Detail: ${weatherDescription} `;
+//     weatherIconInputEl.src = `http://openweathermap.org/img/wn/${weatherIcon}@4x.png`;
+// }
 
 
 //////////////////// Schedule ////////////////////

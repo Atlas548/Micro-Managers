@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-    <link rel="stylesheet" href="./css/style.css">
+    
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     ></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
 
@@ -36,29 +37,12 @@
     <!-- main section -->
     <main>
       <!-- Container with Timer -->
-      <!-- Container with Timer -->
       <div class="large-container">
         <div class="container half-container col-6">
           <h2 class="text-center">Timer</h3>
           <div class="timer"></div>
         </div>
-
-
-      <!-- Container for Weather report -->
-      <div class="container half-container col-6">
-
-        <h2 class="text-center">Today's Weather</h3>
-        <div class="weather-container">
-          <div class="today-weather col-6">
-            <h4 id="location"></h4>
-            <h4 id="today-temp"></h4>
-            <h4 id="feels-like"></h4>
-            <h4 id="today-status"></h4>
-            <h4 id><img id="weather-icon"></img></h4>
-            <h4 id="weather-description"></h4>
-            <h4 id="today-lowest"></h4>
-            <h4 id="today-highest"></h4>
-
+        
         <!-- Container for Weather report -->
         <div class="container half-container col-6">
 
@@ -69,6 +53,8 @@
               <h4 id="today-temp"></h4>
               <h4 id="feels-like"></h4>
               <h4 id="today-status"></h4>
+              <h4 id><img id="weather-icon"></img></h4>
+              <h4 id="weather-description"></h4>
               <h4 id="today-lowest"></h4>
               <h4 id="today-highest"></h4>
             </div>
@@ -77,7 +63,7 @@
       </div>
       
       <!-- Container for Schedules -->
-      <div class="container" >
+      <div class="container fixing-container" >
         <h3 class="text-center">Today's Schedule <button class="button" data-open="exampleModall">&#43;</button></h3>
         
         <div class="week-calendar">
@@ -113,46 +99,38 @@
       <div class="container">
         <h3 class="text-center">Tasks List <button class="button" data-open="taskModal">&#43;</button></h3>
         <div id="task-container">
-
-        <!-- </div>
-          <div class="row-test task-container">
-          <div class="task-status">Status</div>
-            <div class="task-description">description of the tasks</div>
-            <div class="time-left">10:00</div>
-            <button class="button-check">
-            Check
-            </button>
-           </div>
-        </div> -->
-    </main>
-<!--This is for Selecting Today's Schedule Modal-->
-<div class="modal reveal" id="selectDateModal" data-reveal>
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="select-date-modal-form">Select Date</h5>
-        <button type="button" data-close class="close-button" aria-label="Close modal">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        </div>
       </div>
-      <form id="select-date-form">
-        <div class="modal-body">
-          <ul>
-            <div class="form-group row">
-              <label for="date" class="form-sections">Date: </label>
-              <div class="date-picker">
-                <input type="date" min="1" class="form-control" id="select-date-box" autocomplete="off">
-              </div>
+    </main>
+
+<!--This is for Selecting Today's Schedule Modal-->
+    <div class="modal reveal" id="selectDateModal" data-reveal>
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="select-date-modal-form">Select Date</h5>
+            <button type="button" data-close class="close-button" aria-label="Close modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="select-date-form">
+            <div class="modal-body">
+              <ul>
+                <div class="form-group row">
+                  <label for="date" class="form-sections">Date: </label>
+                  <div class="date-picker">
+                    <input type="date" min="1" class="form-control" id="select-date-box" autocomplete="off">
+                  </div>
+                </div>
+              </ul>
             </div>
-          </ul>
+            <div class="modal-footer">
+              <button type="button" data-close  aria-label="Close modal" value="Select" id="button-select-date" class="btn btn-info button-select">Select</button>
+            </div>
+          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" data-close  aria-label="Close modal" value="Select" id="button-select-date" class="btn btn-info button-select">Select</button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
 
     <!-- modal container using Foundation -->
     <!-- This is for Schedule Input Modal -->
@@ -308,73 +286,7 @@
         </div>
       </div>
     </div>
-      <!-- --Richard format of schedule input -->
-    <!-- <div class="modal reveal" id="exampleModall" data-reveal>
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="project-modal-form">Add a new Schedule.</h5>
-            <button type="button" data-close class="close-button" aria-label="Close modal">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form id="project-form">
-            <div class="modal-body">
-              <ul>
-                <div class="form-group">
-                  <label for="dates">Dates</label>
-                  <input type="date" min="1" id="dates-schedule" name="schedule-date">
-                </div>
-                <div class="form-group">
-                  <label for="startingTime">Starting Time:</label>
-                  <select id="starting-time">
-                    <option value="8:00AM">8:00AM</option>
-                    <option value="9:00AM">9:00AM</option>
-                    <option value="10:00AM">10:00AM</option>
-                    <option value="11:00AM">11:00AM</option>
-                    <option value="12:00PM">12:00PM</option>
-                    <option value="1:00PM">1:00PM</option>
-                    <option value="2:00PM">2:00PM</option>
-                    <option value="3:00PM">3:00PM</option>
-                    <option value="4:00PM">4:00PM</option>
-                    <option value="5:00PM">5:00PM</option>
-                    <option value="6:00PM">6:00PM</option>
-                    <option value="7:00PM">7:00PM</option>
-                    <option value="8:00PM">8:00PM</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="endingTime">Ending Time:</label>
-                  <select id="ending-time">
-                    <option value="9:00AM">9:00AM</option>
-                    <option value="10:00AM">10:00AM</option>
-                    <option value="11:00AM">11:00AM</option>
-                    <option value="12:00PM">12:00PM</option>
-                    <option value="1:00PM">1:00PM</option>
-                    <option value="2:00PM">2:00PM</option>
-                    <option value="3:00PM">3:00PM</option>
-                    <option value="4:00PM">4:00PM</option>
-                    <option value="5:00PM">5:00PM</option>
-                    <option value="6:00PM">6:00PM</option>
-                    <option value="7:00PM">7:00PM</option>
-                    <option value="8:00PM">8:00PM</option>
-                    <option value="9:00PM">9:00PM</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="description-schedule">Description of the schedule.</label>
-                  <textarea id="description-schedule" name="descSchedule"></textarea>
-                </div>
-              </ul>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-close aria-label="Close modal">Close</button>
-              <button type="submit" id="button-submit" class="btn custom-btn">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> -->
+      
     
     <!-- This is for Schedule Edit Modal -->
     <div class="modal reveal" id="exampleModall-edit" data-reveal>
@@ -528,7 +440,7 @@
     </div>
 
     <!-- This is for Task Input Modal -->
-<div class="modal reveal" id="taskModal" data-reveal>
+    <div class="modal reveal" id="taskModal" data-reveal>
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
