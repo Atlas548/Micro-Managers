@@ -389,4 +389,12 @@ p {
     text-align: center;
     color: #1b252f;
 }
+
+label {
+    font-size: 30px;
+}
+
+option {
+    font-size: 20px;
+}
 /* -------------------------------End Update Page----------------------------------------*/
