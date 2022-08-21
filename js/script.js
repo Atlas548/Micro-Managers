@@ -35,48 +35,48 @@ function showPage() {
 //     $('#dialog').dialog();
 //   });
   
-//   $(function () {
-//     $('.datepicker').datepicker({
-//       changeMonth: true,
-//       changeYear: true,
-//       });
-//     });
+  $(function () {
+    $('.datepicker').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      });
+    });
 
 
 
 ////////////////// Weather ////////////////////
-// document.addEventListener("DOMContentLoaded", function() {
-//     var userLoco = document.querySelector('#location');
-//     var temp = document.querySelector('#today-temp');
-//     var status = document.querySelector('#today-status');
-//     var tempLow = document.querySelector('#today-lowest');
-//     var tempHigh = document.querySelector('#today-highest');
-//         function renderItem(data) {
-//             var tempValue = data['main']['temp'];
-//             var locationValue = data['name'];
-//             var lowTemp = data['main']['temp_min'];
-//             var highTemp = data['main']['temp_max'];
-//             var weatherStatus = data['weather']['0']['main'];
-//             userLoco.textContent = `Location: ${locationValue}`;
-//             temp.textContent = `Current Temp: ${tempValue} °F`;
-//             tempLow.textContent = `Today's Low: ${lowTemp} °F`;
-//             tempHigh.textContent = `Today's High: ${highTemp} °F`;
-//             status.textContent = `Current Weather: ${weatherStatus} `;
-//         }
-//         if(navigator.geolocation) {
-//             navigator.geolocation.getCurrentPosition(position => {
-//                 lat = position.coords.latitude;
-//                 lon = position.coords.longitude;
-//                 console.log(lat, lon);
-//                 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
-//                 .then(Response => Response.json())
-//                 .then(data => {
-//                     console.log(data);
-//                     renderItem(data, position);
-//                 })
-//             })
-//         }
-// })
+document.addEventListener("DOMContentLoaded", function() {
+    var userLoco = document.querySelector('#location');
+    var temp = document.querySelector('#today-temp');
+    var status = document.querySelector('#today-status');
+    var tempLow = document.querySelector('#today-lowest');
+    var tempHigh = document.querySelector('#today-highest');
+        function renderItem(data) {
+            var tempValue = data['main']['temp'];
+            var locationValue = data['name'];
+            var lowTemp = data['main']['temp_min'];
+            var highTemp = data['main']['temp_max'];
+            var weatherStatus = data['weather']['0']['main'];
+            userLoco.textContent = `Location: ${locationValue}`;
+            temp.textContent = `Current Temp: ${tempValue} °F`;
+            tempLow.textContent = `Today's Low: ${lowTemp} °F`;
+            tempHigh.textContent = `Today's High: ${highTemp} °F`;
+            status.textContent = `Current Weather: ${weatherStatus} `;
+        }
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                lat = position.coords.latitude;
+                lon = position.coords.longitude;
+                console.log(lat, lon);
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
+                .then(Response => Response.json())
+                .then(data => {
+                    console.log(data);
+                    renderItem(data, position);
+                })
+            })
+        }
+})
 
 
 //////////////////// Schedule ////////////////////
@@ -570,9 +570,35 @@ var taskSubmitBtnEl = $('#button-submit-task');
 var taskFormEl = $('#task-form');
 
 var taskListMain = [];
-
+function taskTimer() {
+    console.log("taskTimer function");
+    $('.task-row').each(function(index)  {
+        console.log(index+ ": " + $(this).text() );
+        var timeLeftPerIndex = $(this).text();
+        var taskTimerInterval = setInterval(function () {
+            if (timeLeftPerIndex > 0) {
+            var d = Math.floor(timeLeftPerIndex / (3600*24));
+            var h = Math.floor(timeLeftPerIndex % (3600*24) / 3600);
+            var m = Math.floor(timeLeftPerIndex % 3600 / 60);
+            var s = Math.floor(timeLeftPerIndex % 60);
+            
+            var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+            var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
+            var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
+            $('#task-container').children().eq(index).children('.time-left').text(timeLeftText);
+            timeLeftPerIndex--;
+            } else {
+                clearInterval(taskTimerInterval);
+            }
+        }, 1000)
+        
+    })
+}
 function renderTask() {
     taskContainerEl.empty();
+    var currentTime = moment().format("X");
     
     if (typeof taskListMain.length == "undefined") {
         for (var i = 0; i < 1; i++) {
@@ -580,7 +606,22 @@ function renderTask() {
             
             var taskDueDateParsed = taskListMain.dueDate;
             var taskDescriptionParsed = taskListMain.description;
-            var taskStatusParsed = taskListMain.status
+            var taskStatusParsed = taskListMain.status;
+            var taskTimeStamp = taskListMain.timestamp;
+            var timeLeftFromNow = taskTimeStamp - currentTime;
+            console.log(timeLeftFromNow);
+            var d = Math.floor(timeLeftFromNow / (3600*24));
+            var h = Math.floor(timeLeftFromNow % (3600*24) / 3600);
+            var m = Math.floor(timeLeftFromNow % 3600 / 60);
+            var s = Math.floor(timeLeftFromNow % 60);
+            
+            var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+            var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
+            var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
+
+            console.log(timeLeftText);
 
             var taskRowEl = $('<div>');
             
@@ -591,6 +632,9 @@ function renderTask() {
                 var taskTimeLeft = $('<div>');
 
                 var checkBtn = $('<button>');
+
+                var timeLeftHidden = $('<div>');
+
 if (taskListMain.status == "Routine") {
             taskStatusEl.addClass("green-routine");
             
@@ -609,11 +653,13 @@ if (taskListMain.status == "Routine") {
             taskDescription.addClass('task-description');
             taskTimeLeft.addClass('time-left');
             checkBtn.addClass('button-check');
+            timeLeftHidden.addClass('task-row hide');
 
             taskStatusEl.text(taskStatusParsed);
             taskDescription.text(taskDescriptionParsed);
-            taskTimeLeft.text(taskDueDateParsed);
+            taskTimeLeft.text(timeLeftText);
             checkBtn.text("Check");
+            timeLeftHidden.text(timeLeftFromNow);
 
             taskRowEl.attr('data-dates', taskDateParsed);
             taskRowEl.attr('data-index', i); 
@@ -622,6 +668,7 @@ if (taskListMain.status == "Routine") {
             taskRowEl.append(taskDescription);
             taskRowEl.append(taskTimeLeft);
             taskRowEl.append(checkBtn);
+            taskRowEl.append(timeLeftHidden);
 
             taskContainerEl.append(taskRowEl);
         }
@@ -632,11 +679,29 @@ if (taskListMain.status == "Routine") {
             if (taskListMain[i].dates !== currentDate) {
                 console.log("skip!");
             } else {
+                
                 var taskDateParsed = taskListMain[i].dates;
             
             var taskDueDateParsed = taskListMain[i].dueDate;
             var taskDescriptionParsed = taskListMain[i].description;
             var taskStatusParsed = taskListMain[i].status
+            var taskTimeStamp = taskListMain[i].timeStamp;
+            var timeLeftFromNow = taskTimeStamp - currentTime;
+            
+            /////
+            var d = Math.floor(timeLeftFromNow / (3600*24));
+            var h = Math.floor(timeLeftFromNow % (3600*24) / 3600);
+            var m = Math.floor(timeLeftFromNow % 3600 / 60);
+            var s = Math.floor(timeLeftFromNow % 60);
+            
+            var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+            var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
+            var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
+
+            console.log(timeLeftText);
+            /////
 
             var taskRowEl = $('<div>');
             
@@ -647,6 +712,7 @@ if (taskListMain.status == "Routine") {
                 var taskTimeLeft = $('<div>');
 
                 var checkBtn = $('<button>');
+                var timeLeftHidden = $('<div>');
 
 
           if (taskListMain[i].status == "Routine") {
@@ -661,7 +727,7 @@ if (taskListMain.status == "Routine") {
         } else {
             console.log("adding status error!!");
         }
-
+            timeLeftHidden.addClass('task-row hide')
 
             taskRowEl.addClass('row-test task-container');
             taskStatusEl.addClass('task-status');
@@ -671,8 +737,9 @@ if (taskListMain.status == "Routine") {
 
             taskStatusEl.text(taskStatusParsed);
             taskDescription.text(taskDescriptionParsed);
-            taskTimeLeft.text(taskDueDateParsed);
+            taskTimeLeft.text(timeLeftText);
             checkBtn.text("Check");
+            timeLeftHidden.text(timeLeftFromNow);
 
             taskRowEl.attr('data-dates', taskDateParsed);
             taskRowEl.attr('data-index', i); 
@@ -681,8 +748,32 @@ if (taskListMain.status == "Routine") {
             taskRowEl.append(taskDescription);
             taskRowEl.append(taskTimeLeft);
             taskRowEl.append(checkBtn);
+            taskRowEl.append(timeLeftHidden);
 
             taskContainerEl.append(taskRowEl);
+            console.log(timeLeftFromNow);
+            taskTimer();
+            // var timeleftInterval = setInterval(function () {
+            //     if (timeLeftFromNow > 0) {
+            // var d = Math.floor(timeLeftFromNow / (3600*24));
+            // var h = Math.floor(timeLeftFromNow % (3600*24) / 3600);
+            // var m = Math.floor(timeLeftFromNow % 3600 / 60);
+            // var s = Math.floor(timeLeftFromNow % 60);
+            
+            // var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+            // var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            // var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
+            // var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            // var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
+            //         taskTimeLeft.text(timeLeftText);
+            //         timeLeftFromNow--;
+            //     } else {
+            //         //clear the row
+            //         // and alert modal
+            //         clearInterval(timeleftInterval);
+            //     }
+                
+            // }, 1000);
             }
         }
     }
