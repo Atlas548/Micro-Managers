@@ -867,35 +867,121 @@ var taskStatus = graceTaskStatusInputEl.val();
 var timeStamp24 = moment(taskDate + taskDueDate, "YYYY-MM-DD h:mmA").format("X");
 console.log(taskDate + " " + taskDueDate)
 
-if (taskDescription === "") {
-    return;
-} else if (taskDate === "") {
-    return;
-}
-// Help: consolelog is not displaying date - data is not displaying onto Overview tab.
-var taskItem = {
-    dates: taskDate,
-    status: taskStatus,
-    description: taskDescription,
-    dueDate: taskDueDate,
-    timeStamp: timeStamp24
-};
+// Enter Variables
 
-if (taskListMain.length === 0) {
-    taskListMain = taskItem;
-    console.log("empty")
-} else if (typeof taskListMain.length == "undefined") {
-    taskListMain = [taskListMain]
-    taskListMain.push(taskItem);
-    console.log(taskListMain)
-} else {
-    console.log("third task?")
-    taskListMain.push(taskItem);
-    console.log(taskListMain);
-}
+//Render function
 
-graceTaskFormEl[0].reset();
+//Init function
 
-saveTaskToStorage();
-renderTask();
-}
+//save function
+
+//submit button function
+
+//delete button function
+
+
+// taskFormEl.on('submit', handleTaskFormSubmit);
+// taskContainerEl.on('click', '.button-check', handleDeleteTask);
+// initTask();
+
+////////////////////////////// Timer ///////////////////////////////////////
+
+class Timer {
+    constructor(root) {
+      root.innerHTML = Timer.getHTML();
+  
+      this.el = {
+        minutes: root.querySelector(".timer-section-minutes"),
+        seconds: root.querySelector(".timer-section-seconds"),
+        control: root.querySelector(".timer-btn-control"),
+        reset: root.querySelector(".timer-btn-reset")
+      };
+  
+      this.secondsRemaining = 0;
+      this.interval = null;
+      
+  
+      this.el.control.addEventListener("click", () => {
+        if (this.interval === null) {
+          this.start();
+        } else {
+          this.stop();
+        }
+      });
+  
+      this.el.reset.addEventListener("click", () => {
+        const minutesInput = prompt("Enter number of minutes:");
+  
+        if (minutesInput < 60) {
+          this.stop();
+          this.secondsRemaining = minutesInput * 60;
+          this.updateTimerInterface();
+        }
+      });
+    }
+  
+    start() {
+        if (this.secondsRemaining === 0) return;
+    
+        this.interval = setInterval(() => {
+          this.secondsRemaining--;
+          this.updateTimerInterface();
+    
+          if (this.secondsRemaining === 0) {
+            this.stop();
+          }
+        }, 1000);
+    
+        this.UpdateTimerControls();
+      }
+    
+      stop() {
+        clearInterval(this.interval);
+    
+        this.interval = null;
+    
+        this.UpdateTimerControls();
+      }
+
+      UpdateTimerControls() {
+        if (this.interval === null) {
+          this.el.control.innerHTML = `<span class="material-icons">play_arrow</span>`;
+          this.el.control.classList.add("timer-btn-start");
+          this.el.control.classList.remove("timer-btn-stop");
+        } else {
+          this.el.control.innerHTML = `<span class="material-icons">pause</span>`;
+          this.el.control.classList.add("timer-btn-stop");
+          this.el.control.classList.remove("timer-btn-start");
+        }
+      }
+    
+    updateTimerInterface() {
+      const minutes = Math.floor(this.secondsRemaining / 60);
+      const seconds = this.secondsRemaining % 60;
+  
+      this.el.minutes.textContent = minutes.toString().padStart(2, "0");
+      this.el.seconds.textContent = seconds.toString().padStart(2, "0");
+    }
+  
+
+
+  
+    static getHTML() {
+      return `
+              <span class="timer-part timer-section-minutes">00</span>
+              <span class="timer-part">:</span>
+              <span class="timer-part timer-section-seconds">00</span>
+              <button type="button" class="timer-btn timer-btn-control timer-btn-start">
+                  <span class="material-icons">play_arrow</span>
+              </button>
+              <button type="button" class="timer-btn timer-btn-reset">
+                  <span class="material-icons">timer</span>
+              </button>
+          `;
+    }
+  }
+  
+  new Timer(
+    document.querySelector(".timer")
+);
+
