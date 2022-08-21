@@ -156,7 +156,9 @@ h6 {
 
 footer {
     background-color: lightgrey;
-    margin-bottom: 0;
+    /* position: absolute;
+    width: 100%;
+    bottom: 0; */
 }
 
 .task-status {
@@ -176,6 +178,10 @@ footer {
 }
 .task-container {
     text-align: center;
+}
+
+.min-height-container {
+    min-height: 200px;
 }
 
 .timer {
