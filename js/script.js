@@ -42,7 +42,20 @@ function showPage() {
       });
     });
 
-
+////////////////// Location(cities) ////////////////////
+// var cityAlabama = ['Alexander City', 'Andalusia', 'Anniston', 'Athens', 'Atmore', 'Auburn', 'Bessemer', 'Birmingham', 'Chickasaw', 'Clanton', 'Cullman', 'Decatur', 'Demopolis', 'Dothan', 'Enterprise', 'Eufaula', 'Florence', 'Fort Payne', 'Gadsden', 'Greenville', 'Guntersville', 'Huntsville', 'Jasper', 'Marion', 'Mobile', 'Montgomery', 'Opelika', 'Ozark', 'Phenix City', 'Prichard', 'Scottsboro', 'Selma', 'Sheffield', 'Sylacauga', 'Talladega', 'Troy', 'Tuscaloosa', 'Tuscumbia', 'Tuskegee']
+// var cityAlaska = ['Anchorage', 'Cordova', 'Fairbanks', 'Haines', 'Homer', 'Juneau', 'Ketchikan', 'Kodiak', 'Kotzebue', 'Nome', 'Palmer', 'Seward', 'Sitka', 'Skagway', 'Valdez'];
+// var cityArizona = ['Ajo', 'Avondale', 'Bisbee', 'Casa Grande', 'Chandler', 'Clifton', 'Douglas', 'Flagstaff', 'Florence', 'Gila Bend', 'Glendale', 'Globe', 'Kingman', 'Lake Havasu City', 'Mesa', 'Nogales', 'Oraibi', 'Phoenix', 'Prescott', 'Scottsdale', 'Sierra Vista', 'Tempe', 'Tombstone', 'Tucson', 'Walpi', 'Window Rock', 'Winslow', 'Yuma'];
+// var cityArkansas = ['Arkadelphia', 'Arkansas Post', 'Batesville', 'Benton', 'Blytheville', 'Camden', 'Conway', 'Crossett', 'El Dorado', 'Fayetteville', 'Forrest City', 'Fort Smith', 'Harrison', 'Helena', 'Hope', 'Hot Springs', 'Jacksonville', 'Jonesboro', 'Little Rock', 'Magnolia', 'Morrilton', 'Newport', 'North Little Rock', 'Osceola', 'Pine Bluff', 'Rogers', 'Searcy', 'Stuttgart', 'Van Buren', 'West Memphis'];
+// var cityCalifornia = ['Alameda', 'Alhambra', 'Anaheim', 'Antioch', 'Arcadia', 'Bakersfield', 'Barstow', 'Belmont', 'Berkeley', 'Beverly Hills', 'Brea', 'Buena Park', 'Burbank', 'Calexico', 'Calistoga', 'Carlsbad', 'Carmel', 'Chico', 'Chula Vista', 'Claremont', 'Compton', 'Concord', 'Corona', 'Coronado', 'Costa Mesa', 'Culver City', 'Daly City', 'Davis', 'Downey', 'El Centro', 'El Cerrito', 'El Monte', 'Escondido', 'Eureka', 'Fairfield', 'Fontana', 'Fremont', 'Fresno', 'Fullerton', 'Garden Grove', 'Glendale', 'Hayward', 'Hollywood', 'Huntington Beach', 'Indio', 'Inglewood', 'Irvine', 'La Habra', 'Laguna Beach', 'Lancaster', 'Livermore', 'Lodi', 'Lompoc', 'Long Beach', 'Los Angeles', 'Malibu', 'Martinez', 'Marysville', 'Menlo Park', 'Merced', 'Modesto', 'Monterey', 'Mountain View', 'Napa', 'Needles', 'Newport Beach', 'Norwalk', 'Novato', 'Oakland', 'Oceanside', 'Ojai', 'Ontario', 'Orange', 'Oroville', 'Oxnard', 'Pacific Grove', 'Palm Springs', 'Palmdale', 'Palo Alto', 'Pasadena', 'Petaluma', 'Pomona', 'Port Hueneme', 'Rancho Cucamonga', 'Red Bluff', 'Redding', 'Redlands', 'Redondo Beach', 'Redwood City', 'Richmond', 'Riverside', 'Roseville', 'Sacramento', 'Salinas', 'San Bernardino', 'San Clemente', 'San Diego', 'San Fernando', 'San Francisco', 'San Gabriel', 'San Jose', 'San Juan Capistrano', 'San Leandro', 'San Luis Obispo', 'San Marino', 'San Mateo', 'San Pedro', 'San Rafael', 'San Simeon', 'Santa Ana', 'Santa Barbara', 'Santa Clara', 'Santa Cruz', 'Santa Monica', 'Santa Rosa', 'Sausalito', 'Simi Valley', 'Sonoma', 'South San Francisco', 'Stockton', 'Sunnyvale', 'Susanville', 'Thousand Oaks', 'Torrance', 'Turlock', 'Ukiah', 'Vallejo', 'Ventura', 'Victorville', 'Visalia', 'Walnut Creek', 'Watts', 'West Covina', 'Whittier', 'Woodland', 'Yorba Linda', 'Yuba City'];
+// var cityColorado = ['Alamosa', 'Aspen', 'Aurora', 'Boulder', 'Breckenridge', 'Brighton', 'Canon City', 'Central City', 'Climax', 'Colorado Springs', 'Cortez', 'Cripple Creek', 'Denver', 'Durango', 'Englewood', 'Estes Park', 'Fort Collins', 'Fort Morgan', 'Georgetown', 'Glenwood Springs', 'Golden', 'Grand Junction', 'Greeley', 'Gunnison', 'La Junta', 'Leadville', 'Littleton', 'Longmont', 'Loveland', 'Montrose', 'Ouray', 'Pagosa Springs', 'Pueblo', 'Silverton', 'Steamboat Springs', 'Sterling', 'Telluride', 'Trinidad', 'Vail', 'Walsenburg', 'Westminster'];
+// var cityConnecticut = ['Ansonia', 'Berlin', 'Bloomfield', 'Branford', 'Bridgeport', 'Bristol', 'Coventry', 'Danbury', 'Darien', 'Derby', 'East Hartford', 'East Haven', 'Enfield', 'Fairfield', 'Farmington', 'Greenwich', 'Grotono', 'Guilford', 'Hamden', 'Hartford', 'Lebanon', 'Litchfield', 'Manchester', 'Mansfield', 'Meriden', 'Middletown', 'Milford', 'Mystic', 'Naugatuck', 'New Britain', 'New Haven', 'New London', 'North Haven', 'Norwalk', 'Norwich', 'Old Saybrook', 'Orange', 'Seymour', 'Shelton', 'Simsbury', 'Southington', 'Stamford', 'Stonington', 'Stratford', 'Torrington', 'Wallingford', 'Waterbury', 'Waterford', 'Watertown', 'West Hartford', 'West Haven', 'Westport', 'Wethersfield', 'Willimantic', 'Windham', 'Windsor', 'Windsor Locks', 'Winsted'];
+// var cityDelaware = ['Dover', 'Lewes', 'Milford', 'New Castle', 'Newark', 'Smyrna', 'Wilmington'];
+// var cityFlorida = ['Apalachicola', 'Bartow', 'Belle Glade', 'Boca Raton', 'Bradenton', 'Cape Coral', 'Clearwater', 'Cocoa Beach', 'Cocoa-Rockledge', 'Coral Gables', 'Daytona Beach', 'De Land', 'Deerfield Beach', 'Delray Beach', 'Fernandina Beach', 'Fort Lauderdale', 'Fort Myers', 'Fort Pierce', 'Fort Walton Beach', 'Gainesville', 'Hallandale Beach', 'Hialeah', 'Hollywood', 'Homestead', 'Jacksonville', 'Key West', 'Lake City', 'Lake Wales', 'Lakeland', 'Largo', 'Melbourne', 'Miami', 'Miami Beach', 'Naples', 'New Smyrna Beach', 'Ocala', 'Orlando', 'Ormond Beach', 'Palatka', 'Palm Bay', 'Palm Beach', 'Panama City', 'Pensacola', 'Pompano Beach', 'Saint Augustine', 'Saint Petersburg', 'Sanford', 'Sarasota', 'Sebring', 'Tallahassee', 'Tampa', 'Tarpon Springs', 'Titusville', 'Venice', 'West Palm Beach', 'White Springs', 'Winter Haven', 'Winter Park'];
+// var cityGeorgia = ['Albany', 'Americus', 'Andersonville', 'Athens', 'Atlanta', 'Augusta', 'Bainbridge', 'Blairsville', 'Brunswick', 'Calhoun', 'Carrollton', 'Columbus', 'Dahlonega', 'Dalton', 'Darien', 'Decatur', 'Douglas', 'East Point', 'Fitzgerald', 'Fort Valley', 'Gainesville', 'La Grange', 'Macon', 'Marietta', 'Milledgeville', 'Plains', 'Rome', 'Savannah', 'Toccoa', 'Valdosta', 'Warm Springs', 'Warner Robins', 'Washington', 'Waycross'];
+// var cityHawaii = ['Hanalei', 'Hilo', 'Honaunau', 'Honolulu', 'Kahului', 'Kaneohe', 'Kapaa', 'Kawaihae', 'Lahaina', 'Laie', 'Wahiawa', 'Wailuku', 'Waimea'];
+// var cityIdaho = ['Blackfoot', 'Boise', 'Bonners Ferry', 'Caldwell', "Coeur d'Alene", 'Idaho City', 'Idaho Falls', 'Kellogg', 'Lewiston', 'Moscow', 'Nampa', 'Pocatello', 'Priest River', 'Rexburg', 'Sun Valley', 'Twin Falls'];
+// var cityIllinois = ['Alton', 'Arlington Heights', 'Arthur', 'Aurora', 'Belleville', 'Belvidere', 'Bloomington', 'Brookfield', 'Cahokia', 'Cairo', 'Calumet City', 'Canton', 'Carbondale', 'Carlinville', 'Carthage', 'Centralia', 'Champaign', 'Charleston', 'Chester', 'Chicago', 'Chicago Heights', 'Cicero', 'Collinsville', 'Danville', 'Decatur', 'DeKalb', 'Des Plaines', 'Dixon', 'East Moline', 'East Saint Louis', 'Effingham', 'Elgin', 'Elmhurst', 'Evanston', 'Freeport', 'Galena', 'Galesburg', 'Glen Ellyn', 'Glenview', 'Granite City', 'Harrisburg', 'Herrin', 'Highland Park', 'Jacksonville', 'Joliet', 'Kankakee', 'Kaskaskia', 'Kewanee', 'La Salle', 'Lake Forest', 'Libertyville', 'Lincoln', 'Lisle', 'Lombard', 'Macomb', 'Mattoon', 'Moline', 'Monmouth', 'Mount Vernon', 'Mundelein', 'Naperville', 'Nauvoo', 'Normal', 'North Chicago', 'Oak Park', 'Oregoon', 'Ottawa', 'Palatine', 'Park Forest', 'Park Ridge', 'Pekin', 'Peoria', 'Petersburg', 'Pontiac', 'Quincy', 'Rantoul', 'River Forest', 'Rock Island', 'Rockford', 'Salem', 'Shawneetown', 'Skokie', 'South Holland', 'Springfield', 'Streator', 'Summit', 'Urbana', 'Vandalia', 'Virden', 'Waukegan', 'Wheaton', 'Wilmette', 'Winnetka', 'Wood River', 'Zion'];
 
 ////////////////// Weather ////////////////////
 var userLoco = document.querySelector('#location');
@@ -51,6 +64,8 @@ var weatherStats = document.querySelector('#today-status');
 var feelsLike = document.querySelector('#feels-like');
 var tempLow = document.querySelector('#today-lowest');
 var tempHigh = document.querySelector('#today-highest');
+var weatherDescriptionInputEl = document.querySelector('#weather-description');
+var weatherIconInputEl = document.querySelector('#weather-icon');
 
 document.addEventListener("DOMContentLoaded", function() {
         if(navigator.geolocation) {
@@ -66,13 +81,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 })})
     }
 })
-
+// http://openweathermap.org/img/wn/04d@4x.png
 function renderItem(data) {
     var tempValue = data['main']['temp'];
     var locationValue = data['name'];
     var lowTemp = data['main']['temp_min'];
     var highTemp = data['main']['temp_max'];
     var weatherStatus = data['weather']['0']['main'];
+    var weatherDescription = data['weather']['0']['description'];
+    var weatherIcon = data['weather']['0']['icon'];
     var tempFeels = data['main']['feels_like'];
     userLoco.textContent = `Location: ${locationValue}`;
     temp.textContent = `Current Temp: ${tempValue} °F`;
@@ -80,6 +97,8 @@ function renderItem(data) {
     tempLow.textContent = `Today's Low: ${lowTemp} °F`;
     tempHigh.textContent = `Today's High: ${highTemp} °F`;
     weatherStats.textContent = `Current Weather: ${weatherStatus} `;
+    weatherDescriptionInputEl.textContent = `Detail: ${weatherDescription} `;
+    weatherIconInputEl.src = `http://openweathermap.org/img/wn/${weatherIcon}@4x.png`;
 }
 
 
