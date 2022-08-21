@@ -706,23 +706,52 @@ initTask();
 
 
 ///////////////////////   GRACE TASK ////////////////////////////////////////
+function graceHandleTaskFormSubmit(event) {
+    event.preventDefault();
+console.log("testing task submit button")
 
-// Enter Variables
+var graceTaskDateInputEl = $('dates-taskGT');
+var graceTaskStatusInputEl = $('#task-statusGT');
+var graceDueDateInputEl = $('#due-timeGT');
+var graceDecriptionTaskInputEl = $('#description-taskGT');
+var graceTaskFormEl = $('#task-formGT');
 
-//Render function
+var taskDate = graceTaskDateInputEl.val();
+    taskDate = moment(taskDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
+var taskDueDate = graceDueDateInputEl.val();
+var taskDescription = graceDecriptionTaskInputEl.val();
+var taskStatus = graceTaskStatusInputEl.val();
+var timeStamp24 = moment(taskDate + taskDueDate, "MM-DD-YYYY h:mmA").format("X");
+console.log(taskDate + " " + taskDueDate)
 
-//Init function
+if (taskDescription === "") {
+    return;
+}
 
-//save function
+var taskItem = {
+    dates: taskDate,
+    status: taskStatus,
+    description: taskDescription,
+    dueDate: taskDueDate,
+    timeStamp: timeStamp24
+};
 
-//submit button function
+if (taskListMain.length === 0) {
+    taskListMain = taskItem;
+    console.log("empty")
+} else if (typeof taskListMain.length == "undefined") {
+    taskListMain = [taskListMain]
+    taskListMain.push(taskItem);
+    console.log(taskListMain)
+} else {
+    console.log("third task?")
+    taskListMain.push(taskItem);
+    console.log(taskListMain);
+}
 
-//delete button function
+graceTaskFormEl[0].reset();
 
-
-// taskFormEl.on('submit', handleTaskFormSubmit);
-// taskContainerEl.on('click', '.button-check', handleDeleteTask);
-// initTask();
-
-
-
+saveTaskToStorage();
+renderTask();
+}
+graceTaskFormEl.on('submit', graceHandleTaskFormSubmit);
