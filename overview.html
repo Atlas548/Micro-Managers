@@ -12,6 +12,7 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     ></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
 
@@ -35,19 +36,20 @@
     <!-- main section -->
     <main>
       <!-- Container with Timer -->
-      <div class="container">
-        <div class="timer">
-        <h1>Timer</h1>
-        <div class="Remaining-Time">Remaining Time</div>
+      <!-- Container with Timer -->
+      <div class="large-container">
+        <div class="container half-container col-6">
+          <h2 class="text-center">Timer</h3>
+          <div class="timer">
+          </div>
         </div>
-      </div>
 
       <!-- Container for Weather report -->
-      <div class="container">
-        <h2 class="text-center">Weather</h3>
+      <div class="container half-container col-6">
+
+        <h2 class="text-center">Today's Weather</h3>
         <div class="weather-container">
           <div class="today-weather col-6">
-            <h3>Today's weather</h3>
             <h4 id="location"></h4>
             <h4 id="today-temp"></h4>
             <h4 id="feels-like"></h4>
@@ -59,6 +61,7 @@
 
           </div>
         </div>
+      </div>
       </div>
       
       <!-- Container for Schedules -->

@@ -31,6 +31,32 @@
     margin: 30px 5px;
 }
 
+.large-container {
+    display: flex;
+}
+
+.timer {
+    font-family: sans-serif;
+    font-size: 25px;
+    border-radius: 25px;
+    background-color: lightblue;
+    padding: 10px;
+    margin-top: 20%;
+}
+.timer .timer-section {
+    font-weight: 700;
+    font-size: 75px;
+}
+.timer .timer-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background-color: lightseagreen;
+    cursor: pointer;
+}
+
 .weather-container {
     background-color: skyblue;
     display: flex;
