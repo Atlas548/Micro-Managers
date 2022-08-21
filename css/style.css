@@ -1,4 +1,19 @@
-/* --------- Start Main Page ----------*/
+/* -----------------------------Start Foundation Styling--------------------------------------*/
+body {
+    color: #000000;  
+    background-color: #277bc0;
+}
+
+.container {
+    background-color: white;
+    border: black solid 1px;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 30px 50px;
+}
+
+/* ------------------------------End Foundation Styling-----------------------------------------*/
+/* ------------------------------Start Main Page------------------------------------------*/
 .main-body {
     margin: 90px;
     margin-top: 300px;
@@ -37,7 +52,7 @@
 .main-links a {
     width: 100%;
     text-align: center;
-    color: rgb(44, 156, 187);
+    color: rgb(76, 100, 106);
     padding: 20px;
     font-size: 40px;
     font-family: 'Bebas Neue','Courier New', Courier, monospace;
@@ -45,19 +60,12 @@
 }
 
 .main-links a:hover {
-    color: rgb(96, 215, 255);
+    color: rgb(32, 139, 175);
     padding: 50px;
     font-size: 50px;
 }
 
-/* ------------End Main Page-----------*/
-.container {
-    border: black solid 1px;
-    border-radius: 2px;
-    padding: 10px;
-    margin: 30px 5px;
-}
-
+/* -------------------------------End Main Page----------------------------------------*/
 .weather-container {
     background-color: skyblue;
     display: flex;
