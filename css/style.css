@@ -115,7 +115,7 @@ footer {
 }
 .time-left {
     width: 15%;
-    background-color: grey;
+    background-color: lightgray;
 }
 .task-container {
     text-align: center;
@@ -297,4 +297,132 @@ footer {
 
 .background-blue {
     background-color: #277bc0; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.green-routine {
+    background-color: lightgreen;
+}
+
+.yellow-priority {
+    background-color: lightyellow;
+}
+
+.red-urgent {
+    background-color: lightcoral;
+}
+.icon-size {
+    width: 40px;
+    display: inline;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+#today-date {
+    display: inline-block;
 }
