@@ -83,7 +83,10 @@ function showPage() {
 //////////////////// Using Moment JS ////////////////////
 var today = moment();
 var currentDate = today.format("YYYY-MM-DD");
-$('#today-date').text(today.format("dddd, MMMM D, YYYY"));
+$(document).ready(function() {
+    $('#today-date').text(today.format("dddd, MMMM D, YYYY"));
+})
+// $('#select-date-box').attr('value', today.format("MM/DD/YYYY"))
 var currentDayOfWeek = today.format("dddd");
 var daySunday = $('#week-sunday');
 var dayMonday = $('#week-monday');
@@ -169,7 +172,23 @@ function findDayOfWeek() {
         console.log("getting error");
     }
 }
+var selectedDateInputEl = $('#select-date-box');
+var selectedDateFormEl = $('#select-date-form');
+console.log(selectedDateInputEl.val());
 
+function handleSelectDate () {
+    var selectedDate = selectedDateInputEl.val();
+    $('#today-date').text(moment(selectedDate).format("dddd, MMMM D, YYYY"));
+    currentDate = selectedDate;
+    renderLocalStorage();
+    renderTask();
+
+}
+$('#button-select-date').click(function() {
+    handleSelectDate();
+    
+})
+// selectedDateFormEl.on('select', '.button-select', handleSelectDate());
 
 //////////////////// Schedules ////////////////////
 
@@ -285,7 +304,7 @@ function renderLocalStorage() {
                     var descSchedule = $('<h5>');
                 var editBtn = $('<button>');
                 var cancelBtn = $('<button>');
-                // console.log(dueDate);
+                
                 
         
             scheduleRowEl.addClass('row-test');
@@ -305,7 +324,7 @@ function renderLocalStorage() {
             scheduleRowEl.attr('data-dates', dateParsed);
             scheduleRowEl.attr('data-index', i);
                 editBtn.attr('data-open', 'exampleModall-edit')
-                // console.log("printing?");
+                
                 
                 timeBoxEl.append(startTimeEl);
                 timeBoxEl.append(lineBetween);
@@ -486,12 +505,13 @@ scheduleContainerEl.on('click', '.button-cancel', handleDeleteSchedule);
 scheduleContainerEl.on('click', '.button-edit', handleEditSchedule);
 init();
 
-//////////////////// To-Do-List ////////////////////
+
+////////////////////////////// GRACE SCHEDULE //////////////////////////////
 function graceHandleScheduleFormSubmit(event) {
     event.preventDefault();
 console.log("testing submit button")
 
-////////////////////////////// GRACE SCHEDULE //////////////////////////////
+
     var scheduleDate = graceDateInputEl.val();
         scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
     var scheduleStartTime = graceStartingTimeInputEl.val();
@@ -553,11 +573,11 @@ var taskListMain = [];
 
 function renderTask() {
     taskContainerEl.empty();
-    console.log(taskListMain);
+    
     if (typeof taskListMain.length == "undefined") {
         for (var i = 0; i < 1; i++) {
             var taskDateParsed = taskListMain.dates;
-            console.log(taskDateParsed);
+            
             var taskDueDateParsed = taskListMain.dueDate;
             var taskDescriptionParsed = taskListMain.description;
             var taskStatusParsed = taskListMain.status
@@ -573,13 +593,13 @@ function renderTask() {
                 var checkBtn = $('<button>');
 if (taskListMain.status == "Routine") {
             taskStatusEl.addClass("green-routine");
-            console.log("green");
+            
 }   else if (taskListMain.status == "Priority") {
             taskStatusEl.addClass("yellow-priority");
-            console.log("yellow")
+            
 }   else if (taskListMain.status == "Urgent") {
             taskStatusEl.addClass("red-urgent")
-            console.log("red");
+            
 } else {
     console.log("adding status error!!");
 }
@@ -608,13 +628,12 @@ if (taskListMain.status == "Routine") {
     } else {
         for (var i=0; i < taskListMain.length; i++) {
             taskListMain.sort((a, b) => a.timeStamp - b.timeStamp);
-            console.log(taskListMain.length);
+            
             if (taskListMain[i].dates !== currentDate) {
                 console.log("skip!");
             } else {
                 var taskDateParsed = taskListMain[i].dates;
-            console.log(taskDateParsed);
-            console.log(taskDateParsed);
+            
             var taskDueDateParsed = taskListMain[i].dueDate;
             var taskDescriptionParsed = taskListMain[i].description;
             var taskStatusParsed = taskListMain[i].status
@@ -632,13 +651,13 @@ if (taskListMain.status == "Routine") {
 
           if (taskListMain[i].status == "Routine") {
                     taskStatusEl.addClass("green-routine");
-                    console.log("green");
+                    
         }   else if (taskListMain[i].status == "Priority") {
                     taskStatusEl.addClass("yellow-priority");
-                    console.log("yellow")
+                    
         }   else if (taskListMain[i].status == "Urgent") {
                     taskStatusEl.addClass("red-urgent")
-                    console.log("red");
+                    
         } else {
             console.log("adding status error!!");
         }
