@@ -1,18 +1,44 @@
-/* For main page */
+/* -----------------------------Start Foundation Styling--------------------------------------*/
+body {
+    color: #000000;  
+    background-color: #277bc0;
+}
+
+.container {
+    background-color: white;
+    border: black solid 1px;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 30px 50px;
+}
+
+/* ------------------------------End Foundation Styling-----------------------------------------*/
+/* ------------------------------Start Main Page------------------------------------------*/
 .main-body {
+    margin: 90px;
+    margin-top: 300px;
     display: block;
     min-width: 400px;
+    background-color: #277bc0;
+    color: #000000;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
+.main-center-body {
+    background-color: #f3f3f3;
+    justify-content: center;
+    margin: 90px;
+    padding: 20px;
+}
+
 .main-time {
     margin: auto;
-    margin-top: 15rem;
+    display: block;
     width: 60%;
     text-align: center;
-    font-size: 100px;
-    font-family: 'Amatic SC';
+    font-size: 120px;
+    font-family: 'Bebas Neue','Courier New', Courier, monospace;
 }
 
 .main-date {
@@ -20,29 +46,30 @@
     width: 60%;
     text-align: center;
     font-size: 80px;
-    font-family: 'Amatic SC';
+    font-family: 'Unica One','Courier New', Courier, monospace;
 }
 
-
-.container {
-    border: black solid 1px;
-    border-radius: 2px;
-    padding: 10px;
-    margin: 30px 5px;
+.main-links a {
+    width: 100%;
+    text-align: center;
+    color: rgb(76, 100, 106);
+    padding: 20px;
+    font-size: 40px;
+    font-family: 'Bebas Neue','Courier New', Courier, monospace;
+    text-decoration: none;
 }
 
+.main-links a:hover {
+    color: rgb(32, 139, 175);
+    padding: 50px;
+    font-size: 50px;
+}
+
+/* -------------------------------End Main Page----------------------------------------*/
 .large-container {
     display: flex;
 }
 
-.timer {
-    font-family: sans-serif;
-    font-size: 25px;
-    border-radius: 25px;
-    background-color: lightblue;
-    padding: 10px;
-    margin-top: 20%;
-}
 .timer .timer-section {
     font-weight: 700;
     font-size: 75px;
@@ -326,114 +353,7 @@ footer {
 .background-blue {
     background-color: #277bc0; 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Color status */
 .green-routine {
     background-color: lightgreen;
 }
@@ -454,3 +374,27 @@ footer {
 #today-date {
     display: inline-block;
 }
+
+/* -------------------------------Start Update Page----------------------------------------*/
+label {
+font-size: 20px;
+}
+h1 {
+    font-family: 'Bebas Neue','Courier New', Courier, monospace;
+    font-size: 70px;
+    color: white
+}
+p {
+    font-size: 25px;
+    text-align: center;
+    color: #1b252f;
+}
+
+label {
+    font-size: 30px;
+}
+
+option {
+    font-size: 20px;
+}
+/* -------------------------------End Update Page----------------------------------------*/
