@@ -575,7 +575,7 @@ console.log("testing submit button")
 var taskContainerEl = $('#task-container');
 
 var taskDateInputEl = $('#dates-task');
-var graceTaskDateInputEl = $('dates-taskGT');
+var graceTaskDateInputEl = $('#dates-taskGT');
 
 var taskStatusInputEl = $('#task-status');
 var graceTaskStatusInputEl = $('#task-statusGT');
@@ -724,6 +724,8 @@ if (taskListMain.status == "Routine") {
             var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
 
             console.log(timeLeftText);
+            console.log("important time point")
+            console.log(taskListMain)
             /////
 
             var taskRowEl = $('<div>');
@@ -886,7 +888,7 @@ var taskDate = graceTaskDateInputEl.val();
 var taskDueDate = graceDueDateInputEl.val();
 var taskDescription = graceDecriptionTaskInputEl.val();
 var taskStatus = graceTaskStatusInputEl.val();
-var timeStamp24 = moment(taskDate + taskDueDate, "YYYY-MM-DD h:mmA").format("X");
+var timeStamp24 = moment(taskDate + taskDueDate, "MM-DD-YYYY h:mmA").format("X");
 console.log(taskDate + " " + taskDueDate)
 
 if (taskDescription === "") {
@@ -894,9 +896,12 @@ if (taskDescription === "") {
 } else if (taskDate === "") {
     return;
 }
+console.log("below is the testing for grace' task code");
+console.log(taskDate);
+var newtaskDate = moment(taskDate, "MM-DD-YYYY").format("YYYY-MM-DD");
 
 var taskItem = {
-    dates: taskDate,
+    dates: newtaskDate,
     status: taskStatus,
     description: taskDescription,
     dueDate: taskDueDate,
