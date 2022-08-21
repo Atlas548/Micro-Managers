@@ -45,24 +45,14 @@ function showPage() {
 
 
 ////////////////// Weather ////////////////////
+var userLoco = document.querySelector('#location');
+var temp = document.querySelector('#today-temp');
+var weatherStats = document.querySelector('#today-status');
+var feelsLike = document.querySelector('#feels-like');
+var tempLow = document.querySelector('#today-lowest');
+var tempHigh = document.querySelector('#today-highest');
+
 document.addEventListener("DOMContentLoaded", function() {
-    var userLoco = document.querySelector('#location');
-    var temp = document.querySelector('#today-temp');
-    var status = document.querySelector('#today-status');
-    var tempLow = document.querySelector('#today-lowest');
-    var tempHigh = document.querySelector('#today-highest');
-        function renderItem(data) {
-            var tempValue = data['main']['temp'];
-            var locationValue = data['name'];
-            var lowTemp = data['main']['temp_min'];
-            var highTemp = data['main']['temp_max'];
-            var weatherStatus = data['weather']['0']['main'];
-            userLoco.textContent = `Location: ${locationValue}`;
-            temp.textContent = `Current Temp: ${tempValue} °F`;
-            tempLow.textContent = `Today's Low: ${lowTemp} °F`;
-            tempHigh.textContent = `Today's High: ${highTemp} °F`;
-            status.textContent = `Current Weather: ${weatherStatus} `;
-        }
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 lat = position.coords.latitude;
@@ -73,10 +63,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(data => {
                     console.log(data);
                     renderItem(data, position);
-                })
-            })
-        }
+                })})
+    }
 })
+
+function renderItem(data) {
+    var tempValue = data['main']['temp'];
+    var locationValue = data['name'];
+    var lowTemp = data['main']['temp_min'];
+    var highTemp = data['main']['temp_max'];
+    var weatherStatus = data['weather']['0']['main'];
+    var tempFeels = data['main']['feels_like'];
+    userLoco.textContent = `Location: ${locationValue}`;
+    temp.textContent = `Current Temp: ${tempValue} °F`;
+    feelsLike.textContent = `Feels like: ${tempFeels} °F`;
+    tempLow.textContent = `Today's Low: ${lowTemp} °F`;
+    tempHigh.textContent = `Today's High: ${highTemp} °F`;
+    weatherStats.textContent = `Current Weather: ${weatherStatus} `;
+}
 
 
 //////////////////// Schedule ////////////////////
