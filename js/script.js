@@ -87,7 +87,10 @@ function renderItem(data) {
 //////////////////// Using Moment JS ////////////////////
 var today = moment();
 var currentDate = today.format("YYYY-MM-DD");
-$('#today-date').text(today.format("dddd, MMMM D, YYYY"));
+$(document).ready(function() {
+    $('#today-date').text(today.format("dddd, MMMM D, YYYY"));
+})
+// $('#select-date-box').attr('value', today.format("MM/DD/YYYY"))
 var currentDayOfWeek = today.format("dddd");
 var daySunday = $('#week-sunday');
 var dayMonday = $('#week-monday');
@@ -173,7 +176,23 @@ function findDayOfWeek() {
         console.log("getting error");
     }
 }
+var selectedDateInputEl = $('#select-date-box');
+var selectedDateFormEl = $('#select-date-form');
+console.log(selectedDateInputEl.val());
 
+function handleSelectDate () {
+    var selectedDate = selectedDateInputEl.val();
+    $('#today-date').text(moment(selectedDate).format("dddd, MMMM D, YYYY"));
+    currentDate = selectedDate;
+    renderLocalStorage();
+    renderTask();
+
+}
+$('#button-select-date').click(function() {
+    handleSelectDate();
+    
+})
+// selectedDateFormEl.on('select', '.button-select', handleSelectDate());
 
 //////////////////// Schedules ////////////////////
 
@@ -249,6 +268,7 @@ function renderLocalStorage() {
     
         scheduleRowEl.attr('data-dates', dateParsed);
         scheduleRowEl.attr('data-index', i);
+        editBtn.attr('data-open', 'exampleModall-edit')
             // console.log("printing?");
             
             timeBoxEl.append(startTimeEl);
@@ -270,7 +290,9 @@ function renderLocalStorage() {
             
             if (scheduleListForAppend[i].dates !== currentDate) {
                 console.log("skip!");
+                console.log(scheduleListForAppend[i].dates)
             } else {
+                
                 var dateParsed = scheduleListForAppend[i].dates
                 var startTimeParsed = scheduleListForAppend[i].startingTime;
                 var endTimeParsed = scheduleListForAppend[i].endingTime;
@@ -286,7 +308,7 @@ function renderLocalStorage() {
                     var descSchedule = $('<h5>');
                 var editBtn = $('<button>');
                 var cancelBtn = $('<button>');
-                // console.log(dueDate);
+                
                 
         
             scheduleRowEl.addClass('row-test');
@@ -306,7 +328,7 @@ function renderLocalStorage() {
             scheduleRowEl.attr('data-dates', dateParsed);
             scheduleRowEl.attr('data-index', i);
                 editBtn.attr('data-open', 'exampleModall-edit')
-                // console.log("printing?");
+                
                 
                 timeBoxEl.append(startTimeEl);
                 timeBoxEl.append(lineBetween);
@@ -343,15 +365,16 @@ function saveToLocalStorage() {
 }
 function handleScheduleFormSubmit(event) {
     event.preventDefault();
-console.log("testing submit button")
     var scheduleDate = scheduleDateInputEl.val();
     var scheduleStartTime = startingTimeInputEl.val();
     var scheduleEndTime = endingTimeInputEl.val();
     var scheduleDescription = descriptionScheduleInputEl.val();
     var timeStamp24 = moment(scheduleDate + scheduleStartTime, "YYYY-MM-DD h:mmA").format("X");
-    console.log(scheduleDate + " " + scheduleStartTime)
+    console.log(timeStamp24)
     // return when description is empty
     if (scheduleDescription === "") {
+        return;
+    } else if (scheduleDate === "") {
         return;
     }
 
@@ -405,11 +428,19 @@ function handleEditSchedule(event) {
 
     var btnClicked = $(event.target);
     var clickedIndex = btnClicked.parent('div').attr('data-index');
+    
+    if (typeof scheduleListForAppend.length == "undefined") {
+        scheduleListForAppend = [scheduleListForAppend];
+        var clickedDate = scheduleListForAppend[clickedIndex].dates;
+        var clickedStartTime = scheduleListForAppend[clickedIndex].startingTime;
+        var clickedEndTime = scheduleListForAppend[clickedIndex].endingTime;
+        var clickedDescription = scheduleListForAppend[clickedIndex].schedules;
+    } 
 
     var clickedDate = scheduleListForAppend[clickedIndex].dates;
-    var clickedStartTime = scheduleListForAppend[clickedIndex].startingTime;
-    var clickedEndTime = scheduleListForAppend[clickedIndex].endingTime;
-    var clickedDescription = scheduleListForAppend[clickedIndex].schedules;
+        var clickedStartTime = scheduleListForAppend[clickedIndex].startingTime;
+        var clickedEndTime = scheduleListForAppend[clickedIndex].endingTime;
+        var clickedDescription = scheduleListForAppend[clickedIndex].schedules;
     
     var selectedStartTime = editStartTime.find(`:contains(${clickedStartTime})`);
     var selectedEndTime = editEndingTime.find(`:contains(${clickedEndTime})`);
@@ -423,7 +454,7 @@ function handleEditSchedule(event) {
     editFormEl.on('submit', handleScheduleFormEdit);
 
     function handleScheduleFormEdit(event) {
-        event.preventDefault();
+        // event.preventDefault();
     
         var scheduleDate = editDateInputEl.val();
         var scheduleStartTime = editStartingTimeInputEl.val();
@@ -456,7 +487,7 @@ function handleEditSchedule(event) {
             scheduleListForAppend.push(scheduleItem);
             console.log(scheduleListForAppend);
         }
-    console.log(clickedIndex);
+    
     scheduleListForAppend.splice(clickedIndex, 1);
         
         // endingTime: scheduleEndTime, schedules: scheduleDescription});
@@ -478,12 +509,13 @@ scheduleContainerEl.on('click', '.button-cancel', handleDeleteSchedule);
 scheduleContainerEl.on('click', '.button-edit', handleEditSchedule);
 init();
 
-//////////////////// To-Do-List ////////////////////
+
+////////////////////////////// GRACE SCHEDULE //////////////////////////////
 function graceHandleScheduleFormSubmit(event) {
     event.preventDefault();
 console.log("testing submit button")
 
-////////////////////////////// GRACE SCHEDULE //////////////////////////////
+
     var scheduleDate = graceDateInputEl.val();
         scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
     var scheduleStartTime = graceStartingTimeInputEl.val();
@@ -542,17 +574,58 @@ var taskSubmitBtnEl = $('#button-submit-task');
 var taskFormEl = $('#task-form');
 
 var taskListMain = [];
-
+function taskTimer() {
+    console.log("taskTimer function");
+    $('.task-row').each(function(index)  {
+        console.log(index+ ": " + $(this).text() );
+        var timeLeftPerIndex = $(this).text();
+        var taskTimerInterval = setInterval(function () {
+            if (timeLeftPerIndex > 0) {
+            var d = Math.floor(timeLeftPerIndex / (3600*24));
+            var h = Math.floor(timeLeftPerIndex % (3600*24) / 3600);
+            var m = Math.floor(timeLeftPerIndex % 3600 / 60);
+            var s = Math.floor(timeLeftPerIndex % 60);
+            
+            var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+            var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
+            var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
+            $('#task-container').children().eq(index).children('.time-left').text(timeLeftText);
+            timeLeftPerIndex--;
+            } else {
+                clearInterval(taskTimerInterval);
+            }
+        }, 1000)
+        
+    })
+}
 function renderTask() {
     taskContainerEl.empty();
-    console.log(taskListMain);
+    var currentTime = moment().format("X");
+    
     if (typeof taskListMain.length == "undefined") {
         for (var i = 0; i < 1; i++) {
             var taskDateParsed = taskListMain.dates;
-            console.log(taskDateParsed);
+            
             var taskDueDateParsed = taskListMain.dueDate;
             var taskDescriptionParsed = taskListMain.description;
-            var taskStatusParsed = taskListMain.status
+            var taskStatusParsed = taskListMain.status;
+            var taskTimeStamp = taskListMain.timestamp;
+            var timeLeftFromNow = taskTimeStamp - currentTime;
+            console.log(timeLeftFromNow);
+            var d = Math.floor(timeLeftFromNow / (3600*24));
+            var h = Math.floor(timeLeftFromNow % (3600*24) / 3600);
+            var m = Math.floor(timeLeftFromNow % 3600 / 60);
+            var s = Math.floor(timeLeftFromNow % 60);
+            
+            var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+            var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
+            var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
+
+            console.log(timeLeftText);
 
             var taskRowEl = $('<div>');
             
@@ -564,16 +637,33 @@ function renderTask() {
 
                 var checkBtn = $('<button>');
 
+                var timeLeftHidden = $('<div>');
+
+if (taskListMain.status == "Routine") {
+            taskStatusEl.addClass("green-routine");
+            
+}   else if (taskListMain.status == "Priority") {
+            taskStatusEl.addClass("yellow-priority");
+            
+}   else if (taskListMain.status == "Urgent") {
+            taskStatusEl.addClass("red-urgent")
+            
+} else {
+    console.log("adding status error!!");
+}
+
             taskRowEl.addClass('row-test task-container');
             taskStatusEl.addClass('task-status');
             taskDescription.addClass('task-description');
             taskTimeLeft.addClass('time-left');
             checkBtn.addClass('button-check');
+            timeLeftHidden.addClass('task-row hide');
 
             taskStatusEl.text(taskStatusParsed);
             taskDescription.text(taskDescriptionParsed);
-            taskTimeLeft.text(taskDueDateParsed);
+            taskTimeLeft.text(timeLeftText);
             checkBtn.text("Check");
+            timeLeftHidden.text(timeLeftFromNow);
 
             taskRowEl.attr('data-dates', taskDateParsed);
             taskRowEl.attr('data-index', i); 
@@ -582,22 +672,40 @@ function renderTask() {
             taskRowEl.append(taskDescription);
             taskRowEl.append(taskTimeLeft);
             taskRowEl.append(checkBtn);
+            taskRowEl.append(timeLeftHidden);
 
             taskContainerEl.append(taskRowEl);
         }
     } else {
         for (var i=0; i < taskListMain.length; i++) {
             taskListMain.sort((a, b) => a.timeStamp - b.timeStamp);
-            console.log(taskListMain.length);
+            
             if (taskListMain[i].dates !== currentDate) {
                 console.log("skip!");
             } else {
+                
                 var taskDateParsed = taskListMain[i].dates;
-            console.log(taskDateParsed);
-            console.log(taskDateParsed);
+            
             var taskDueDateParsed = taskListMain[i].dueDate;
             var taskDescriptionParsed = taskListMain[i].description;
             var taskStatusParsed = taskListMain[i].status
+            var taskTimeStamp = taskListMain[i].timeStamp;
+            var timeLeftFromNow = taskTimeStamp - currentTime;
+            
+            /////
+            var d = Math.floor(timeLeftFromNow / (3600*24));
+            var h = Math.floor(timeLeftFromNow % (3600*24) / 3600);
+            var m = Math.floor(timeLeftFromNow % 3600 / 60);
+            var s = Math.floor(timeLeftFromNow % 60);
+            
+            var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+            var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
+            var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
+
+            console.log(timeLeftText);
+            /////
 
             var taskRowEl = $('<div>');
             
@@ -608,6 +716,22 @@ function renderTask() {
                 var taskTimeLeft = $('<div>');
 
                 var checkBtn = $('<button>');
+                var timeLeftHidden = $('<div>');
+
+
+          if (taskListMain[i].status == "Routine") {
+                    taskStatusEl.addClass("green-routine");
+                    
+        }   else if (taskListMain[i].status == "Priority") {
+                    taskStatusEl.addClass("yellow-priority");
+                    
+        }   else if (taskListMain[i].status == "Urgent") {
+                    taskStatusEl.addClass("red-urgent")
+                    
+        } else {
+            console.log("adding status error!!");
+        }
+            timeLeftHidden.addClass('task-row hide')
 
             taskRowEl.addClass('row-test task-container');
             taskStatusEl.addClass('task-status');
@@ -617,8 +741,9 @@ function renderTask() {
 
             taskStatusEl.text(taskStatusParsed);
             taskDescription.text(taskDescriptionParsed);
-            taskTimeLeft.text(taskDueDateParsed);
+            taskTimeLeft.text(timeLeftText);
             checkBtn.text("Check");
+            timeLeftHidden.text(timeLeftFromNow);
 
             taskRowEl.attr('data-dates', taskDateParsed);
             taskRowEl.attr('data-index', i); 
@@ -627,8 +752,32 @@ function renderTask() {
             taskRowEl.append(taskDescription);
             taskRowEl.append(taskTimeLeft);
             taskRowEl.append(checkBtn);
+            taskRowEl.append(timeLeftHidden);
 
             taskContainerEl.append(taskRowEl);
+            console.log(timeLeftFromNow);
+            taskTimer();
+            // var timeleftInterval = setInterval(function () {
+            //     if (timeLeftFromNow > 0) {
+            // var d = Math.floor(timeLeftFromNow / (3600*24));
+            // var h = Math.floor(timeLeftFromNow % (3600*24) / 3600);
+            // var m = Math.floor(timeLeftFromNow % 3600 / 60);
+            // var s = Math.floor(timeLeftFromNow % 60);
+            
+            // var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " days, ") : "";
+            // var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            // var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
+            // var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            // var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
+            //         taskTimeLeft.text(timeLeftText);
+            //         timeLeftFromNow--;
+            //     } else {
+            //         //clear the row
+            //         // and alert modal
+            //         clearInterval(timeleftInterval);
+            //     }
+                
+            // }, 1000);
             }
         }
     }
@@ -660,7 +809,9 @@ function handleTaskFormSubmit(event) {
 
     if (taskDescription === "") {
         return;
-    } 
+    } else if (taskDate === "") {
+        return;
+    }
 
     var taskItem = {
         dates: taskDate,
