@@ -31,18 +31,12 @@ function showPage() {
 
 
 //////////////////// Date Picker ////////////////////
-// $(function () {
-//     $('#dialog').dialog();
-//   });
-  
   $(function () {
     $('.datepicker').datepicker({
       changeMonth: true,
       changeYear: true,
       });
     });
-
-
 
 ////////////////// Weather ////////////////////
 var userLoco = document.querySelector('#location');
@@ -495,29 +489,23 @@ function handleEditSchedule(event) {
         // printSchedule(scheduleDate, scheduleStartTime, scheduleEndTime, scheduleDescription);
         saveToLocalStorage();
         renderLocalStorage();
-        
-        
-    
     }
 }
 
 scheduleFormEl.on('submit', handleScheduleFormSubmit);
 graceScheduleFormEl.on('submit', graceHandleScheduleFormSubmit);
 
-
 scheduleContainerEl.on('click', '.button-cancel', handleDeleteSchedule);
 scheduleContainerEl.on('click', '.button-edit', handleEditSchedule);
 init();
-
 
 ////////////////////////////// GRACE SCHEDULE //////////////////////////////
 function graceHandleScheduleFormSubmit(event) {
     event.preventDefault();
 console.log("testing submit button")
 
-
     var scheduleDate = graceDateInputEl.val();
-        scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
+        // scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
     var scheduleStartTime = graceStartingTimeInputEl.val();
     var scheduleEndTime = graceEndingTimeInputEl.val();
     var scheduleDescription = graceDescriptionScheduleInputEl.val();
@@ -564,14 +552,22 @@ console.log("testing submit button")
 var taskContainerEl = $('#task-container');
 
 var taskDateInputEl = $('#dates-task');
-var taskStatusInputEl = $('#task-status');
-var taskDueDateInputEl = $('#due-time');
-var taskDescrInputEl = $('#description-task');
+var graceTaskDateInputEl = $('dates-taskGT');
 
+var taskStatusInputEl = $('#task-status');
+var graceTaskStatusInputEl = $('#task-statusGT');
+
+var taskDueDateInputEl = $('#due-time');
+var graceDueDateInputEl = $('#due-timeGT');
+
+var taskDescrInputEl = $('#description-task');
+var graceDecriptionTaskInputEl = $('#description-taskGT');
 
 var taskSubmitBtnEl = $('#button-submit-task');
+var graceTaskSubmitBtnEl = $('#button-submitGT');
 
 var taskFormEl = $('#task-form');
+var graceTaskFormEl = $('#task-formGT');
 
 var taskListMain = [];
 function taskTimer() {
@@ -852,27 +848,23 @@ function handleDeleteTask(event) {
 }
 
 taskFormEl.on('submit', handleTaskFormSubmit);
+graceTaskFormEl.on('submit', graceHandleTaskFormSubmit);
+
 taskContainerEl.on('click', '.button-check', handleDeleteTask);
 initTask();
 
-
-///////////////////////   GRACE TASK ////////////////////////////////////////
+///////////////////////  GRACE TASK ////////////////////////////////////////
 function graceHandleTaskFormSubmit(event) {
+    //stop form from submitting -  not reload
     event.preventDefault();
 console.log("testing task submit button")
-
-var graceTaskDateInputEl = $('dates-taskGT');
-var graceTaskStatusInputEl = $('#task-statusGT');
-var graceDueDateInputEl = $('#due-timeGT');
-var graceDecriptionTaskInputEl = $('#description-taskGT');
-var graceTaskFormEl = $('#task-formGT');
 
 var taskDate = graceTaskDateInputEl.val();
     taskDate = moment(taskDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
 var taskDueDate = graceDueDateInputEl.val();
 var taskDescription = graceDecriptionTaskInputEl.val();
 var taskStatus = graceTaskStatusInputEl.val();
-var timeStamp24 = moment(taskDate + taskDueDate, "MM-DD-YYYY h:mmA").format("X");
+var timeStamp24 = moment(taskDate + taskDueDate, "YYYY-MM-DD h:mmA").format("X");
 console.log(taskDate + " " + taskDueDate)
 
 if (taskDescription === "") {
@@ -905,4 +897,3 @@ graceTaskFormEl[0].reset();
 saveTaskToStorage();
 renderTask();
 }
-graceTaskFormEl.on('submit', graceHandleTaskFormSubmit);
