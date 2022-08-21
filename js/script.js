@@ -869,8 +869,10 @@ console.log(taskDate + " " + taskDueDate)
 
 if (taskDescription === "") {
     return;
+} else if (taskDate === "") {
+    return;
 }
-
+// Help: consolelog is not displaying date - not displaying onto Overview tab.
 var taskItem = {
     dates: taskDate,
     status: taskStatus,
