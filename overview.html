@@ -4,8 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Micro Managers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-    <link rel="stylesheet" href="./css/overview.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="./css/style.css">
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
 
@@ -19,99 +26,629 @@
       <div class="nav">
         <ul class="menu">
           <li><a href="./overview.html">Overview</a></li>
-          <li><a href="./schedule.html">Schedule</a></li>
-          <li><a href="./whatareyoutdoing.html">What Are You Doing?</a></li>
+          <li><a href="./update.html">Update</a></li>
           <li><a href="./about.html">About</a></li>
         </ul>
       </div>
     </div>
     <!-- End Top Bar -->
-    <div class="container">
-      <div class="timer">
-      <h1>Timer</h1>
-      <div class="Remaining-Time">Remaining Time</div>
-      </div>
-    </div>
 
+    <!-- main section -->
     <main>
-      <div class="container">
-        <h2 class="text-center">Weather</h3>
+      <!-- Container with Timer -->
+      <!-- Container with Timer -->
+      <div class="large-container">
+        <div class="container half-container col-6">
+          <h2 class="text-center">Timer</h3>
+          <div class="timer"></div>
+        </div>
+
+
+      <!-- Container for Weather report -->
+      <div class="container half-container col-6">
+
+        <h2 class="text-center">Today's Weather</h3>
         <div class="weather-container">
           <div class="today-weather col-6">
-            <h3>Today's weather</h3>
-            <h4 class="user-location">location</h4>
-            <h4 id="today-temp">90°</h4>
-            <h4 id="today-status">Cloudy</h4>
-            <h4 id="today-lowest">Lowest degree: </h4>
-            <h4 id="today-highest">Highest degree: </h4>
-          </div>
-          <div class="tomorrow-weather col-6">
-            <h3>Tomorrow's weather</h3>
-            <h4 class="user-location">location</h4>
-            <h4 id="tomorrow-temp">90°</h4>
-            <h4 id="tomorrow-status">Cloudy</h4>
-            <h4 id="tomorrow-lowest">Lowest degree: </h4>
-            <h4 id="tomorrow-highest">Highest degree: </h4>
+            <h4 id="location"></h4>
+            <h4 id="today-temp"></h4>
+            <h4 id="feels-like"></h4>
+            <h4 id="today-status"></h4>
+            <h4 id><img id="weather-icon"></img></h4>
+            <h4 id="weather-description"></h4>
+            <h4 id="today-lowest"></h4>
+            <h4 id="today-highest"></h4>
+
+        <!-- Container for Weather report -->
+        <div class="container half-container col-6">
+
+          <h2 class="text-center">Today's Weather</h3>
+          <div class="weather-container">
+            <div class="today-weather col-6">
+              <h4 id="location"></h4>
+              <h4 id="today-temp"></h4>
+              <h4 id="feels-like"></h4>
+              <h4 id="today-status"></h4>
+              <h4 id="today-lowest"></h4>
+              <h4 id="today-highest"></h4>
+            </div>
           </div>
         </div>
       </div>
       
-      <div class="container">
-        <h3 class="text-center">Todays Schedule</h3>
+      <!-- Container for Schedules -->
+      <div class="container" >
+        <h3 class="text-center">Today's Schedule <button class="button" data-open="exampleModall">&#43;</button></h3>
+        
         <div class="week-calendar">
           <table class="table-week">
             <tr>
-              <td>S</td>
-              <td>M</td>
-              <td>T</td>
-              <td>W</td>
-              <td>W</td>
-              <td>F</td>
-              <td>S</td>
+              <td id="sunday">S</td>
+              <td id="monday">M</td>
+              <td id="tuesday">T</td>
+              <td id="wednesday">W</td>
+              <td id="thursday">T</td>
+              <td id="friday">F</td>
+              <td id="saturday">S</td>
             </tr>
             <tr>
-              <td>14</td>
-              <td>15</td>
-              <td>16</td>
-              <td>17</td>
-              <td>18</td>
-              <td>19</td>
-              <td>20</td>
+              <td id="week-sunday"></td>
+              <td id="week-monday"></td>
+              <td  id="week-tuesday"></td>
+              <td  id="week-wednesday"></td>
+              <td  id="week-thursday"></td>
+              <td  id="week-friday"></td>
+              <td  id="week-saturday"></td>
             </tr>
           </table>
         </div>
-        <h4 id="today-date" class="text-center">Monday August 15, 2022</h4>
+        <div class="text-center">
+          <h4 id="today-date"></h4>
+          <button><img class="icon-size" data-open="selectDateModal" src="./assets/icon-calendar.png"></button>
+        </div>
+        <div id="schedule-container"></div>
       </div>
     
+      <!-- Container for Tasks -->
       <div class="container">
-        <h3 class="text-center">Urgent Tasks for Clients</h3>
-      </div>
+        <h3 class="text-center">Tasks List <button class="button" data-open="taskModal">&#43;</button></h3>
+        <div id="task-container">
 
-      <form>
-        <div class="grid-container">
-            <div class="row button-group">
-              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
+        <!-- </div>
+          <div class="row-test task-container">
+          <div class="task-status">Status</div>
+            <div class="task-description">description of the tasks</div>
+            <div class="time-left">10:00</div>
+            <button class="button-check">
+            Check
+            </button>
+           </div>
+        </div> -->
+    </main>
+<!--This is for Selecting Today's Schedule Modal-->
+<div class="modal reveal" id="selectDateModal" data-reveal>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="select-date-modal-form">Select Date</h5>
+        <button type="button" data-close class="close-button" aria-label="Close modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="select-date-form">
+        <div class="modal-body">
+          <ul>
+            <div class="form-group row">
+              <label for="date" class="form-sections">Date: </label>
+              <div class="date-picker">
+                <input type="date" min="1" class="form-control" id="select-date-box" autocomplete="off">
+              </div>
             </div>
-            <div class="row">
-              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
-            </div>
-            <div class="row">
-              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
-            </div>
-            <div class="row">
-              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
-            </div>
-            <div class="row">
-              <button class="dropdown button">Status</button><input type="text" placeholder=""></label><button class="dropdown button">Timer</button>
-            </div>
-          </div>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-close  aria-label="Close modal" value="Select" id="button-select-date" class="btn btn-info button-select">Select</button>
         </div>
       </form>
-    </main>
+    </div>
+  </div>
+</div>
+
+    <!-- modal container using Foundation -->
+    <!-- This is for Schedule Input Modal -->
+    <div class="modal reveal" id="exampleModall" data-reveal>
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="project-modal-form">Add a new Schedule.</h5>
+            <button type="button" data-close class="close-button" aria-label="Close modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="project-form">
+            <div class="modal-body">
+              <ul>
+                <div class="form-group row">
+                  <label for="date" class="form-sections">Date: </label>
+                  <div class="date-picker">
+                    <input type="date" min="1" class="form-control" id="dates-schedule" autocomplete="off">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="time" class="form-sections">Start Time:</label>
+                  <div class="time-input">
+                    <select id="starting-time" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                      <option value="8:15AM">8:15AM</option>
+                      <option value="8:30AM">8:30AM</option>
+                      <option value="8:45AM">8:45AM</option>
+                      <option value="9:00AM">9:00AM</option>
+                      <option value="9:15AM">9:15AM</option>
+                      <option value="9:30AM">9:30AM</option>
+                      <option value="9:45AM">9:45AM</option>
+                      <option value="10:00AM">10:00AM</option>
+                      <option value="10:15AM">10:15AM</option>
+                      <option value="10:30AM">10:30AM</option>
+                      <option value="10:45AM">10:45AM</option>
+                      <option value="11:00AM">11:00AM</option>
+                      <option value="11:15AM">11:15AM</option>
+                      <option value="11:30AM">11:30AM</option>
+                      <option value="11:45AM">11:45AM</option>
+                      <option value="12:00PM">12:00PM</option>
+                      <option value="12:15PM">12:15PM</option>
+                      <option value="12:30PM">12:30PM</option>
+                      <option value="12:45PM">12:45PM</option>
+                      <option value="1:00PM">1:00PM</option>
+                      <option value="1:15PM">1:15PM</option>
+                      <option value="1:30PM">1:30PM</option>
+                      <option value="1:45PM">1:45PM</option>
+                      <option value="2:00PM">2:00PM</option>
+                      <option value="2:15PM">2:15PM</option>
+                      <option value="2:30PM">2:30PM</option>
+                      <option value="2:45PM">2:45PM</option>
+                      <option value="3:00PM">3:00PM</option>
+                      <option value="3:15PM">3:15PM</option>
+                      <option value="3:30PM">3:30PM</option>
+                      <option value="3:45PM">3:45PM</option>
+                      <option value="4:00PM">4:00PM</option>
+                      <option value="4:15PM">4:15PM</option>
+                      <option value="4:30PM">4:30PM</option>
+                      <option value="4:45PM">4:45PM</option>
+                      <option value="5:00PM">5:00PM</option>
+                      <option value="5:15PM">5:15PM</option>
+                      <option value="5:30PM">5:30PM</option>
+                      <option value="5:45PM">5:45PM</option>
+                      <option value="6:00PM">6:00PM</option>
+                      <option value="6:15PM">6:15PM</option>
+                      <option value="6:30PM">6:30PM</option>
+                      <option value="6:45PM">6:45PM</option>
+                      <option value="7:00PM">7:00PM</option>
+                      <option value="7:15PM">7:15PM</option>
+                      <option value="7:30PM">7:30PM</option>
+                      <option value="7:45PM">7:45PM</option>
+                      <option value="8:00PM">8:00PM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="time" class="form-sections">End Time:</label>
+                  <div class="time-input">
+                    <select id="ending-time" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                        <option value="8:15AM">8:15AM</option>
+                        <option value="8:30AM">8:30AM</option>
+                        <option value="8:45AM">8:45AM</option>
+                        <option value="9:00AM">9:00AM</option>
+                        <option value="9:15AM">9:15AM</option>
+                        <option value="9:30AM">9:30AM</option>
+                        <option value="9:45AM">9:45AM</option>
+                        <option value="10:00AM">10:00AM</option>
+                        <option value="10:15AM">10:15AM</option>
+                        <option value="10:30AM">10:30AM</option>
+                        <option value="10:45AM">10:45AM</option>
+                        <option value="11:00AM">11:00AM</option>
+                        <option value="11:15AM">11:15AM</option>
+                        <option value="11:30AM">11:30AM</option>
+                        <option value="11:45AM">11:45AM</option>
+                        <option value="12:00PM">12:00PM</option>
+                        <option value="12:15PM">12:15PM</option>
+                        <option value="12:30PM">12:30PM</option>
+                        <option value="12:45PM">12:45PM</option>
+                        <option value="1:00PM">1:00PM</option>
+                        <option value="1:15PM">1:15PM</option>
+                        <option value="1:30PM">1:30PM</option>
+                        <option value="1:45PM">1:45PM</option>
+                        <option value="2:00PM">2:00PM</option>
+                        <option value="2:15PM">2:15PM</option>
+                        <option value="2:30PM">2:30PM</option>
+                        <option value="2:45PM">2:45PM</option>
+                        <option value="3:00PM">3:00PM</option>
+                        <option value="3:15PM">3:15PM</option>
+                        <option value="3:30PM">3:30PM</option>
+                        <option value="3:45PM">3:45PM</option>
+                        <option value="4:00PM">4:00PM</option>
+                        <option value="4:15PM">4:15PM</option>
+                        <option value="4:30PM">4:30PM</option>
+                        <option value="4:45PM">4:45PM</option>
+                        <option value="5:00PM">5:00PM</option>
+                        <option value="5:15PM">5:15PM</option>
+                        <option value="5:30PM">5:30PM</option>
+                        <option value="5:45PM">5:45PM</option>
+                        <option value="6:00PM">6:00PM</option>
+                        <option value="6:15PM">6:15PM</option>
+                        <option value="6:30PM">6:30PM</option>
+                        <option value="6:45PM">6:45PM</option>
+                        <option value="7:00PM">7:00PM</option>
+                        <option value="7:15PM">7:15PM</option>
+                        <option value="7:30PM">7:30PM</option>
+                        <option value="7:45PM">7:45PM</option>
+                        <option value="8:00PM">8:00PM</option>
+                        <option value="8:15PM">8:15PM</option>
+                        <option value="8:30PM">8:30PM</option>
+                        <option value="8:45PM">8:45PM</option>
+                        <option value="9:00PM">9:00PM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="Description" class="form-sections">Description:</label>
+                  <div class="desc-input">
+                    <input id="description-schedule" type="text" class="form-control">
+                  </div>
+                </div>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" data-close  aria-label="Close modal" value="Submit" id="button-submit" class="btn btn-info">Submit</button>
+            </div>
+            <button type="button" data-close class="close-button" aria-label="Close modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+      <!-- --Richard format of schedule input -->
+    <!-- <div class="modal reveal" id="exampleModall" data-reveal>
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="project-modal-form">Add a new Schedule.</h5>
+            <button type="button" data-close class="close-button" aria-label="Close modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="project-form">
+            <div class="modal-body">
+              <ul>
+                <div class="form-group">
+                  <label for="dates">Dates</label>
+                  <input type="date" min="1" id="dates-schedule" name="schedule-date">
+                </div>
+                <div class="form-group">
+                  <label for="startingTime">Starting Time:</label>
+                  <select id="starting-time">
+                    <option value="8:00AM">8:00AM</option>
+                    <option value="9:00AM">9:00AM</option>
+                    <option value="10:00AM">10:00AM</option>
+                    <option value="11:00AM">11:00AM</option>
+                    <option value="12:00PM">12:00PM</option>
+                    <option value="1:00PM">1:00PM</option>
+                    <option value="2:00PM">2:00PM</option>
+                    <option value="3:00PM">3:00PM</option>
+                    <option value="4:00PM">4:00PM</option>
+                    <option value="5:00PM">5:00PM</option>
+                    <option value="6:00PM">6:00PM</option>
+                    <option value="7:00PM">7:00PM</option>
+                    <option value="8:00PM">8:00PM</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="endingTime">Ending Time:</label>
+                  <select id="ending-time">
+                    <option value="9:00AM">9:00AM</option>
+                    <option value="10:00AM">10:00AM</option>
+                    <option value="11:00AM">11:00AM</option>
+                    <option value="12:00PM">12:00PM</option>
+                    <option value="1:00PM">1:00PM</option>
+                    <option value="2:00PM">2:00PM</option>
+                    <option value="3:00PM">3:00PM</option>
+                    <option value="4:00PM">4:00PM</option>
+                    <option value="5:00PM">5:00PM</option>
+                    <option value="6:00PM">6:00PM</option>
+                    <option value="7:00PM">7:00PM</option>
+                    <option value="8:00PM">8:00PM</option>
+                    <option value="9:00PM">9:00PM</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="description-schedule">Description of the schedule.</label>
+                  <textarea id="description-schedule" name="descSchedule"></textarea>
+                </div>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-close aria-label="Close modal">Close</button>
+              <button type="submit" id="button-submit" class="btn custom-btn">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> -->
+    
+    <!-- This is for Schedule Edit Modal -->
+    <div class="modal reveal" id="exampleModall-edit" data-reveal>
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="project-modal-form-edit">Edit Schedule.</h5>
+            <button type="button" data-close class="close-button" aria-label="Close modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="project-form-edit">
+            <div class="modal-body">
+              <ul>
+                <div class="form-group row">
+                  <label for="date" class="form-sections">Date: </label>
+                  <div class="date-picker">
+                    <input type="date" min="1" class="form-control" id="dates-schedule-edit" autocomplete="off">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="time" class="form-sections">Start Time:</label>
+                  <div class="time-input">
+                    <select id="starting-time-edit" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                      <option value="8:15AM">8:15AM</option>
+                      <option value="8:30AM">8:30AM</option>
+                      <option value="8:45AM">8:45AM</option>
+                      <option value="9:00AM">9:00AM</option>
+                      <option value="9:15AM">9:15AM</option>
+                      <option value="9:30AM">9:30AM</option>
+                      <option value="9:45AM">9:45AM</option>
+                      <option value="10:00AM">10:00AM</option>
+                      <option value="10:15AM">10:15AM</option>
+                      <option value="10:30AM">10:30AM</option>
+                      <option value="10:45AM">10:45AM</option>
+                      <option value="11:00AM">11:00AM</option>
+                      <option value="11:15AM">11:15AM</option>
+                      <option value="11:30AM">11:30AM</option>
+                      <option value="11:45AM">11:45AM</option>
+                      <option value="12:00PM">12:00PM</option>
+                      <option value="12:15PM">12:15PM</option>
+                      <option value="12:30PM">12:30PM</option>
+                      <option value="12:45PM">12:45PM</option>
+                      <option value="1:00PM">1:00PM</option>
+                      <option value="1:15PM">1:15PM</option>
+                      <option value="1:30PM">1:30PM</option>
+                      <option value="1:45PM">1:45PM</option>
+                      <option value="2:00PM">2:00PM</option>
+                      <option value="2:15PM">2:15PM</option>
+                      <option value="2:30PM">2:30PM</option>
+                      <option value="2:45PM">2:45PM</option>
+                      <option value="3:00PM">3:00PM</option>
+                      <option value="3:15PM">3:15PM</option>
+                      <option value="3:30PM">3:30PM</option>
+                      <option value="3:45PM">3:45PM</option>
+                      <option value="4:00PM">4:00PM</option>
+                      <option value="4:15PM">4:15PM</option>
+                      <option value="4:30PM">4:30PM</option>
+                      <option value="4:45PM">4:45PM</option>
+                      <option value="5:00PM">5:00PM</option>
+                      <option value="5:15PM">5:15PM</option>
+                      <option value="5:30PM">5:30PM</option>
+                      <option value="5:45PM">5:45PM</option>
+                      <option value="6:00PM">6:00PM</option>
+                      <option value="6:15PM">6:15PM</option>
+                      <option value="6:30PM">6:30PM</option>
+                      <option value="6:45PM">6:45PM</option>
+                      <option value="7:00PM">7:00PM</option>
+                      <option value="7:15PM">7:15PM</option>
+                      <option value="7:30PM">7:30PM</option>
+                      <option value="7:45PM">7:45PM</option>
+                      <option value="8:00PM">8:00PM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="time" class="form-sections">End Time:</label>
+                  <div class="time-input">
+                    <select id="ending-time-edit" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                        <option value="8:15AM">8:15AM</option>
+                        <option value="8:30AM">8:30AM</option>
+                        <option value="8:45AM">8:45AM</option>
+                        <option value="9:00AM">9:00AM</option>
+                        <option value="9:15AM">9:15AM</option>
+                        <option value="9:30AM">9:30AM</option>
+                        <option value="9:45AM">9:45AM</option>
+                        <option value="10:00AM">10:00AM</option>
+                        <option value="10:15AM">10:15AM</option>
+                        <option value="10:30AM">10:30AM</option>
+                        <option value="10:45AM">10:45AM</option>
+                        <option value="11:00AM">11:00AM</option>
+                        <option value="11:15AM">11:15AM</option>
+                        <option value="11:30AM">11:30AM</option>
+                        <option value="11:45AM">11:45AM</option>
+                        <option value="12:00PM">12:00PM</option>
+                        <option value="12:15PM">12:15PM</option>
+                        <option value="12:30PM">12:30PM</option>
+                        <option value="12:45PM">12:45PM</option>
+                        <option value="1:00PM">1:00PM</option>
+                        <option value="1:15PM">1:15PM</option>
+                        <option value="1:30PM">1:30PM</option>
+                        <option value="1:45PM">1:45PM</option>
+                        <option value="2:00PM">2:00PM</option>
+                        <option value="2:15PM">2:15PM</option>
+                        <option value="2:30PM">2:30PM</option>
+                        <option value="2:45PM">2:45PM</option>
+                        <option value="3:00PM">3:00PM</option>
+                        <option value="3:15PM">3:15PM</option>
+                        <option value="3:30PM">3:30PM</option>
+                        <option value="3:45PM">3:45PM</option>
+                        <option value="4:00PM">4:00PM</option>
+                        <option value="4:15PM">4:15PM</option>
+                        <option value="4:30PM">4:30PM</option>
+                        <option value="4:45PM">4:45PM</option>
+                        <option value="5:00PM">5:00PM</option>
+                        <option value="5:15PM">5:15PM</option>
+                        <option value="5:30PM">5:30PM</option>
+                        <option value="5:45PM">5:45PM</option>
+                        <option value="6:00PM">6:00PM</option>
+                        <option value="6:15PM">6:15PM</option>
+                        <option value="6:30PM">6:30PM</option>
+                        <option value="6:45PM">6:45PM</option>
+                        <option value="7:00PM">7:00PM</option>
+                        <option value="7:15PM">7:15PM</option>
+                        <option value="7:30PM">7:30PM</option>
+                        <option value="7:45PM">7:45PM</option>
+                        <option value="8:00PM">8:00PM</option>
+                        <option value="8:15PM">8:15PM</option>
+                        <option value="8:30PM">8:30PM</option>
+                        <option value="8:45PM">8:45PM</option>
+                        <option value="9:00PM">9:00PM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="Description" class="form-sections">Description:</label>
+                  <div class="desc-input">
+                    <input id="description-schedule-edit" type="text" class="form-control">
+                  </div>
+                </div>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" value="Submit" id="button-submit" class="btn btn-info">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- This is for Task Input Modal -->
+<div class="modal reveal" id="taskModal" data-reveal>
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="task-modal-form">Add a new Task.</h5>
+            <button type="button" data-close class="close-button" aria-label="Close modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="task-form">
+            <div class="modal-body">
+              <ul>
+                <div class="form-group row">
+                  <label for="date" class="form-sections">Date: </label>
+                  <div class="date-picker">
+                    <input type="date" min="1" class="form-control" id="dates-task" autocomplete="off">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="status" class="form-sections">Status:</label>
+                  <div class="status-input">
+                    <select id="task-status" class="form-control" autocomplete="off">
+                      <option value="Routine">Routine</option>
+                      <option value="Priority">Priority</option>
+                      <option value="Urgent">Urgent</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="time" class="form-sections">Due Time:</label>
+                  <div class="time-input">
+                    <select id="due-time" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                      <option value="8:15AM">8:15AM</option>
+                      <option value="8:30AM">8:30AM</option>
+                      <option value="8:45AM">8:45AM</option>
+                      <option value="9:00AM">9:00AM</option>
+                      <option value="9:15AM">9:15AM</option>
+                      <option value="9:30AM">9:30AM</option>
+                      <option value="9:45AM">9:45AM</option>
+                      <option value="10:00AM">10:00AM</option>
+                      <option value="10:15AM">10:15AM</option>
+                      <option value="10:30AM">10:30AM</option>
+                      <option value="10:45AM">10:45AM</option>
+                      <option value="11:00AM">11:00AM</option>
+                      <option value="11:15AM">11:15AM</option>
+                      <option value="11:30AM">11:30AM</option>
+                      <option value="11:45AM">11:45AM</option>
+                      <option value="12:00PM">12:00PM</option>
+                      <option value="12:15PM">12:15PM</option>
+                      <option value="12:30PM">12:30PM</option>
+                      <option value="12:45PM">12:45PM</option>
+                      <option value="1:00PM">1:00PM</option>
+                      <option value="1:15PM">1:15PM</option>
+                      <option value="1:30PM">1:30PM</option>
+                      <option value="1:45PM">1:45PM</option>
+                      <option value="2:00PM">2:00PM</option>
+                      <option value="2:15PM">2:15PM</option>
+                      <option value="2:30PM">2:30PM</option>
+                      <option value="2:45PM">2:45PM</option>
+                      <option value="3:00PM">3:00PM</option>
+                      <option value="3:15PM">3:15PM</option>
+                      <option value="3:30PM">3:30PM</option>
+                      <option value="3:45PM">3:45PM</option>
+                      <option value="4:00PM">4:00PM</option>
+                      <option value="4:15PM">4:15PM</option>
+                      <option value="4:30PM">4:30PM</option>
+                      <option value="4:45PM">4:45PM</option>
+                      <option value="5:00PM">5:00PM</option>
+                      <option value="5:15PM">5:15PM</option>
+                      <option value="5:30PM">5:30PM</option>
+                      <option value="5:45PM">5:45PM</option>
+                      <option value="6:00PM">6:00PM</option>
+                      <option value="6:15PM">6:15PM</option>
+                      <option value="6:30PM">6:30PM</option>
+                      <option value="6:45PM">6:45PM</option>
+                      <option value="7:00PM">7:00PM</option>
+                      <option value="7:15PM">7:15PM</option>
+                      <option value="7:30PM">7:30PM</option>
+                      <option value="7:45PM">7:45PM</option>
+                      <option value="8:00PM">8:00PM</option>
+                      <option value="8:15PM">8:15PM</option>
+                      <option value="8:30PM">8:30PM</option>
+                      <option value="8:45PM">8:45PM</option>
+                      <option value="9:00PM">9:00PM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="Description" class="form-sections">Description:</label>
+                  <div class="desc-input">
+                    <input id="description-task" type="text" class="form-control">
+                  </div>
+                </div>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" value="Submit" data-close id="button-submit-task" class="btn btn-info">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- This is footer of our website -->
+    <footer class="text-center">
+      2022 © Fantastic Four Company
+    </footer>
+    <div class="hide"id="time-display"></div>
+    <div class="hide" id="date-display"></div>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="./js/script.js"></script>
+    <!-- <script src="./js/scratchFile.js"></script> -->
   </body>
+  
 </html>
