@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Micro Managers</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <link rel="stylesheet" href="./css/style.css">
@@ -30,25 +31,22 @@
     </div>
     <!-- End Top Bar -->
 
-    <h1>Manadatory Update</h1>
-    <!-- Dialog will display as user loads onto the screen.-->
-      <div id="dialog" title="Dialog">
+    <h1 class="text-center">Manadatory Update</h1>
         <p>Team this is a manadatory update requested by your manager. Update your tasks NOW!</p>
-      </div>
       
       <!------------Start of daily task update------------>
       <div class="container">
         <h2>Employee's Daily Tasks</h2>
         <div class="update-form">
-          <h3>Tasks Update</h3>
+          <h3 class="text-center">Tasks Update</h3>
 
           <!-- Update submissiton form. -->
-          <form id="project-form">
+          <form id="task-formGT">
             <div class="grid-x grid-padding-x align-center">
               <div class="cell small-4">
                 <label for="date" class="form-sections">Date: </label>
                 <div class="date-picker">
-                  <input type="text" class="form-control datepicker" id="datepicker" autocomplete="off" />
+                  <input type="text" class="form-control datepicker" id="dates-taskGT" autocomplete="off" />
                 </div>
                 
               </div>
@@ -56,21 +54,63 @@
               <div class="cell small-4">
                 <label for="time" class="form-sections">Due time: </label>
                   <div class="time-input">
-                    <input type="text" class="form-control" id="duetime" autocomplete="off" />
+                    <select id="due-timeGT" class="form-control" autocomplete="off">
+                      <option value="8:00AM">8:00AM</option>
+                      <option value="8:15AM">8:15AM</option>
+                      <option value="8:30AM">8:30AM</option>
+                      <option value="8:45AM">8:45AM</option>
+                      <option value="9:00AM">9:00AM</option>
+                      <option value="9:15AM">9:15AM</option>
+                      <option value="9:30AM">9:30AM</option>
+                      <option value="9:45AM">9:45AM</option>
+                      <option value="10:00AM">10:00AM</option>
+                      <option value="10:15AM">10:15AM</option>
+                      <option value="10:30AM">10:30AM</option>
+                      <option value="10:45AM">10:45AM</option>
+                      <option value="11:00AM">11:00AM</option>
+                      <option value="11:15AM">11:15AM</option>
+                      <option value="11:30AM">11:30AM</option>
+                      <option value="11:45AM">11:45AM</option>
+                      <option value="12:00PM">12:00PM</option>
+                      <option value="12:15PM">12:15PM</option>
+                      <option value="12:30PM">12:30PM</option>
+                      <option value="12:45PM">12:45PM</option>
+                      <option value="1:00PM">1:00PM</option>
+                      <option value="1:15PM">1:15PM</option>
+                      <option value="1:30PM">1:30PM</option>
+                      <option value="1:45PM">1:45PM</option>
+                      <option value="2:00PM">2:00PM</option>
+                      <option value="2:15PM">2:15PM</option>
+                      <option value="2:30PM">2:30PM</option>
+                      <option value="2:45PM">2:45PM</option>
+                      <option value="3:00PM">3:00PM</option>
+                      <option value="3:15PM">3:15PM</option>
+                      <option value="3:30PM">3:30PM</option>
+                      <option value="3:45PM">3:45PM</option>
+                      <option value="4:00PM">4:00PM</option>
+                      <option value="4:15PM">4:15PM</option>
+                      <option value="4:30PM">4:30PM</option>
+                      <option value="4:45PM">4:45PM</option>
+                      <option value="5:00PM">5:00PM</option>
+                      <option value="5:15PM">5:15PM</option>
+                      <option value="5:30PM">5:30PM</option>
+                      <option value="5:45PM">5:45PM</option>
+                      <option value="6:00PM">6:00PM</option>
+                      <option value="6:15PM">6:15PM</option>
+                      <option value="6:30PM">6:30PM</option>
+                      <option value="6:45PM">6:45PM</option>
+                      <option value="7:00PM">7:00PM</option>
+                      <option value="7:15PM">7:15PM</option>
+                      <option value="7:30PM">7:30PM</option>
+                      <option value="7:45PM">7:45PM</option>
+                      <option value="8:00PM">8:00PM</option>
+                    </select>
                   </div>
               </div>
-              <!-- Drop down option will display morning or evening. -->
-              <fieldset>
-                <label for="status">AM/PM:</label>
-                <select name="priority-status" id="am-or-pm" class="cell small-4">
-                  <option>AM</option>
-                  <option>PM</option>
-                </select>
-              </fieldset>
               <!-- Drop down option will display status -->
               <fieldset>
                 <label for="status">Status:</label>
-                <select name="priority-status" id="status" class="cell small-4">
+                <select name="priority-status" id="status" class="cell small-4" id="task-statusGT">
                   <option style="color:rgb(37, 113, 37)">Routine</option>
                   <option style="color:rgb(106, 106, 10)">Priority</option>
                   <option style="color:rgb(121, 19, 19)">Urgent</option>
@@ -82,12 +122,12 @@
                 <div class="cell small-3 align-self-middle">
                   <label for="description" class="form-sections">What have you done?</label>
                   <div class="desc-input">
-                    <input type="text" class="form-control" id="descriptionschedule"/>
+                    <input type="text" class="form-control" id="description-taskGT"/>
                   </div>
                 </div>
               </div>
               <!-- Submit button for daily task. -->
-              <input class="ui-button ui-widget ui-corner-all" id="daily-button" type="submit" value="Submit">
+              <input class="ui-button ui-widget ui-corner-all" id="button-submitGT" type="submit" value="Submit">
           </form>
         </div>
       </div>
@@ -98,7 +138,7 @@
         <h2>Employee's Schedule</h2>
 
         <div class="update-form">
-          <h3>Schedule Update</h3>
+          <h3 class="text-center">Schedule Update</h3>
 
           <form id="project-formG">
             <div class="grid-x grid-padding-x align-center">

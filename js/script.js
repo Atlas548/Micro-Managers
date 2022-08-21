@@ -31,16 +31,13 @@ function showPage() {
 
 
 //////////////////// Date Picker ////////////////////
-// $(function () {
-//     $('#dialog').dialog();
-//   });
-  
   $(function () {
     $('.datepicker').datepicker({
       changeMonth: true,
       changeYear: true,
       });
     });
+
 
 ////////////////// Location(cities) ////////////////////
 // var cityAlabama = ['Alexander City', 'Andalusia', 'Anniston', 'Athens', 'Atmore', 'Auburn', 'Bessemer', 'Birmingham', 'Chickasaw', 'Clanton', 'Cullman', 'Decatur', 'Demopolis', 'Dothan', 'Enterprise', 'Eufaula', 'Florence', 'Fort Payne', 'Gadsden', 'Greenville', 'Guntersville', 'Huntsville', 'Jasper', 'Marion', 'Mobile', 'Montgomery', 'Opelika', 'Ozark', 'Phenix City', 'Prichard', 'Scottsboro', 'Selma', 'Sheffield', 'Sylacauga', 'Talladega', 'Troy', 'Tuscaloosa', 'Tuscumbia', 'Tuskegee']
@@ -56,6 +53,7 @@ function showPage() {
 // var cityHawaii = ['Hanalei', 'Hilo', 'Honaunau', 'Honolulu', 'Kahului', 'Kaneohe', 'Kapaa', 'Kawaihae', 'Lahaina', 'Laie', 'Wahiawa', 'Wailuku', 'Waimea'];
 // var cityIdaho = ['Blackfoot', 'Boise', 'Bonners Ferry', 'Caldwell', "Coeur d'Alene", 'Idaho City', 'Idaho Falls', 'Kellogg', 'Lewiston', 'Moscow', 'Nampa', 'Pocatello', 'Priest River', 'Rexburg', 'Sun Valley', 'Twin Falls'];
 // var cityIllinois = ['Alton', 'Arlington Heights', 'Arthur', 'Aurora', 'Belleville', 'Belvidere', 'Bloomington', 'Brookfield', 'Cahokia', 'Cairo', 'Calumet City', 'Canton', 'Carbondale', 'Carlinville', 'Carthage', 'Centralia', 'Champaign', 'Charleston', 'Chester', 'Chicago', 'Chicago Heights', 'Cicero', 'Collinsville', 'Danville', 'Decatur', 'DeKalb', 'Des Plaines', 'Dixon', 'East Moline', 'East Saint Louis', 'Effingham', 'Elgin', 'Elmhurst', 'Evanston', 'Freeport', 'Galena', 'Galesburg', 'Glen Ellyn', 'Glenview', 'Granite City', 'Harrisburg', 'Herrin', 'Highland Park', 'Jacksonville', 'Joliet', 'Kankakee', 'Kaskaskia', 'Kewanee', 'La Salle', 'Lake Forest', 'Libertyville', 'Lincoln', 'Lisle', 'Lombard', 'Macomb', 'Mattoon', 'Moline', 'Monmouth', 'Mount Vernon', 'Mundelein', 'Naperville', 'Nauvoo', 'Normal', 'North Chicago', 'Oak Park', 'Oregoon', 'Ottawa', 'Palatine', 'Park Forest', 'Park Ridge', 'Pekin', 'Peoria', 'Petersburg', 'Pontiac', 'Quincy', 'Rantoul', 'River Forest', 'Rock Island', 'Rockford', 'Salem', 'Shawneetown', 'Skokie', 'South Holland', 'Springfield', 'Streator', 'Summit', 'Urbana', 'Vandalia', 'Virden', 'Waukegan', 'Wheaton', 'Wilmette', 'Winnetka', 'Wood River', 'Zion'];
+
 
 ////////////////// Weather ////////////////////
 var userLoco = document.querySelector('#location');
@@ -514,29 +512,23 @@ function handleEditSchedule(event) {
         // printSchedule(scheduleDate, scheduleStartTime, scheduleEndTime, scheduleDescription);
         saveToLocalStorage();
         renderLocalStorage();
-        
-        
-    
     }
 }
 
 scheduleFormEl.on('submit', handleScheduleFormSubmit);
 graceScheduleFormEl.on('submit', graceHandleScheduleFormSubmit);
 
-
 scheduleContainerEl.on('click', '.button-cancel', handleDeleteSchedule);
 scheduleContainerEl.on('click', '.button-edit', handleEditSchedule);
 init();
-
 
 ////////////////////////////// GRACE SCHEDULE //////////////////////////////
 function graceHandleScheduleFormSubmit(event) {
     event.preventDefault();
 console.log("testing submit button")
 
-
     var scheduleDate = graceDateInputEl.val();
-        scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
+        // scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
     var scheduleStartTime = graceStartingTimeInputEl.val();
     var scheduleEndTime = graceEndingTimeInputEl.val();
     var scheduleDescription = graceDescriptionScheduleInputEl.val();
@@ -583,14 +575,22 @@ console.log("testing submit button")
 var taskContainerEl = $('#task-container');
 
 var taskDateInputEl = $('#dates-task');
-var taskStatusInputEl = $('#task-status');
-var taskDueDateInputEl = $('#due-time');
-var taskDescrInputEl = $('#description-task');
+var graceTaskDateInputEl = $('dates-taskGT');
 
+var taskStatusInputEl = $('#task-status');
+var graceTaskStatusInputEl = $('#task-statusGT');
+
+var taskDueDateInputEl = $('#due-time');
+var graceDueDateInputEl = $('#due-timeGT');
+
+var taskDescrInputEl = $('#description-task');
+var graceDecriptionTaskInputEl = $('#description-taskGT');
 
 var taskSubmitBtnEl = $('#button-submit-task');
+var graceTaskSubmitBtnEl = $('#button-submitGT');
 
 var taskFormEl = $('#task-form');
+var graceTaskFormEl = $('#task-formGT');
 
 var taskListMain = [];
 function taskTimer() {
@@ -871,28 +871,56 @@ function handleDeleteTask(event) {
 }
 
 taskFormEl.on('submit', handleTaskFormSubmit);
+graceTaskFormEl.on('submit', graceHandleTaskFormSubmit);
+
 taskContainerEl.on('click', '.button-check', handleDeleteTask);
 initTask();
 
+///////////////////////  GRACE TASK ////////////////////////////////////////
+function graceHandleTaskFormSubmit(event) {
+    //stop form from submitting -  not reload
+    event.preventDefault();
+console.log("testing task submit button")
 
-///////////////////   GRACE TASK ////////////////////////////////////////
+var taskDate = graceTaskDateInputEl.val();
+var taskDueDate = graceDueDateInputEl.val();
+var taskDescription = graceDecriptionTaskInputEl.val();
+var taskStatus = graceTaskStatusInputEl.val();
+var timeStamp24 = moment(taskDate + taskDueDate, "YYYY-MM-DD h:mmA").format("X");
+console.log(taskDate + " " + taskDueDate)
 
-// Enter Variables
+if (taskDescription === "") {
+    return;
+} else if (taskDate === "") {
+    return;
+}
 
-//Render function
+var taskItem = {
+    dates: taskDate,
+    status: taskStatus,
+    description: taskDescription,
+    dueDate: taskDueDate,
+    timeStamp: timeStamp24
+};
 
-//Init function
+if (taskListMain.length === 0) {
+    taskListMain = taskItem;
+    console.log("empty")
+} else if (typeof taskListMain.length == "undefined") {
+    taskListMain = [taskListMain]
+    taskListMain.push(taskItem);
+    console.log(taskListMain)
+} else {
+    console.log("third task?")
+    taskListMain.push(taskItem);
+    console.log(taskListMain);
+}
 
-//save function
+graceTaskFormEl[0].reset();
 
-//submit button function
-
-//delete button function
-
-
-// taskFormEl.on('submit', handleTaskFormSubmit);
-// taskContainerEl.on('click', '.button-check', handleDeleteTask);
-// initTask();
+saveTaskToStorage();
+renderTask();
+}
 
 ////////////////////////////// Timer ///////////////////////////////////////
 

@@ -40,9 +40,9 @@
       <div class="large-container">
         <div class="container half-container col-6">
           <h2 class="text-center">Timer</h3>
-          <div class="timer">
-          </div>
+          <div class="timer"></div>
         </div>
+
 
       <!-- Container for Weather report -->
       <div class="container half-container col-6">
@@ -59,14 +59,26 @@
             <h4 id="today-lowest"></h4>
             <h4 id="today-highest"></h4>
 
+        <!-- Container for Weather report -->
+        <div class="container half-container col-6">
+
+          <h2 class="text-center">Today's Weather</h3>
+          <div class="weather-container">
+            <div class="today-weather col-6">
+              <h4 id="location"></h4>
+              <h4 id="today-temp"></h4>
+              <h4 id="feels-like"></h4>
+              <h4 id="today-status"></h4>
+              <h4 id="today-lowest"></h4>
+              <h4 id="today-highest"></h4>
+            </div>
           </div>
         </div>
-      </div>
       </div>
       
       <!-- Container for Schedules -->
       <div class="container" >
-        <h3 class="text-center">Todays Schedule   <button class="button" data-open="exampleModall">&#43;</button></h3>
+        <h3 class="text-center">Today's Schedule <button class="button" data-open="exampleModall">&#43;</button></h3>
         
         <div class="week-calendar">
           <table class="table-week">
@@ -94,9 +106,7 @@
           <h4 id="today-date"></h4>
           <button><img class="icon-size" data-open="selectDateModal" src="./assets/icon-calendar.png"></button>
         </div>
-        <div id="schedule-container">
-
-        </div>
+        <div id="schedule-container"></div>
       </div>
     
       <!-- Container for Tasks -->
@@ -104,16 +114,16 @@
         <h3 class="text-center">Tasks List <button class="button" data-open="taskModal">&#43;</button></h3>
         <div id="task-container">
 
-        </div>
-  <!-- <div class="row-test task-container">
+        <!-- </div>
+          <div class="row-test task-container">
           <div class="task-status">Status</div>
-          <div class="task-description">description of the tasks</div>
-          <div class="time-left">10:00</div>
-          <button class="button-check">
+            <div class="task-description">description of the tasks</div>
+            <div class="time-left">10:00</div>
+            <button class="button-check">
             Check
-          </button>
+            </button>
+           </div>
         </div> -->
-      </div>
     </main>
 <!--This is for Selecting Today's Schedule Modal-->
 <div class="modal reveal" id="selectDateModal" data-reveal>
