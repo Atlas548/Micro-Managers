@@ -38,9 +38,9 @@
     <main>
       <!-- Container with Timer -->
       <div class="large-container min-height-container">
-        <div class="container half-container col-6">
+        <div class="container half-container col-6 timer-container-center">
           <h2 class="text-center">Timer</h3>
-          <div class="timer"></div>
+          <div class="timer make-center"></div>
         </div>
         
         <!-- Container for Weather report -->
@@ -48,15 +48,19 @@
 
           <h2 class="text-center">Today's Weather</h3>
           <div class="weather-container">
-            <div class="today-weather col-6">
+            <div class="today-weather">
               <h4 id="location"></h4>
-              <h4 id="today-temp"></h4>
-              <h4 id="feels-like"></h4>
+              <div>
+                <h4 id="today-temp" class="col-6-weather"></h4>
+                <h4 id="feels-like" class="col-6-weather"></h4>
+              </div>
               <h4 id="today-status"></h4>
-              <h4 id><img id="weather-icon"></img></h4>
+              <h4 id><img id="weather-icon" src="./assets/weather-placeholder.png"></img></h4>
               <h4 id="weather-description"></h4>
-              <h4 id="today-lowest"></h4>
-              <h4 id="today-highest"></h4>
+              <div>
+                <h4 id="today-lowest" class="col-6-weather"></h4>
+                <h4 id="today-highest" class="col-6-weather"></h4>
+              </div>
             </div>
           </div>
         </div>
@@ -64,7 +68,7 @@
       
       <!-- Container for Schedules -->
       <div class="container fixing-container min-height-container" >
-        <h3 class="text-center">Today's Schedule <button class="button" data-open="exampleModall">&#43;</button></h3>
+        <h3 class="text-center">Today's Schedule<button class="icon-size" data-open="exampleModall"><img src="./assets/image-plus-button.png"></button></h3>
         
         <div class="week-calendar">
           <table class="table-week">
@@ -97,12 +101,33 @@
     
       <!-- Container for Tasks -->
       <div class="container min-height-container">
-        <h3 class="text-center">Tasks List <button class="button" data-open="taskModal">&#43;</button></h3>
+        <h3 class="text-center">Tasks List <button class="icon-size" data-open="taskModal"><img src="./assets/image-plus-button.png"></button></h3>
         <div id="task-container">
         </div>
       </div>
     </main>
-
+<!--This is for Timer Modal-->
+<div class="modal reveal" id="timerModal" data-reveal>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="timer-modal-form">Select Date</h5>
+        <button type="button" data-close class="close-button" aria-label="Close modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="select-timer-form">
+        <div class="modal-body">
+         <label for="number" class="form-sections">Enter number of minutes:</label>
+         <input type="number" class="form-control" id="timer-box">
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-close  aria-label="Close modal" value="Select" id="button-select-timer" class="btn btn-info button-select">Select</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <!--This is for Selecting Today's Schedule Modal-->
     <div class="modal reveal" id="selectDateModal" data-reveal>
       <div class="modal-dialog modal-lg modal-dialog-centered">
