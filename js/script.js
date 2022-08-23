@@ -109,7 +109,7 @@ function renderItem(data) {
 var today = moment();
 var currentDate = today.format("YYYY-MM-DD");
 $(document).ready(function() {
-    $('#today-date').text(today.format("dddd, MMMM D, YYYY"));
+    $('#today-date').text(moment(currentDate, "YYYY-MM-DD").format("dddd, MMMM D, YYYY"));
 })
 // $('#select-date-box').attr('value', today.format("MM/DD/YYYY"))
 var currentDayOfWeek = today.format("dddd");
@@ -123,6 +123,21 @@ var daySaturday = $('#week-saturday');
 
 findDayOfWeek();
 function findDayOfWeek() {
+    // today = moment(selectedDate);
+    // daySunday.removeClass();
+    // dayMonday.removeClass();
+    // dayTuesday.removeClass();
+    // dayWednesday.removeClass();
+    // dayThursday.removeClass();
+    // dayFriday.removeClass();
+    // daySaturday.removeClass();
+    // daySunday.text("");
+    // dayMonday.text("");
+    // dayTuesday.text("");
+    // dayWednesday.text("");
+    // dayThursday.text("");
+    // dayFriday.text("");
+    // daySaturday.text("");
     if (currentDayOfWeek == "Sunday") {
         console.log("Sunday");
         daySunday.addClass('darkgrey');
@@ -204,7 +219,11 @@ console.log(selectedDateInputEl.val());
 function handleSelectDate () {
     var selectedDate = selectedDateInputEl.val();
     $('#today-date').text(moment(selectedDate).format("dddd, MMMM D, YYYY"));
+    
     currentDate = selectedDate;
+    // currentDayOfWeek = moment(selectedDate).format("dddd");
+    
+    // findDayOfWeek();
     renderLocalStorage();
     renderTask();
 
