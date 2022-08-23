@@ -551,6 +551,7 @@ function graceHandleScheduleFormSubmit(event) {
 console.log("testing submit button")
 
     var scheduleDate = graceDateInputEl.val();
+        scheduleDate = moment(scheduleDate, "MM-DD-YYYY").format("YYYY-MM-DD")
         // scheduleDate = moment(scheduleDate, 'MM-DD-YYYY').format('YYYY-MM-DD');
     var scheduleStartTime = graceStartingTimeInputEl.val();
     var scheduleEndTime = graceEndingTimeInputEl.val();
@@ -616,17 +617,18 @@ var taskFormEl = $('#task-form');
 var graceTaskFormEl = $('#task-formGT');
 
 var taskListMain = [];
+var taskTimerInterval;
 function taskTimer() {
     
     console.log("taskTimer function");
     
     $('.task-row').each(function(index)  {
-        // clearInterval(taskTimerInterval);    
         console.log(index+ ": " + $(this).text() );
         var timeLeftPerIndex = $(this).text();
         console.log("finding error from here");
         console.log(timeLeftPerIndex);
-        var taskTimerInterval = setInterval(function () {
+        // clearInterval(taskTimerInterval);
+        taskTimerInterval = setInterval(function () {
             if (timeLeftPerIndex > 0) {
             var d = Math.floor(timeLeftPerIndex / (3600*24));
             var h = Math.floor(timeLeftPerIndex % (3600*24) / 3600);
@@ -648,6 +650,7 @@ function taskTimer() {
     })
 }
 function renderTask() {
+    
     taskContainerEl.empty();
     var currentTime = moment().format("X");
     
