@@ -1,3 +1,7 @@
+AboutMe
+Introducing the Micro-manager! Its an all-inclusive structure bringing helper that will keep you on track while on any project. Foundation in structure; its a modern easy to navigate project manager that can only do one thing which is help. We focused on time; on its importance and its monatary nature. From having a timer to keep track of productive labor hours all the way, to weather updates so that you'll never be late; the Micro-Manager manages to deliver every time.
+
+
 # Screenshot
  ![Main Page](./Images/Project%201%20Main%20Menu.PNG)
  ![Overview Page](./Images/Project%201%20Overview%20Page.PNG)
