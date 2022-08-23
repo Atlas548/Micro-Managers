@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", function() {
             navigator.geolocation.getCurrentPosition(position => {
                 lat = position.coords.latitude;
                 lon = position.coords.longitude;
-                console.log(lat, lon);
+                // console.log(lat, lon);
                 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=2dec71e39f0495733603e3c8490344e7&units=imperial`)
                 .then(Response => Response.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     renderItem(data, position);
                 })})
     }
@@ -139,7 +139,7 @@ function findDayOfWeek() {
     // dayFriday.text("");
     // daySaturday.text("");
     if (currentDayOfWeek == "Sunday") {
-        console.log("Sunday");
+        // console.log("Sunday");
         daySunday.addClass('darkgrey');
         daySunday.text(today.format("D"))
         dayMonday.text(today.add(1, 'd').format("D"));
@@ -149,7 +149,7 @@ function findDayOfWeek() {
         dayFriday.text(today.add(1, 'd').format("D"));
         daySaturday.text(today.add(1, 'd').format("D"));
     } else if (currentDayOfWeek == "Monday") {
-        console.log("Monday");
+        // console.log("Monday");
         dayMonday.addClass('darkgrey');
         daySunday.text(today.subtract(1, 'd').format("D"));
         dayMonday.text(today.add(1,'d').format("D"));
@@ -159,7 +159,7 @@ function findDayOfWeek() {
         dayFriday.text(today.add(1, 'd').format("D"));
         daySaturday.text(today.add(1, 'd').format("D"));
     } else if (currentDayOfWeek == "Tuesday") {
-        console.log("Tuesday");
+        // console.log("Tuesday");
         dayTuesday.addClass('darkgrey');
         daySunday.text(today.subtract(2, 'd').format("D"));
         dayMonday.text(today.add(1,'d').format("D"));
@@ -169,7 +169,7 @@ function findDayOfWeek() {
         dayFriday.text(today.add(1, 'd').format("D"));
         daySaturday.text(today.add(1, 'd').format("D"));
     } else if (currentDayOfWeek == "Wednesday") {
-        console.log("Wednesday");
+        // console.log("Wednesday");
         dayWednesday.addClass('darkgrey');
         daySunday.text(today.subtract(3, 'd').format("D"));
         dayMonday.text(today.add(1,'d').format("D"));
@@ -179,7 +179,7 @@ function findDayOfWeek() {
         dayFriday.text(today.add(1, 'd').format("D"));
         daySaturday.text(today.add(1, 'd').format("D"));
     } else if (currentDayOfWeek == "Thursday") {
-        console.log("Thursday");
+        // console.log("Thursday");
         dayThursday.addClass('darkgrey');
         daySunday.text(today.subtract(4, 'd').format("D"));
         dayMonday.text(today.add(1,'d').format("D"));
@@ -189,7 +189,7 @@ function findDayOfWeek() {
         dayFriday.text(today.add(1, 'd').format("D"));
         daySaturday.text(today.add(1, 'd').format("D"));
     } else if (currentDayOfWeek == "Friday") {
-        console.log("Friday");
+        // console.log("Friday");
         dayFriday.addClass('darkgrey');
         daySunday.text(today.subtract(5, 'd').format("D"));
         dayMonday.text(today.add(1,'d').format("D"));
@@ -199,7 +199,7 @@ function findDayOfWeek() {
         dayFriday.text(today.add(1, 'd').format("D"));
         daySaturday.text(today.add(1, 'd').format("D"));
     } else if (currentDayOfWeek == "Saturday") {
-        console.log("Saturday");
+        // console.log("Saturday");
         daySaturday.addClass('darkgrey');
         daySunday.text(today.subtract(6, 'd').format("D"));
         dayMonday.text(today.add(1,'d').format("D"));
@@ -209,12 +209,12 @@ function findDayOfWeek() {
         dayFriday.text(today.add(1, 'd').format("D"));
         daySaturday.text(today.add(1, 'd').format("D"));
     } else {
-        console.log("getting error");
+        // console.log("getting error");
     }
 }
 var selectedDateInputEl = $('#select-date-box');
 var selectedDateFormEl = $('#select-date-form');
-console.log(selectedDateInputEl.val());
+// console.log(selectedDateInputEl.val());
 
 function handleSelectDate () {
     var selectedDate = selectedDateInputEl.val();
@@ -269,11 +269,11 @@ var scheduleListForAppend = [];
 
 function renderLocalStorage() {
     scheduleContainerEl.empty();
-    console.log(scheduleListForAppend);
+    // console.log(scheduleListForAppend);
     if (typeof scheduleListForAppend.length == "undefined") {
         for (var i = 0; i < 1; i++) {
             // console.log(scheduleListForAppend.startingTime);
-    console.log("undefined: i will become 1");
+    // console.log("undefined: i will become 1");
             var dateParsed = scheduleListForAppend.dates;
             var startTimeParsed = scheduleListForAppend.startingTime;
             var endTimeParsed = scheduleListForAppend.endingTime;
@@ -329,8 +329,8 @@ function renderLocalStorage() {
             scheduleListForAppend.sort((a, b) => a.timeStamp - b.timeStamp);
             
             if (scheduleListForAppend[i].dates !== currentDate) {
-                console.log("skip!");
-                console.log(scheduleListForAppend[i].dates)
+                // console.log("skip!");
+                // console.log(scheduleListForAppend[i].dates)
             } else {
                 
                 var dateParsed = scheduleListForAppend[i].dates
@@ -410,7 +410,7 @@ function handleScheduleFormSubmit(event) {
     var scheduleEndTime = endingTimeInputEl.val();
     var scheduleDescription = descriptionScheduleInputEl.val();
     var timeStamp24 = moment(scheduleDate + scheduleStartTime, "YYYY-MM-DD h:mmA").format("X");
-    console.log(timeStamp24)
+    // console.log(timeStamp24)
     // return when description is empty
     if (scheduleDescription === "") {
         return;
@@ -428,15 +428,15 @@ function handleScheduleFormSubmit(event) {
 
     if (scheduleListForAppend.length === 0) {
         scheduleListForAppend = scheduleItem;
-        console.log("empty")
+        // console.log("empty")
     } else if (typeof scheduleListForAppend.length == "undefined") {
         scheduleListForAppend = [scheduleListForAppend]
         scheduleListForAppend.push(scheduleItem);
-        console.log(scheduleListForAppend);
+        // console.log(scheduleListForAppend);
     } else {
         console.log("third time?")
         scheduleListForAppend.push(scheduleItem);
-        console.log(scheduleListForAppend);
+        // console.log(scheduleListForAppend);
     }
 
     
@@ -494,14 +494,15 @@ function handleEditSchedule(event) {
     editFormEl.on('submit', handleScheduleFormEdit);
 
     function handleScheduleFormEdit(event) {
-        // event.preventDefault();
+        // clearInterval(taskTimerInterval);
+        
     
         var scheduleDate = editDateInputEl.val();
         var scheduleStartTime = editStartingTimeInputEl.val();
         var scheduleEndTime = editEndingTimeInputEl.val();
         var scheduleDescription = editDescriptionInputEl.val();
         var timeStamp24 = moment(scheduleDate + scheduleStartTime, "YYYY-MM-DD h:mmA").format("X");
-        console.log(scheduleDate + " " + scheduleStartTime)
+        // console.log(scheduleDate + " " + scheduleStartTime)
         // return when description is empty
         if (scheduleDescription === "") {
             return;
@@ -517,15 +518,15 @@ function handleEditSchedule(event) {
     
         if (scheduleListForAppend.length === 0) {
             scheduleListForAppend = scheduleItem;
-            console.log("empty")
+            // console.log("empty")
         } else if (typeof scheduleListForAppend.length == "undefined") {
             scheduleListForAppend = [scheduleListForAppend]
             scheduleListForAppend.push(scheduleItem);
-            console.log(scheduleListForAppend);
+            // console.log(scheduleListForAppend);
         } else {
-            console.log("third time?")
+            // console.log("third time?")
             scheduleListForAppend.push(scheduleItem);
-            console.log(scheduleListForAppend);
+            // console.log(scheduleListForAppend);
         }
     
     scheduleListForAppend.splice(clickedIndex, 1);
@@ -548,7 +549,7 @@ init();
 ////////////////////////////// GRACE SCHEDULE //////////////////////////////
 function graceHandleScheduleFormSubmit(event) {
     event.preventDefault();
-console.log("testing submit button")
+// console.log("testing submit button")
 
     var scheduleDate = graceDateInputEl.val();
         scheduleDate = moment(scheduleDate, "MM-DD-YYYY").format("YYYY-MM-DD")
@@ -557,7 +558,7 @@ console.log("testing submit button")
     var scheduleEndTime = graceEndingTimeInputEl.val();
     var scheduleDescription = graceDescriptionScheduleInputEl.val();
     var timeStamp24 = moment(scheduleDate + scheduleStartTime, "MM-DD-YYYY h:mmA").format("X");
-    console.log(scheduleDate + " " + scheduleStartTime)
+    // console.log(scheduleDate + " " + scheduleStartTime)
     // return when description is empty
     if (scheduleDescription === "") {
         return;
@@ -573,15 +574,15 @@ console.log("testing submit button")
 
     if (scheduleListForAppend.length === 0) {
         scheduleListForAppend = scheduleItem;
-        console.log("empty")
+        // console.log("empty")
     } else if (typeof scheduleListForAppend.length == "undefined") {
         scheduleListForAppend = [scheduleListForAppend]
         scheduleListForAppend.push(scheduleItem);
-        console.log(scheduleListForAppend);
+        // console.log(scheduleListForAppend);
     } else {
-        console.log("third time?")
+        // console.log("third time?")
         scheduleListForAppend.push(scheduleItem);
-        console.log(scheduleListForAppend);
+        // console.log(scheduleListForAppend);
     }
 
     
@@ -620,16 +621,18 @@ var taskListMain = [];
 var taskTimerInterval;
 function taskTimer() {
     
-    console.log("taskTimer function");
-    
+    // console.log("taskTimer function");
+    clearInterval(taskTimerInterval);
     $('.task-row').each(function(index)  {
-        console.log(index+ ": " + $(this).text() );
+        // console.log(index+ ": " + $(this).text() );
         var timeLeftPerIndex = $(this).text();
-        console.log("finding error from here");
-        console.log(timeLeftPerIndex);
-        // clearInterval(taskTimerInterval);
+        // console.log("finding error from here");
+        // console.log(timeLeftPerIndex);
+        
+        if (timeLeftPerIndex > 0) {
         taskTimerInterval = setInterval(function () {
-            if (timeLeftPerIndex > 0) {
+            
+            
             var d = Math.floor(timeLeftPerIndex / (3600*24));
             var h = Math.floor(timeLeftPerIndex % (3600*24) / 3600);
             var m = Math.floor(timeLeftPerIndex % 3600 / 60);
@@ -642,20 +645,25 @@ function taskTimer() {
             var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
             $('#task-container').children().eq(index).children('.time-left').text(timeLeftText);
             timeLeftPerIndex--;
-            } else {
-                clearInterval(taskTimerInterval);
-            }
-        }, 1000)
+        
+        }, 1000)} else {
+            $('#task-container').children().eq(index).children('.time-left').text("Due has passed");
+        }
         
     })
 }
 function renderTask() {
-    
+    // clearInterval(taskTimerInterval);
+
     taskContainerEl.empty();
     var currentTime = moment().format("X");
     
     if (typeof taskListMain.length == "undefined") {
         for (var i = 0; i < 1; i++) {
+            if (taskListMain.dates !== currentDate) {
+                // console.log("skip!");
+            } else {
+            console.log("is this if statement used?")
             var taskDateParsed = taskListMain.dates;
             
             var taskDueDateParsed = taskListMain.dueDate;
@@ -663,7 +671,7 @@ function renderTask() {
             var taskStatusParsed = taskListMain.status;
             var taskTimeStamp = taskListMain.timestamp;
             var timeLeftFromNow = taskTimeStamp - currentTime;
-            console.log(timeLeftFromNow);
+            // console.log(timeLeftFromNow);
             var d = Math.floor(timeLeftFromNow / (3600*24));
             var h = Math.floor(timeLeftFromNow % (3600*24) / 3600);
             var m = Math.floor(timeLeftFromNow % 3600 / 60);
@@ -675,7 +683,7 @@ function renderTask() {
             var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
             var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
 
-            console.log(timeLeftText);
+            // console.log(timeLeftText);
 
             var taskRowEl = $('<div>');
             
@@ -699,7 +707,7 @@ if (taskListMain.status == "Routine") {
             taskStatusEl.addClass("red-urgent")
             
 } else {
-    console.log("adding status error!!");
+    // console.log("adding status error!!");
 }
 
             taskRowEl.addClass('row-test task-container');
@@ -725,13 +733,13 @@ if (taskListMain.status == "Routine") {
             taskRowEl.append(timeLeftHidden);
 
             taskContainerEl.append(taskRowEl);
-        }
+        }}
     } else {
         for (var i=0; i < taskListMain.length; i++) {
             taskListMain.sort((a, b) => a.timeStamp - b.timeStamp);
             
             if (taskListMain[i].dates !== currentDate) {
-                console.log("skip!");
+                // console.log("skip!");
             } else {
                 
                 var taskDateParsed = taskListMain[i].dates;
@@ -753,10 +761,10 @@ if (taskListMain.status == "Routine") {
             var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
             var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
             var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
-                console.log("important time point");
-            console.log(timeLeftFromNow);
-            console.log("important time point")
-            console.log(taskListMain)
+            //     console.log("important time point");
+            // console.log(timeLeftFromNow);
+            // console.log("important time point")
+            // console.log(taskListMain)
             /////
 
             var taskRowEl = $('<div>');
@@ -781,7 +789,7 @@ if (taskListMain.status == "Routine") {
                     taskStatusEl.addClass("red-urgent")
                     
         } else {
-            console.log("adding status error!!");
+            // console.log("adding status error!!");
         }
             timeLeftHidden.addClass('task-row hide')
 
@@ -807,7 +815,7 @@ if (taskListMain.status == "Routine") {
             taskRowEl.append(timeLeftHidden);
 
             taskContainerEl.append(taskRowEl);
-            console.log(timeLeftFromNow);
+            // console.log(timeLeftFromNow);
             taskTimer();
             // var timeleftInterval = setInterval(function () {
             //     if (timeLeftFromNow > 0) {
@@ -857,7 +865,7 @@ function handleTaskFormSubmit(event) {
     var taskDescription = taskDescrInputEl.val();
     var taskStatus = taskStatusInputEl.val();
     var timeStamp24 = moment(taskDate + taskDueDate, "YYYY-MM-DD h:mmA").format("X");
-    console.log(taskDate + " " + taskDueDate)
+    // console.log(taskDate + " " + taskDueDate)
 
     if (taskDescription === "") {
         return;
@@ -875,15 +883,15 @@ function handleTaskFormSubmit(event) {
 
     if (taskListMain.length === 0) {
         taskListMain = taskItem;
-        console.log("empty")
+        // console.log("empty")
     } else if (typeof taskListMain.length == "undefined") {
         taskListMain = [taskListMain]
         taskListMain.push(taskItem);
-        console.log(taskListMain)
+        // console.log(taskListMain)
     } else {
-        console.log("third task?")
+        // console.log("third task?")
         taskListMain.push(taskItem);
-        console.log(taskListMain);
+        // console.log(taskListMain);
     }
 
     taskFormEl[0].reset();
@@ -898,7 +906,7 @@ function handleDeleteTask(event) {
     btnClicked.parent('div').remove();
     var index = btnClicked.parent('div').attr('data-index');
     taskListMain.splice(index, 1);
-
+console.log(taskListMain);
     saveTaskToStorage();
     renderTask();
 }
@@ -913,22 +921,22 @@ initTask();
 function graceHandleTaskFormSubmit(event) {
     //stop form from submitting -  not reload
     event.preventDefault();
-console.log("testing task submit button")
+// console.log("testing task submit button")
 
 var taskDate = graceTaskDateInputEl.val();
 var taskDueDate = graceDueDateInputEl.val();
 var taskDescription = graceDecriptionTaskInputEl.val();
 var taskStatus = graceTaskStatusInputEl.val();
 var timeStamp24 = moment(taskDate + taskDueDate, "MM-DD-YYYY h:mmA").format("X");
-console.log(taskDate + " " + taskDueDate)
+// console.log(taskDate + " " + taskDueDate)
 
 if (taskDescription === "") {
     return;
 } else if (taskDate === "") {
     return;
 }
-console.log("below is the testing for grace' task code");
-console.log(taskDate);
+// console.log("below is the testing for grace' task code");
+// console.log(taskDate);
 var newtaskDate = moment(taskDate, "MM-DD-YYYY").format("YYYY-MM-DD");
 
 var taskItem = {
@@ -941,15 +949,15 @@ var taskItem = {
 
 if (taskListMain.length === 0) {
     taskListMain = taskItem;
-    console.log("empty")
+    // console.log("empty")
 } else if (typeof taskListMain.length == "undefined") {
     taskListMain = [taskListMain]
     taskListMain.push(taskItem);
-    console.log(taskListMain)
+    // console.log(taskListMain)
 } else {
-    console.log("third task?")
+    // console.log("third task?")
     taskListMain.push(taskItem);
-    console.log(taskListMain);
+    // console.log(taskListMain);
 }
 
 graceTaskFormEl[0].reset();

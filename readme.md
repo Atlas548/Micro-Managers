@@ -12,6 +12,7 @@ Introducing the Micro-manager! Its an all-inclusive structure bringing helper th
  
 * https://github.com/Atlas548/Micro-Managers (Github Repo)
 * https://atlas548.github.io/Micro-Managers/ (Deployed Webpage)
+* https://www.canva.com/design/DAFKGCmLQdA/jyetg--Opv15W5X2joWp5w/view?utm_content=DAFKGCmLQdA&utm_campaign=designshare&utm_medium=link&utm_source=publishpresent#1 (Presentation slides)
  
  
  
