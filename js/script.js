@@ -617,10 +617,15 @@ var graceTaskFormEl = $('#task-formGT');
 
 var taskListMain = [];
 function taskTimer() {
+    
     console.log("taskTimer function");
+    
     $('.task-row').each(function(index)  {
+        // clearInterval(taskTimerInterval);    
         console.log(index+ ": " + $(this).text() );
         var timeLeftPerIndex = $(this).text();
+        console.log("finding error from here");
+        console.log(timeLeftPerIndex);
         var taskTimerInterval = setInterval(function () {
             if (timeLeftPerIndex > 0) {
             var d = Math.floor(timeLeftPerIndex / (3600*24));
@@ -745,8 +750,8 @@ if (taskListMain.status == "Routine") {
             var mDisplay = m > 0 ? m + (m == 1 ? "minute, " : " minutes, ") : "";
             var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
             var timeLeftText = dDisplay + hDisplay + mDisplay + sDisplay + " left!";
-
-            console.log(timeLeftText);
+                console.log("important time point");
+            console.log(timeLeftFromNow);
             console.log("important time point")
             console.log(taskListMain)
             /////
