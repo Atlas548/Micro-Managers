@@ -89,15 +89,19 @@ function renderItem(data) {
     var weatherDescription = data['weather']['0']['description'];
     var weatherIcon = data['weather']['0']['icon'];
     var tempFeels = data['main']['feels_like'];
-    userLoco.textContent = `Location: ${locationValue}`;
+    // userLoco.textContent = `Location: ${locationValue}`;
+    userLoco.textContent = `${locationValue}`;
     temp.textContent = `Current Temp: ${tempValue} °F`;
     feelsLike.textContent = `Feels like: ${tempFeels} °F`;
     tempLow.textContent = `Today's Low: ${lowTemp} °F`;
     tempHigh.textContent = `Today's High: ${highTemp} °F`;
-    weatherStats.textContent = `Current Weather: ${weatherStatus} `;
+    // weatherStats.textContent = `Current Weather: ${weatherStatus} `;
+    weatherStats.textContent = `${weatherStatus} `;
     weatherDescriptionInputEl.textContent = `Detail: ${weatherDescription} `;
     weatherIconInputEl.src = `http://openweathermap.org/img/wn/${weatherIcon}@4x.png`;
 }
+
+ 
 
 
 //////////////////// Schedule ////////////////////
@@ -928,6 +932,19 @@ renderTask();
 }
 
 ////////////////////////////// Timer ///////////////////////////////////////
+// function timerSelectHandle() {
+//     console.log("button is working");
+//     // var timerMinuteInputEl = $('#timer-box');
+//     // var minutesInput = timerMinuteInputEl.val();
+//     // console.log(minutesInput);
+//     // if (minutesInput < 60) {
+//     //     this.stop();
+//     //     this.secondsRemaining = minutesInput * 60;
+//     //     this.updateTimerInterface();
+//     // }
+// }
+// var timerFormEl = $('#select-timer-form');
+// timerFormEl.on('Select', timerSelectHandle());
 
 class Timer {
     constructor(root) {
@@ -954,13 +971,17 @@ class Timer {
   
       this.el.reset.addEventListener("click", () => {
         const minutesInput = prompt("Enter number of minutes:");
-  
+        
+        
+        
         if (minutesInput < 60) {
           this.stop();
           this.secondsRemaining = minutesInput * 60;
           this.updateTimerInterface();
         }
       });
+
+    
     }
   
     start() {

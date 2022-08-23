@@ -29,8 +29,8 @@ body {
 .main-center-body {
     background-color: #f3f3f3;
     justify-content: center;
-    margin: 90px;
-    padding: 20px;
+    margin: 45px;
+    padding: 10px;
 }
 
 .main-time {
@@ -75,6 +75,17 @@ body {
     font-weight: 700;
     font-size: 75px;
 }
+.timer {
+    width: 100%;
+}
+/* .timer-container-center {
+    display: flex;
+    flex-direction: column;
+} */
+.make-center {
+    margin-top: 70px;
+    font-size: 200%;
+}
 .timer .timer-btn {
     width: 50px;
     height: 50px;
@@ -84,18 +95,49 @@ body {
     background-color: lightseagreen;
     cursor: pointer;
 }
-
-.weather-container {
-    background-color: skyblue;
-    display: flex;
+#weather-icon {
+    width: 200px;
+    height: 200px;
+    margin-top: -20px;
+    border: 0px;
+    transform: scale(1.5);
 }
-
-.col-6 {
+#weather-description {
+    font-size: 100%;
+    margin-top: -20px;
+}
+.weather-container {
+    /* background-color: skyblue; */
+    /* display: flex; */
+    text-align: center;
+}
+#today-status {
+    margin-top: 10px;
+}
+.today-weather {
+    /* text-align: center; */
+}
+#today-temp, #feels-like, #today-lowest, #today-highest {
+    font-size: 100%;
+    display: inline;
     flex: 0 0 auto;
     width: 50%;
     padding: 15px;
 }
 
+#location {
+    line-height: 1;
+}
+.col-6 {
+    flex: 0 0 auto;
+    width: 50%;
+    padding: 15px;
+}
+.col-6-weather {
+    flex: 0 0 auto;
+    width: 50%;
+    padding: 15px;
+}
 .table-week {
     text-align: center;
     flex: 0 0 auto;
@@ -156,6 +198,9 @@ h6 {
 
 footer {
     background-color: lightgrey;
+    height: 40px;
+    vertical-align: center;
+    padding-top: 10px;
     /* position: absolute;
     width: 100%;
     bottom: 0; */
@@ -326,7 +371,9 @@ footer {
 #myDiv {
     display: none;
     text-align: center;
+    margin-top: -150px;
 }
+
 .animate-top {
     position: relative;
     -webkit-animation-name: animatetop;
@@ -349,9 +396,9 @@ footer {
     left: 50%;
     top: 50%;
     z-index:1 ;
-    width:400px;
-    height:400px;
-    margin: -200px 0 0 -200px;
+    width:300px;
+    height:300px;
+    margin: -380px 0 0 -230px;
     /* background-color: #277bc0;  */
     /* border: 16px solid #f3f3f3; */
     /* border-radius: 50%;
@@ -406,3 +453,531 @@ option {
     font-size: 20px;
 }
 /* -------------------------------End Update Page----------------------------------------*/
+
+
+/* Media Screen for Main Page */
+@media screen and (max-width: 1163px) {
+ .main-body {
+    margin: 5px;
+    margin-top: 300px;
+    display: block;
+    min-width: 400px;
+    background-color: #277bc0;
+    color: #000000;
+    overflow-y: hidden;
+    overflow-x: hidden;
+ }   
+ /* overview Page */
+ .description-container {
+    background-color: aqua;
+    flex: 0 0 auto;
+    width: 65%;
+    padding: 0px 10px;
+}
+.button-edit {
+    flex: 0 0 auto;
+    width: 10%;
+    background-color: lightcoral;
+}
+
+.button-cancel {
+    flex: 0 0 auto;
+    width: 15%;
+    background-color: lightgray;
+}
+.task-description {
+    width: 50%;
+    background-color: lightcyan;
+}
+.button-check {
+    width: 10%;
+    background-color: lightgreen;
+}
+ 
+}
+
+@media screen and (max-width: 993px) {
+    .main-body {
+        margin: 5px;
+        margin-top: 300px;
+        display: block;
+        min-width: 400px;
+        background-color: #277bc0;
+        color: #000000;
+        overflow-y: hidden;
+        overflow-x: hidden;
+     }   
+     .main-date {
+        font-size: 2.5rem;
+     }
+     .main-center-body {
+        background-color: #f3f3f3;
+        justify-content: center;
+        margin: 20px;
+    }
+    /* overview Page */
+ .description-container {
+    background-color: aqua;
+    flex: 0 0 auto;
+    width: 65%;
+    padding: 0px 10px;
+}
+.button-edit {
+    flex: 0 0 auto;
+    width: 10%;
+    background-color: lightcoral;
+}
+
+.button-cancel {
+    flex: 0 0 auto;
+    width: 15%;
+    background-color: lightgray;
+}
+.task-description {
+    width: 50%;
+    background-color: lightcyan;
+}
+.button-check {
+    width: 10%;
+    background-color: lightgreen;
+}
+#today-temp, #feels-like, #today-lowest, #today-highest {
+    font-size: 100%;
+    display: inline;
+    flex: 0 0 auto;
+    width: 50%;
+    padding: 15px;
+}
+.col-6 {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 15px;
+}
+.large-container {
+    display: block;
+}
+.make-center {
+    margin-top: 20px;
+    font-size: 200%;
+}
+}
+
+@media screen and (max-width: 810px) {
+    .main-body {
+        margin: 5px;
+        margin-top: 300px;
+        display: block;
+        min-width: 400px;
+        background-color: #277bc0;
+        color: #000000;
+        overflow-y: hidden;
+        overflow-x: hidden;
+     }   
+     .main-date {
+        font-size: 1.5rem;
+     }
+     .main-center-body {
+        background-color: #f3f3f3;
+        justify-content: center;
+        margin: 20px;
+    }
+    .main-links a {
+        width: 100%;
+        text-align: center;
+        color: rgb(76, 100, 106);
+        padding: 10px;
+        font-size: 30px;
+        font-family: 'Bebas Neue','Courier New', Courier, monospace;
+        text-decoration: none;
+    }
+    
+    .main-links a:hover {
+        color: rgb(32, 139, 175);
+        padding: 30px;
+        font-size: 45px;
+    }
+    .main-time {
+        margin:auto;
+        display: inline-block;
+        width: 40%;
+        text-align: center;
+        font-size: 60px;
+        font-family: 'Bebas Neue','Courier New', Courier, monospace;
+    }
+        /* overview Page */
+ .description-container {
+    background-color: aqua;
+    flex: 0 0 auto;
+    width: 65%;
+    padding: 0px 10px;
+}
+.button-edit {
+    flex: 0 0 auto;
+    width: 10%;
+    background-color: lightcoral;
+}
+
+.button-cancel {
+    flex: 0 0 auto;
+    width: 15%;
+    background-color: lightgray;
+}
+.task-description {
+    width: 50%;
+    background-color: lightcyan;
+}
+.button-check {
+    width: 10%;
+    background-color: lightgreen;
+}
+#today-temp, #feels-like, #today-lowest, #today-highest {
+    font-size: 100%;
+    display: inline;
+    flex: 0 0 auto;
+    width: 50%;
+    padding: 15px;
+}
+.col-6 {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 15px;
+}
+.large-container {
+    display: block;
+}
+.make-center {
+    margin-top: 20px;
+    font-size: 200%;
+}
+hr {
+    display:none;
+}
+.row-test {
+    display: block;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 100%;
+    margin: 20px 0px;
+}
+.time-container {
+    background-color: pink;
+    /* flex: 0 0 auto; */
+    width: 100%;
+}
+
+
+.description-container {
+    background-color: aqua;
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 50px;
+}
+h5 {
+    margin:0;
+}
+.button-edit {
+    flex: 0 0 auto;
+    width: 50%;
+    background-color: lightcoral;
+    min-height: 30px;
+}
+
+.button-cancel {
+    flex: 0 0 auto;
+    width: 50%;
+    background-color: lightgray;
+    min-height: 30px;
+}
+
+.starting-time {
+    line-height: 1;
+    margin-left: 15%;
+    font-size: 1.5rem;
+}
+
+.ending-time {
+    line-height: 1;
+    text-align: right;
+    margin-right: 15%;
+    margin-bottom: 0px;
+    font-size: 1.5rem;
+}
+.task-status {
+    width: 100%;
+}
+.task-description {
+    width: 100%;
+    background-color: lightcyan;
+    min-height: 50px;
+}
+.button-check {
+    width: 100%;
+    background-color: lightgreen;
+    margin: 0;
+}
+.time-left {
+    width: 100%;
+    background-color: lightgray;
+    margin-bottom: 0;
+}
+}
+
+@media screen and (max-width: 611px) {
+    .main-body {
+        margin: 5px;
+        margin-top: 300px;
+        display: block;
+        min-width: 400px;
+        background-color: #277bc0;
+        color: #000000;
+        overflow-y: hidden;
+        overflow-x: hidden;
+     }   
+     .main-date {
+        font-size: 1.5rem;
+     }
+     .main-center-body {
+        background-color: #f3f3f3;
+        justify-content: center;
+        margin: 20px;
+    }
+    .main-links a {
+        width: 100%;
+        text-align: center;
+        color: rgb(76, 100, 106);
+        padding: 10px;
+        font-size: 30px;
+        font-family: 'Bebas Neue','Courier New', Courier, monospace;
+        text-decoration: none;
+    }
+    nav {
+        display: block;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+    }
+    .main-links {
+        display: flex;
+        flex: 0 0 auto;
+        flex-wrap: wrap;
+        margin-right: 60px;
+    }
+    .main-links a:hover {
+        color: rgb(32, 139, 175);
+        padding: 30px;
+        font-size: 45px;
+    }
+    .main-time {
+        margin:auto;
+        display: inline-block;
+        width: 40%;
+        text-align: center;
+        font-size: 60px;
+        font-family: 'Bebas Neue','Courier New', Courier, monospace;
+        margin-right: 80px;
+    }
+    #gif {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index:1 ;
+        width:300px;
+        height:300px;
+        margin: -380px 0 0 -100px;
+        /* background-color: #277bc0;  */
+        /* border: 16px solid #f3f3f3; */
+        /* border-radius: 50%;
+        border-top: 16px solid #3498db; */
+    }
+    #gif-animate {
+        width: 200px;
+    }
+        /* overview Page */
+ .description-container {
+    background-color: aqua;
+    flex: 0 0 auto;
+    width: 65%;
+    padding: 0px 10px;
+}
+.button-edit {
+    flex: 0 0 auto;
+    width: 10%;
+    background-color: lightcoral;
+}
+
+.button-cancel {
+    flex: 0 0 auto;
+    width: 15%;
+    background-color: lightgray;
+}
+.task-description {
+    width: 50%;
+    background-color: lightcyan;
+}
+.button-check {
+    width: 10%;
+    background-color: lightgreen;
+}
+#today-temp, #feels-like, #today-lowest, #today-highest {
+    font-size: 100%;
+    display: block;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 15px;
+}
+.col-6 {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 15px;
+}
+.large-container {
+    display: block;
+}
+.make-center {
+    margin-top: 20px;
+    font-size: 200%;
+}
+hr {
+    display:none;
+}
+.row-test {
+    display: block;
+    border: 1px solid black;
+    border-radius: 2px;
+    width: 100%;
+    margin: 20px 0px;
+}
+.time-container {
+    background-color: pink;
+    /* flex: 0 0 auto; */
+    width: 100%;
+}
+
+
+.description-container {
+    background-color: aqua;
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 50px;
+}
+h5 {
+    margin:0;
+}
+.button-edit {
+    flex: 0 0 auto;
+    width: 50%;
+    background-color: lightcoral;
+    min-height: 30px;
+}
+
+.button-cancel {
+    flex: 0 0 auto;
+    width: 50%;
+    background-color: lightgray;
+    min-height: 30px;
+}
+
+.starting-time {
+    line-height: 1;
+    margin-left: 15%;
+    font-size: 1.5rem;
+}
+
+.ending-time {
+    line-height: 1;
+    text-align: right;
+    margin-right: 15%;
+    margin-bottom: 0px;
+    font-size: 1.5rem;
+}
+.task-status {
+    width: 100%;
+}
+.task-description {
+    width: 100%;
+    background-color: lightcyan;
+    min-height: 50px;
+}
+.button-check {
+    width: 100%;
+    background-color: lightgreen;
+    margin: 0;
+}
+.time-left {
+    width: 100%;
+    background-color: lightgray;
+    margin-bottom: 0;
+}
+}
+@media screen and (max-width: 380px) {
+    .main-body {
+        margin-top: 300px;
+        display: block;
+        min-width: 400px;
+        background-color: #277bc0;
+        color: #000000;
+        overflow-y: hidden;
+        overflow-x: hidden;
+     }   
+     .main-date {
+        font-size: 1.5rem;
+     }
+     .main-center-body {
+        background-color: #f3f3f3;
+        justify-content: center;
+        
+    }
+    .main-links a {
+        width: 100%;
+        text-align: center;
+        color: rgb(76, 100, 106);
+        padding: 10px;
+        font-size: 30px;
+        font-family: 'Bebas Neue','Courier New', Courier, monospace;
+        text-decoration: none;
+    }
+    nav {
+        display: block;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+    }
+    .main-links {
+        display: flex;
+        flex: 0 0 auto;
+        flex-wrap: wrap;
+        margin-right: 60px;
+    }
+    .main-links a:hover {
+        color: rgb(32, 139, 175);
+        padding: 30px;
+        font-size: 45px;
+    }
+    .main-time {
+        margin:auto;
+        display: inline-block;
+        width: 40%;
+        text-align: center;
+        font-size: 60px;
+        font-family: 'Bebas Neue','Courier New', Courier, monospace;
+        margin-right: 80px;
+    }
+    #gif {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index:1 ;
+        width:300px;
+        height:300px;
+        margin: -200px 0 0 -100px;
+        /* background-color: #277bc0;  */
+        /* border: 16px solid #f3f3f3; */
+        /* border-radius: 50%;
+        border-top: 16px solid #3498db; */
+    }
+    #gif-animate {
+        width: 200px;
+    }
+}
+
+

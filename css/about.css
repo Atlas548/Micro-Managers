@@ -1,15 +1,60 @@
 .container {
     border: black solid 1px;
-    margin: 10px 100px;
+    /* margin: 10px 100px; */
     padding: 10px;
-    margin: 30px 5px;
+    margin: 30px 10px;
 }
 
 
 .card {
     border: black solid 1px;
-    margin: 10px 100px;
+    margin: 10px 10px;
+    width: 80%;
     padding: 10px;
-    width: 60%;
+    display: block;
+}
 
+
+
+.submit-review-card {
+    padding: 15px;
+}
+
+img {
+    width: 50%;
+    display: flex;
+    flex: 0 0 auto;
+    margin: 5px;
+}
+footer {
+    background-color: lightgrey;
+    height: 40px;
+    vertical-align: center;
+    padding-top: 10px;
+}
+.image-box {
+    display: flex;
+}
+.main-box-about {
+    width: 99%;
+}
+
+.large-container-about {
+    padding: 10px;
+}
+.media-object-section p {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+@media screen and (max-width: 910px) {
+    img {
+        width: 100%;
+    }
+    .image-box {
+        display: block;
+    }
+    .media-object-section {
+        display: block;
+    }
 }
